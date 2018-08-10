@@ -1,0 +1,87 @@
+<!--index.wxml-->
+<view class='white-block'>
+  <swiper current="{{step}}" bindchange='swchange' >
+    <swiper-item>
+      <view class='flex-row flex-center'>
+        <view style='height:100vh;'></view>
+        <view class='flex-1 text-center'>
+          <view class='line-height-0' style='margin-bottom:100rpx;'>
+            <image bindtap='uploadphoto' wx:if="{{photo==''}}" src='{{uploadpath}}resource/{{res.defaultmember}}' class='icon-150 radius-50'></image>
+            <image bindtap='uploadphoto' wx:if="{{photo!=''}}" src='{{uploadpath}}member/{{photo}}' class='icon-150 radius-50'></image>
+          </view>
+          <view>
+            <button size='mini' class='h4' type='primary' bindtap='uploadphoto'>上传头像</button>
+          </view>
+        </view>
+        <view style='height:100vh;'></view>
+      </view>
+
+    </swiper-item>
+    <swiper-item>
+    
+    <view class='flex-row flex-center'>
+        <view style='height:100vh;'></view>
+        <view class='flex-1 text-center'>
+          <view class='line-height-0' style='margin-bottom:100rpx;'>
+            <input class='h3' style='height:60rpx;' maxlength='30'   bindinput='namechange' placeholder='我的真实姓名' bindconfirm='confirmname'></input>
+          </view>
+          <view>
+            <button size='mini' class='h4' type='primary' bindtap='confirmname'>确认姓名</button>
+          </view>
+        </view>
+        <view style='height:100vh;'></view>
+      </view>
+    
+    
+    </swiper-item>
+
+    <swiper-item>
+    
+      <view class='flex-row flex-center'>
+        <view style='height:100vh;'></view>
+        <view class='flex-1 text-center'>
+          <view class='line-height-0' style='margin-bottom:100rpx;'>
+            <view wx:if="{{mobile==''}}" class='h3 txt-gray'>点击下面按钮进行实名认证</view>
+            <view wx:if="{{mobile!=''}}" class='h3 txt-primary'>{{mobile}}</view>
+          </view>
+          <view>
+            <button size='mini' class='h4' type='primary'  bindgetphonenumber='getPhoneNo'  open-type='getPhoneNumber'>手机认证</button>
+          </view>
+        </view>
+        <view style='height:100vh;'></view>
+      </view>
+    
+    
+    </swiper-item>
+    <swiper-item>
+    
+      <view class='flex-row flex-center'>
+        <view style='height:100vh;width:20vw;'></view>
+        <view class='flex-1 text-center'>
+          <view class='line-height-0'>
+           <image wx:if="{{photo!=''}}" src='{{uploadpath}}member/{{photo}}' class='icon-150 radius-50'></image>
+          </view>
+          <view class='flex-row flex-center margin-top' >
+            <view class='width-200 txt-gray' >真实姓名：</view>
+            <view >{{name}}</view>
+          </view>
+          <view class='flex-row flex-center margin-top' >
+            <view class='width-200 txt-gray' >手机号码：</view>
+            <view >{{mobile}}</view>
+          </view>
+          <view class=' margin-top'>
+            <button size='mini' class='h4' type='primary' bindtap='confirmReg'  >完成注册</button>
+          </view>
+          <view class="h6 margin-top-10">
+            点击确认完成注册代表我同意用户协议
+          </view>
+        </view>
+        <view style='height:100vh;width:20vw;'></view>
+      </view>
+    
+    
+    </swiper-item>
+
+
+  </swiper>
+</view>

@@ -1,0 +1,63 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/product/product",
+    "pages/auth/auth",
+    "pages/success/success",
+    "pages/signup/signup",
+    "pages/productlist/productlist",
+    "pages/news/news",
+    "pages/service/service",
+    "pages/newslist/newslist",
+    "pages/aboutuslist/aboutuslist",
+    "pages/aboutus/aboutus",
+    "pages/index/index",
+    "pages/servicelist/servicelist",
+    "pages/member/member",
+    "pages/content/content",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#51ABD8",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#cdcdcd",
+    "selectedColor": "#51ABD8",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/home/home",
+        "iconPath": "images/icons/home-o.png",
+        "selectedIconPath": "images/icons/home.png"
+      },
+      {
+        "text": "关于我们",
+        "pagePath": "pages/aboutuslist/aboutuslist",
+        "iconPath": "images/icons/hotel-o.png",
+        "selectedIconPath": "images/icons/hotel.png"
+      },
+      {
+        "text": "产品",
+        "pagePath": "pages/productlist/productlist",
+        "iconPath": "images/icons/store-o.png",
+        "selectedIconPath": "images/icons/store.png"
+      },
+      {
+        "text": "动态",
+        "pagePath": "pages/newslist/newslist",
+        "iconPath": "images/icons/list-o.png",
+        "selectedIconPath": "images/icons/list.png"
+      },
+      {
+        "text": "服务",
+        "pagePath": "pages/servicelist/servicelist",
+        "iconPath": "images/icons/service-o.png",
+        "selectedIconPath": "images/icons/service.png"
+      }
+    ]
+  }
+}

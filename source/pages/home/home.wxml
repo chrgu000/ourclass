@@ -1,0 +1,138 @@
+<!--pages/home/home.wxml-->
+<view class='text-center headerback'>
+  <image src='{{uploadpath}}inst/{{logobackimg}}' mode='aspectFill'></image>
+</view>
+<view class='headerlogo'>
+  <view class='flex-row'>
+    <view class='logoborder'>
+      <image class='logo' src='{{uploadpath}}inst/{{logo}}'></image>
+    </view>
+  </view>
+  <view class='text-center txt-primary padding-20 h4 txt-border'>
+    {{name}}
+  </view>
+  <view class='text-center txt-white h6'>
+    "{{slogen}}"
+  </view>
+</view>
+<view class='white-block flex-row contact-info' >
+  <view class=' padding-20 flex-1'>
+
+    <view class='flex-row infoitem' bindtap='openMap' id="{{address}}" wx:if="{{address!=''}}">
+      <view>
+        <image src='{{uploadpath}}resource/map.png' class='info-icon'></image>
+      </view>
+      <view class=' infodesc nowrap'>{{address}}</view>
+    </view>
+    <view class='flex-row infoitem' bindtap='phoneCall' id="{{tel}}" wx:if="{{tel!=''}}">
+      <view>
+        <image src='{{uploadpath}}resource/phone.png' class='info-icon'></image>
+      </view>
+      <view class=' infodesc'>{{tel}}</view>
+    </view>
+    <view class='flex-row infoitem'  wx:if="{{openning!=''}}">
+      <view>
+        <image src='{{uploadpath}}resource/time.png' class='info-icon'></image>
+      </view>
+      <view class=' infodesc'>{{openning}}</view>
+    </view>
+
+  </view>
+  <view class='info-big-icon  padding-20' style='padding-right:0rpx;padding-left:0rpx;'>
+     <image src='{{uploadpath}}resource/customerservice.png' class='info-icon-big'></image>
+      <button open-type='contact' style='margin-top:-100rpx;width:100rpx;height:100rpx;' class='clear-contact '></button>
+  </view>
+  <view  class='info-big-icon  padding-20' bindtap='viewPhoto' id="{{uploadpath}}inst/{{qrcode}}" wx:if="{{qrcode!=''}}">
+     <image src='{{uploadpath}}resource/qrcode.png' class='info-icon-big'></image>
+  </view>
+
+</view>
+
+
+<view class='white-block margin-top padding-20 text-center' wx:if="{{poster!=''}}" >
+  <image src='{{uploadpath}}inst/{{poster}}' style='width:100%;' mode='widthFix'></image>
+</view>
+
+
+<navigator url='/pages/aboutus/aboutus?id={{item.id}}' wx:for="{{aboutuslist}}" wx:key="key">
+  <view class='subbar flex-row'>
+    <view class='firsttab'></view>
+    <view class='secondtab'>{{item.name}}</view>
+    <view class='thirdtab flex-1 text-right'></view>
+  </view>
+  <view class='white-block padding-20 h5 '>
+    <text class='h6'>{{item.summary}}</text>
+  </view>
+</navigator>
+
+
+
+<swiper class='margin-top' autoplay='true' indicator-dots='true' >
+  <swiper-item wx:for="{{indexbanner}}" wx:key="k">
+    <navigator url='{{item.objs_path}}'>
+      <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:100vw;height:300rpx;' mode="aspectFill"></image>
+    </navigator>
+  </swiper-item>
+</swiper>
+
+<block wx:if="{{productlist.length>0}}">
+  <view class='subbar flex-row'>
+    <view class='firsttab'></view>
+    <view class='secondtab'>热门商品</view>
+    <navigator url='/pages/productlist/productlist' open-type='switchTab' class='thirdtab flex-1 text-right'>更多</navigator>
+  </view>
+  <view class='blockrow flex-row flex-wrap'>
+          <navigator url='/pages/product/product?id={{item.id}}' class='blockitem' wx:for="{{productlist}}" wx:key="k2">
+            <view>
+              <image src='{{uploadpath}}product/{{item.cover}}' class='imgcover' mode='aspectFill'></image>
+            </view>
+            <view class='headtitle'>
+              {{item.title}}
+            </view>
+            <view class='headdescription'>
+              {{item.summary}}
+            </view>
+          </navigator>
+        </view>
+</block>
+
+<block wx:if="{{newslist.length>0}}">
+  <view class='subbar flex-row'>
+    <view class='firsttab'></view>
+    <view class='secondtab'>热门动态</view>
+    <navigator url='/pages/newslist/newslist' open-type='switchTab' class='thirdtab flex-1 text-right'>更多</navigator>
+  </view>
+  <view class='white-block'>
+    <navigator url='/pages/news/news?id={{item.id}}' wx:for="{{newslist}}" wx:key="k" class='flex-row rowitem'>
+      <view>
+        <image src='{{uploadpath}}news/{{item.cover}}' class='imgcover' mode='aspectFill'></image>
+      </view>
+      <view class='flex-1'>
+        <view class='headtitle'>{{item.name}}</view>
+        <view class='headdescription'>
+          <text>{{item.summary}}</text>
+        </view>
+        <view class='headdescription text-right'>{{item.published_date_formatting}}</view>
+      </view>
+    </navigator>
+  </view>
+</block>
+
+
+<navigator url='/pages/service/service?id={{item.id}}' wx:for="{{servicelist}}" wx:key="key">
+  <view class='subbar flex-row'>
+    <view class='firsttab'></view>
+    <view class='secondtab'>{{item.name}}</view>
+    <view class='thirdtab flex-1 text-right'></view>
+  </view>
+  <view class='white-block padding-20 h5 '>
+    <text>{{item.summary}}</text>
+  </view>
+</navigator>
+
+
+
+
+<view wx:if="{{instinfo.level!=3}}" class='inbottomla txt-gray h6'>
+  云易创提供技术支持
+</view>

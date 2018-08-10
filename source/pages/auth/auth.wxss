@@ -1,0 +1,7 @@
+/**index.wxss**/
+swiper{
+  height: 100vh;
+}
+swiper-item{
+  height: 100vh;
+}
