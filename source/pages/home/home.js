@@ -8,6 +8,8 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
+    //options.class_id=1;
+
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
@@ -15,24 +17,31 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
     var instapi=new InstApi();
-    instapi.indexbanner({},(indexbanner)=>{
+    instapi.indexbanner({position:"home"},(indexbanner)=>{
       that.Base.setMyData({ indexbanner: indexbanner});
     });
     instapi.info({}, (info) => {
       that.Base.setMyData(info);
     });
-    instapi.aboutuslist({ inhome: "Y" }, (aboutuslist) => {
-      that.Base.setMyData({ aboutuslist: aboutuslist });
+
+    
+
+    // instapi.aboutuslist({ inhome: "Y" }, (aboutuslist) => {
+    //   that.Base.setMyData({ aboutuslist: aboutuslist });
+    // });
+    instapi.newslist({ inhome:"Y" }, (newslist) => {
+       that.Base.setMyData({ newslist: newslist });
     });
-    instapi.newslist({ inhome: "Y" }, (newslist) => {
-      that.Base.setMyData({ newslist: newslist });
-    });
-    instapi.servicelist({ inhome: "Y" }, (servicelist) => {
-      that.Base.setMyData({ servicelist: servicelist });
-    });
-    instapi.productlist({ inhome: "Y" }, (productlist) => {
-      that.Base.setMyData({ productlist: productlist });
-    });
+    // instapi.servicelist({ inhome: "Y" }, (servicelist) => {
+    //   that.Base.setMyData({ servicelist: servicelist });
+    // });
+    // instapi.productlist({ inhome: "Y" }, (productlist) => {
+    //   that.Base.setMyData({ productlist: productlist });
+    // }); 
+
+
+
+    
   }
 
 }

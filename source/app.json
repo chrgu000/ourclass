@@ -1,12 +1,13 @@
 {
   "pages":[
+    "pages/news/news",
+    "pages/comment/comment",
     "pages/home/home",
     "pages/product/product",
     "pages/auth/auth",
     "pages/success/success",
     "pages/signup/signup",
     "pages/productlist/productlist",
-    "pages/news/news",
     "pages/service/service",
     "pages/newslist/newslist",
     "pages/aboutuslist/aboutuslist",
@@ -29,34 +30,22 @@
     "backgroundColor": "#ffffff",
     "list": [
       {
+        "text": "搜索",
+        "pagePath": "pages/aboutuslist/aboutuslist",
+        "iconPath": "images/icons/hotel-o.png",
+        "selectedIconPath": "images/icons/hotel.png"
+      },
+      {
         "text": "首页",
         "pagePath": "pages/home/home",
         "iconPath": "images/icons/home-o.png",
         "selectedIconPath": "images/icons/home.png"
       },
       {
-        "text": "关于我们",
-        "pagePath": "pages/aboutuslist/aboutuslist",
-        "iconPath": "images/icons/hotel-o.png",
-        "selectedIconPath": "images/icons/hotel.png"
-      },
-      {
-        "text": "产品",
+        "text": "我的",
         "pagePath": "pages/productlist/productlist",
         "iconPath": "images/icons/store-o.png",
         "selectedIconPath": "images/icons/store.png"
-      },
-      {
-        "text": "动态",
-        "pagePath": "pages/newslist/newslist",
-        "iconPath": "images/icons/list-o.png",
-        "selectedIconPath": "images/icons/list.png"
-      },
-      {
-        "text": "服务",
-        "pagePath": "pages/servicelist/servicelist",
-        "iconPath": "images/icons/service-o.png",
-        "selectedIconPath": "images/icons/service.png"
       }
     ]
   }

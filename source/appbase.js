@@ -109,6 +109,17 @@ export class AppBase {
     console.log("onload");
     this.Base.setBasicInfo();
 
+
+    if (options.class_id == undefined) {
+      var class_id = wx.getStorageSync("class_id");
+      console.log("class_id");
+      console.log(class_id);
+      options.class_id=class_id;
+    }else{
+      wx.setStorageSync("class_id", options.class_id);
+    }
+    ApiConfig.SetClassId(options.class_id);
+
     ApiConfig.SetUnicode(this.Base.unicode);
   }
   gotoOpenUserInfoSetting() {
@@ -152,71 +163,52 @@ export class AppBase {
       this.Base.setMyData({ res });
     });
 
-    if (this.Base.needauth && this.Base.inauthpage == false
-    && AppBase.UserInfo.openid == undefined) {
+    if (AppBase.UserInfo.openid == undefined) {
       // 登录
       console.log("onShow");
       wx.login({
         success: res => {
           // 发送 res.code 到后台换取 openId, sessionKey, unionId
           console.log(res);
-          var memberapi = new MemberApi();
-          memberapi.getuserinfo({ code: res.code, grant_type: "authorization_code" }, data => {
-            ApiConfig.SetToken(data.openid);
-            console.log("authorization_code");
-            AppBase.openid = data.openid;
-            AppBase.session_key = data.session_key;
+          wx.getUserInfo({
+            success: userres => {
+              AppBase.UserInfo = userres.userInfo;
+              console.log(userres);
 
-            memberapi.info({ session_key: data.session_key},(UserInfo)=>{
-              console.log(UserInfo);
-              if (UserInfo==null){
-                wx.reLaunch({
-                   url: '/pages/auth/auth',
-                 });
-              }else{
-                that.Base.setMyData({ UserInfo: UserInfo });
+              var memberapi = new MemberApi();
+              memberapi.getuserinfo({ code: res.code, grant_type: "authorization_code" }, data => {
+                console.log("here");
+                console.log(data);
+                AppBase.UserInfo.openid = data.openid;
+                AppBase.UserInfo.session_key = data.session_key;
+                console.log(AppBase.UserInfo);
+                ApiConfig.SetToken(data.openid);
+                console.log("goto update info");
+                memberapi.update(AppBase.UserInfo, (ret) => {
+                  console.log("member update");
+                  console.log(ret);
+                });
+
+
+                console.log(AppBase.UserInfo);
+                that.Base.setMyData({ UserInfo: AppBase.UserInfo });
+                that.onMyShow();
+                //that.Base.getAddress();
+              });
+            },
+            fail: res => {
+              console.log(res);
+              //that.Base.gotoOpenUserInfoSetting();
+              if (this.Base.needauth == true) {
+                wx.redirectTo({
+                  url: '/pages/auth/auth',
+                });
+              } else {
                 that.onMyShow();
               }
-            });
+              //that.Base.getAddress();
+            }
           });
-
-
-          // wx.getUserInfo({
-          //   success: userres => {
-          //     AppBase.UserInfo = userres.userInfo;
-          //     console.log(userres);
-
-          //     var memberapi = new MemberApi();
-          //     memberapi.getuserinfo({ code: res.code, grant_type: "authorization_code" }, data => {
-          //       console.log("here");
-          //       console.log(data);
-          //       AppBase.UserInfo.openid = data.openid;
-          //       AppBase.UserInfo.session_key = data.session_key;
-          //       console.log(AppBase.UserInfo);
-          //       ApiConfig.SetToken(data.openid);
-          //       console.log("goto update info");
-          //       memberapi.update(AppBase.UserInfo);
-
-
-          //       console.log(AppBase.UserInfo);
-          //       that.Base.setMyData({ UserInfo: AppBase.UserInfo });
-          //       that.onMyShow();
-          //       //that.Base.getAddress();
-          //     });
-          //   },
-          //   fail: res => {
-          //     console.log(res);
-          //     //that.Base.gotoOpenUserInfoSetting();
-          //     if (this.Base.needauth == true && this.Base.inauthpage==false){
-          //       wx.reLaunch({
-          //         url: '/pages/auth/auth',
-          //       })
-          //     }else{
-          //       that.onMyShow();
-          //     }
-          //     //that.Base.getAddress();
-          //   }
-          //});
 
         }
       })

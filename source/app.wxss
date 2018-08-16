@@ -212,6 +212,13 @@ button[disabled][type=primary] {
 .line-height-0{
   line-height: 0rpx;
 }
+.margin-right-10{
+  margin-right: 10rpx;
+}
+.margin-left-10{
+  margin-left: 10rpx;
+}
+
 
 
 .bigheader{
@@ -220,7 +227,7 @@ button[disabled][type=primary] {
 }
 
 .box-shadow{
-  box-shadow: 2rpx 2rpx 2rpx #888888;
+  box-shadow: 0rpx 2rpx 2rpx #ccc;
 }
 .border{
   border:2rpx solid #dcdcdc;

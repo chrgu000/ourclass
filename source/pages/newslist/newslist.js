@@ -17,34 +17,15 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
     var instapi = new InstApi();
-    instapi.newscat({}, (newscat) => {
-      that.Base.setMyData({ newscat: newscat });
-      that.loaddata();
+    instapi.indexbanner({ position: "news" }, (indexbanner) => {
+      that.Base.setMyData({ indexbanner: indexbanner });
+    });
+
+    instapi.newslist({  }, (newslist) => {
+      that.Base.setMyData({ newslist: newslist });
     });
   }
 
-  changeCurrentTab(e) {
-    console.log(e);
-    this.Base.setMyData({ currenttab: e.detail.current });
-    this.loaddata();
-  }
-  changeTab(e) {
-    console.log(e);
-    this.Base.setMyData({ currenttab: e.currentTarget.id });
-    this.loaddata();
-  }
-  loaddata() {
-    var that = this;
-    var currenttab = this.Base.getMyData().currenttab;
-    var newscat = this.Base.getMyData().newscat;
-    var id=newscat[currenttab].id;
-
-    var instapi = new InstApi();
-    instapi.newslist({cat_id:id}, (newslist) => {
-      newscat[currenttab]["newslist"] = newslist;
-      that.Base.setMyData({ newscat: newscat });
-    });
-  }
 }
 var content = new Content();
 var body = content.generateBodyJson();
