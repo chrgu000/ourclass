@@ -1,0 +1,23 @@
+<!--pages/photoedit/photoedit.wxml-->
+<view>
+  <view class='border-bottom white-block' wx:for="{{list}}" wx:key="k" wx:for-index="idx">
+    <view  class='flex-row flex-center ' >
+      <view class='padding-20' wx:if="{{item.photo!=''}}">
+        <image class='icon-100' src='{{uploadpath}}photo/{{item.photo}}' bindtap='viewPhoto' id="{{uploadpath}}photo/{{item.photo}}"></image>
+      </view>
+      <view class='padding-20' wx:if="{{item.video!=''}}">
+        <video class='icon-100' controls='{{false}}' src='{{uploadpath}}photo/{{item.video}}' id="v_{{item.id}}" bindtap='videoplay'></video>
+      </view>
+      <view class='flex-1'>
+        <view wx:if="{{item.photo!=''}}">照片</view>
+        <view wx:if="{{item.video!=''}}">视频</view>
+        <view class='txt-gray h5' >{{item.upload_time_formatting}}</view>
+        <view class='txt-gray h5' >状态：{{item.status=='A'?"可见":"隐藏"}}</view>
+      </view>
+      <view class='padding-20'>
+        <button size='mini' bindtap='updatestatus' type='warn' id="{{idx}}_I" wx:if="{{item.status=='A'}}" >禁用</button>
+        <button size='mini' bindtap='updatestatus' type='primary' id="{{idx}}_A" wx:if="{{item.status=='I'}}" >启用</button>
+      </view>
+    </view>
+  </view>
+</view>

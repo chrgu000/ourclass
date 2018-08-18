@@ -18,7 +18,7 @@
         我们班群
       </view>
     </navigator>
-    <navigator class='flex-1'>
+    <navigator url='/pages/noticelist/noticelist' class='flex-1'>
       <view class='line-height-0'>
         <image class='icon-30' src='{{uploadpath}}inst/{{instinfo.icon2}}'></image>
       </view>
@@ -34,7 +34,7 @@
         育儿分享
       </view>
     </navigator>
-    <navigator class='flex-1'>
+    <navigator url='/pages/album/album' class='flex-1'>
       <view class='line-height-0'>
         <image class='icon-30' src='{{uploadpath}}inst/{{instinfo.icon4}}'></image>
       </view>

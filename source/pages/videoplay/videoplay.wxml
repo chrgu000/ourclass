@@ -1,0 +1,7 @@
+<!--pages/videoplay/videoplay.wxml-->
+<video style='height:100vh;width:100vw;' src='{{uploadpath}}{{module}}/{{file}}' mode='aspectFit' loop='{{true}}'   autoplay='{{true}}' objectFit='cover'>
+
+
+<cover-image class='icon-50 radius-50 white-block rightbottom' src='{{uploadpath}}resource/{{res.yundownload}}' bindtap='yundownload' ></cover-image>
+
+</video>

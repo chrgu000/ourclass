@@ -12,3 +12,9 @@
   height:156rpx;
   border-radius: 6rpx;
 }
+.round-button{
+  border-radius: 30rpx;
+}
+button.round-button{
+  border-radius: 50rpx;
+}

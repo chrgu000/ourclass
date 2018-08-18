@@ -1,42 +1,23 @@
+<!--pages/notice/notice.wxml-->
 <!--pages/content/content.wxml-->
 <!--pages/product/product.wxml-->
 <import src="../../wxParse/wxParse.wxml" />
 
+<view class='line-height-0'>
+  <image class='fullimg' mode="widthFix" src='{{uploadpath}}news/{{cover}}'></image>
+</view>
 <view class='white-block padding h3'>
   {{name}}
 </view>
+<view class='white-block padding'>
+  <template is="wxParse" data="{{wxParseData:content.nodes}}" />
+</view>
 <view class='white-block flex-row flex-center padding'>
-  <view class='h6 txt-gray margin-right-10'>{{ref}}</view>
-  <view class='h6 txt-gray margin-right-10'>{{cat_id_name}}</view>
   <view class='h6 txt-gray'>{{readcount}}人阅读</view>
   <view class='h6 txt-gray flex-1 text-right'>发布于{{published_date_formatting}}</view>
   <!--
   <view class='h6 txt-gray margin-right-10'>{{published_date_formatting}}</view>-->
 </view>
-<view wx:if="{{audio!=''}}" class='white-block  padding'>
-  <view class='border gray-block padding flex-row flex-center' style='border-radius:4rpx;'>
-    <view>
-      <image wx:if="{{audioplay==false}}" bindtap='audioPlay' class='icon-50' src='{{uploadpath}}resource/{{res.play}}'></image>
-      <image wx:if="{{audioplay==true}}" bindtap='audioPause' class='icon-50' src='{{uploadpath}}resource/{{res.stop}}'></image>
-    </view>
-    <view class='flex-1'>
-      <view class='h6 txt-gray'>
-        <slider bindchange="slider3change" block-size='12' min='0' max='{{audio_duration}}' step='1' value='{{audio_value}}' bindchange='aduio_slider' />
-      </view>
-      <view class='flex-row flex-center' style='margin-left:50rpx;margin-right:50rpx;'>
-        <view class='flex-1 h6 txt-gray '>{{audio_value_str}}</view>
-        <view class='flex-1 h6 txt-gray  text-right'>{{audio_duration_str}}</view>
-      </view>
-    </view>
-  </view>
-</view>
-<view class='white-block padding'>
-  <template is="wxParse" data="{{wxParseData:content.nodes}}" />
-</view>
-<view wx:if="{{video!=''}}" class='white-block text-center padding'>
-  <video id="myVideo" src="{{uploadpath}}news/{{video}}" controls poster="{{uploadpath}}news/{{videocover}}" bindplay="videoplay"></video>
-</view>
-
 <view class='padding h5 flex-row flex-center'>
   <view>留言评论 （{{comments.length}}）</view>
 </view>
@@ -122,7 +103,7 @@
       </view>
     </view>
     <view style='width:2rpx;height:20rpx;background:#8a8a8a;'></view>
-    <navigator url='/pages/comment/comment?news_id={{id}}&reply_member_id=0&reply_comment_id=0' class='flex-1 flex-row flex-center'>
+    <navigator url='/pages/comment/comment?notice_id={{id}}&reply_member_id=0&reply_comment_id=0' class='flex-1 flex-row flex-center'>
       <view class='txt-gray flex-1  text-right line-height-0 margin-right-10'>
         <image class='icon' src='{{uploadpath}}resource/{{res.comment}}'></image>
       </view>

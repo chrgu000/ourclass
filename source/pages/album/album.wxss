@@ -1,0 +1,23 @@
+/* pages/album/album.wxss */
+.photo-item{
+  margin-top: 20rpx;
+  margin-right:20rpx;
+  width:150rpx;
+  height: 150rpx;
+}
+.photo-item image{
+  width:150rpx;
+  height: 150rpx;
+}
+
+.video-item{
+
+  margin-top: 30rpx;
+  margin-right:30rpx;
+  width:200rpx;
+  height: 200rpx;
+}
+.video-item video{
+  width:200rpx;
+  height: 200rpx;
+}

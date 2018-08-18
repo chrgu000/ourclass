@@ -1,0 +1,10 @@
+/* pages/videoplay/videoplay.wxss */
+page{
+  background: black;
+}
+
+.rightbottom{
+  position: fixed;
+  right: 20rpx;
+  bottom:100rpx;
+}

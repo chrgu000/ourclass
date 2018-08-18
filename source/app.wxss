@@ -126,7 +126,7 @@ button[type=primary]{
 }
 button.button-hover[type=primary]{
   
-  background-color: #F14949;
+  background-color: #5dAdDd;
 }
 button[disabled][type=primary] {
   background-color: #D19F5D;
@@ -236,14 +236,23 @@ button[disabled][type=primary] {
   border-radius: 10%;
 }
 
+.round-button{
+  border-radius: 30rpx;
+}
+button.round-button{
+  border-radius: 50rpx;
+}
+.fixedtop{
+  position: fixed;
+  top: 0rpx;
+  width: 750rpx;
+  z-index: 100;
+}
 .fixedbottom{
   position: fixed;
   bottom: 0rpx;
   width: 750rpx;
   z-index: 100;
-}
-.fixedbottom button{
-  border-radius: 0rpx;
 }
 .block-100{
   height: 100rpx;

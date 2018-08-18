@@ -8,6 +8,9 @@ import {
 import {
   InstApi
 } from "../../apis/inst.api.js";
+import {
+  ClassApi
+} from "../../apis/class.api.js";
 
 import {
   PostApi
@@ -25,13 +28,8 @@ class Content extends AppBase {
     this.Base.pagetitle = "";
     super.onLoad(options);
     this.Base.setMyData({
-      audioplay: false,
       comments: [],
       commenttext: "",
-      audio: "",
-      audio_value: 0,
-      video: "",
-      audio_duration: 0
     });
 
     this.Base.setMyData({
@@ -42,44 +40,23 @@ class Content extends AppBase {
   }
   onMyShow() {
 
-    audioctx = wx.createAudioContext('myAudio');
-    videoctx = wx.createVideoContext('myVideo');
 
     var that = this;
-    var instapi = new InstApi();
-    instapi.news({
+    var instapi = new ClassApi();
+    instapi.notice({
       id: this.Base.options.id
-    }, (news) => {
+    }, (notice) => {
       var uploadpath = that.Base.getMyData().uploadpath;
 
-      that.Base.setMyData(news);
-      that.Base.pagetitle = news.name;
-      if (news.audio != "") {
-        //innerAudioContext.autoplay = true;
-        innerAudioContext.src = uploadpath + "news/" + news.audio;
-
-        innerAudioContext.onPlay(that.audioPlay);
-        innerAudioContext.onPause(that.audioPause);
-        innerAudioContext.onTimeUpdate(that.audiotimeupdate);
-        innerAudioContext.onCanplay(that.audiotimeupdate);
-        var checkDuration=setInterval(()=>{
-          if(innerAudioContext.duration>0){
-            that.Base.setMyData({
-              audio_duration: innerAudioContext.duration,
-              audio_duration_str: dtime(innerAudioContext.duration)
-            });
-            clearInterval(checkDuration);
-          }
-        },1000);
-      }
-
+      that.Base.setMyData(notice);
+      that.Base.pagetitle = notice.name;
       
 
       wx.setNavigationBarTitle({
-        title: news.name
+        title: notice.name
       });
-      news.content = this.Base.util.HtmlDecode(news.content);
-      WxParse.wxParse('content', 'html', news.content, that, 10);
+      notice.content = this.Base.util.HtmlDecode(notice.content);
+      WxParse.wxParse('content', 'html', notice.content, that, 10);
     });
 
 
@@ -89,7 +66,7 @@ class Content extends AppBase {
   loadcomment() {
     var api = new PostApi();
     api.commentlist({
-      news_id: this.Base.options.id,
+      notice_id: this.Base.options.id,
       orderby: "r_main.comment_time"
     }, (commentlist) => {
       if (this.Base.options.comment_id != undefined) {
@@ -104,39 +81,6 @@ class Content extends AppBase {
           comments: commentlist
         });
       }
-    });
-  }
-  audioPlay() {
-    innerAudioContext.play();
-    this.Base.setMyData({
-      audioplay: true
-    });
-    videoctx.pause();
-  }
-  audioPause() {
-    this.Base.setMyData({
-      audioplay: false
-    });
-    innerAudioContext.pause();
-  }
-  audiotimeupdate(e) {
-
-    var that = this;
-    that.Base.setMyData({
-      audio_duration: innerAudioContext.duration,
-      audio_duration_str: dtime(innerAudioContext.duration),
-      audio_value: innerAudioContext.currentTime,
-      audio_value_str: dtime(innerAudioContext.currentTime)
-    });
-  }
-  aduio_slider(e) {
-    var that = this;
-    console.log(e);
-    var currentTime = e.detail.value;
-    //audioctx.seek(currentTime);
-    innerAudioContext.seek(currentTime);
-    that.Base.setMyData({
-      audio_value: currentTime
     });
   }
   
@@ -167,7 +111,7 @@ class Content extends AppBase {
 
     var api = new ProductApi();
     api.comment({
-      news_id: this.Base.options.id,
+      notice_id: this.Base.options.id,
       comment: commenttext
     }, () => {
       this.loadcomment();
@@ -180,7 +124,7 @@ class Content extends AppBase {
   loadcomment() {
     var api = new PostApi();
     api.commentlist({
-      news_id: this.Base.options.id 
+      notice_id: this.Base.options.id
     }, (commentlist) => {
       if (this.Base.options.comment_id != undefined) {
         this.Base.setMyData({
@@ -196,35 +140,8 @@ class Content extends AppBase {
       }
     });
   }
-  videoplay() {
-    this.Base.setMyData({
-      audioplay: false
-    });
-    audioctx.pause();
-  }
-  audioplay() { }
-  fav() {
-    var fav = this.Base.getMyData().fav;
-    var api = new PostApi();
-    api.follow({
-      "news_id": this.Base.options.id
-    }, (ret) => {
-
-      if (fav == "Y") {
-        this.Base.setMyData({
-          fav: "N"
-        });
-        this.Base.toast("取消收藏成功");
-      } else {
-
-        this.Base.setMyData({
-          fav: "Y"
-        });
-        this.Base.toast("收藏成功");
-      }
-    });
-  }
   
+
 
   likeComment(e) {
     console.log("like?");
@@ -236,7 +153,7 @@ class Content extends AppBase {
     var api = new PostApi();
     api.commentlike({
       comment_id: comment.id,
-      news_id: that.Base.getMyData().id,
+      notice_id: that.Base.getMyData().id,
     }, (ret) => {
       if (comments[seq].iliked == 'Y') {
 
@@ -264,7 +181,7 @@ class Content extends AppBase {
     var api = new PostApi();
     api.commentlike({
       comment_id: comment.id,
-      news_id: comment.news_id
+      notice_id: comment.notice_id
     }, (ret) => {
       comments[seq_1].subcomments[seq_2].iliked = 'Y';
       comments[seq_1].subcomments[seq_2].likecount = parseInt(comments[seq_1].subcomments[seq_2].likecount) + 1;
@@ -301,7 +218,7 @@ class Content extends AppBase {
   loadlikelist() {
     var api = new PostApi();
     api.likelist({
-      news_id: this.Base.options.id
+      notice_id: this.Base.options.id
     }, (likelist) => {
       this.Base.setMyData({
         likelist
@@ -340,7 +257,7 @@ class Content extends AppBase {
     var api = new PostApi();
     var that = this;
     api.like({
-      news_id: this.Base.options.id 
+      notice_id: this.Base.options.id
     }, (ret) => {
       var like = this.Base.getMyData().like;
       var likecount = this.Base.getMyData().likecount;
@@ -363,24 +280,30 @@ class Content extends AppBase {
     //this.Base.setMyData({liked:true});
     //this.loadlikelist();
   }
+
+  fav() {
+    var fav = this.Base.getMyData().fav;
+    var api = new PostApi();
+    api.follow({
+      "notice_id": this.Base.options.id
+    }, (ret) => {
+
+      if (fav == "Y") {
+        this.Base.setMyData({
+          fav: "N"
+        });
+        this.Base.toast("取消收藏成功");
+      } else {
+
+        this.Base.setMyData({
+          fav: "Y"
+        });
+        this.Base.toast("收藏成功");
+      }
+    });
+  }
 }
 
-function dtime(t) {
-  var t = parseInt(t);
-  var minute = parseInt(t / 60);
-  var second = parseInt(t % 60);
-  minute = minute <= 9 ? "0" + minute.toString() : minute.toString();
-  second = second <= 9 ? "0" + second.toString() : second.toString();
-
-  return minute + ":" + second;
-}
-
-const innerAudioContext = wx.createInnerAudioContext()
-
-
-
-var audioctx = null;
-var videoctx = null;
 var catc = null;
 var content = new Content();
 var body = content.generateBodyJson();
@@ -392,11 +315,7 @@ body.hideincomment = content.hideincomment;
 body.comment = content.comment;
 body.commenttextchange = content.commenttextchange;
 body.loadcomment = content.loadcomment;
-body.videoplay = content.videoplay;
 body.fav = content.fav;
-body.audioPlay = content.audioPlay;
-body.audiotimeupdate = content.audiotimeupdate;
-body.aduio_slider = content.aduio_slider;
 body.sharetotimes = content.sharetotimes;
 body.deletecomment = content.deletecomment;
 body.likeComment = content.likeComment;
@@ -406,6 +325,5 @@ body.likeSubComment = content.likeSubComment;
 body.subreply = content.subreply;
 body.loadlikelist = content.loadlikelist;
 body.like = content.like;
-body.audioPause = content.audioPause;
 
 Page(body)

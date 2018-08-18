@@ -265,6 +265,7 @@ export class AppBase {
       nphotos.push(ApiConfig.GetUploadPath() + modul + "/" + photos[i]);
     }
     console.log(nphotos);
+    current = ApiConfig.GetUploadPath() + modul + "/" +current;
     wx.previewImage({
       urls: nphotos,
       current: current
@@ -405,7 +406,7 @@ export class AppBase {
         //});
         var tempFilePaths = res.tempFilePaths
         for (var i = 0; i < tempFilePaths.length; i++) {
-
+          
           wx.uploadFile({
             url: ApiConfig.GetFileUploadAPI(), //仅为示例，非真实的接口地址
             filePath: tempFilePaths[i],
@@ -429,30 +430,34 @@ export class AppBase {
                   duration: 2000
                 })
               }
+              if (i == tempFilePaths.length) {
+                if (completecallback != undefined) {
+                  completecallback();
+                }
+              }
               //do something
             }
           });
-        }
-        if (completecallback != undefined) {
-          completecallback();
         }
       }
     })
   }
 
   uploadVideo(modul, callback,completecallback) {
+    
     wx.chooseVideo({
       compressed: true, // 可以指定是原图还是压缩图，默认二者都有
       sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       maxDuration: 60,
-      success: function (res) {
+      success: function (vidres) {
         // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-        console.log(res.tempFilePaths);
+
+        console.log(vidres);
         //that.setData({
         //  photos: that.data.photos.concat(res.tempFilePaths)
         //});
         var tempFilePaths = [];
-        tempFilePaths.push(res.tempFilePath);
+        tempFilePaths.push(vidres.tempFilePath);
         //res.tempFilePaths
         for (var i = 0; i < tempFilePaths.length; i++) {
 
@@ -470,7 +475,7 @@ export class AppBase {
               if (data.substr(0, 7) == "success") {
                 data = data.split("|");
                 var photo = data[2];
-                callback(photo);
+                callback(photo, vidres.duration);
               } else {
                 console.error(res.data);
                 wx.showToast({
@@ -486,6 +491,10 @@ export class AppBase {
         if(completecallback!=undefined){
           completecallback();
         }
+      },
+      fail(e){
+        console.log("upload fail");
+        console.log(e);
       }
     })
   }
@@ -705,5 +714,33 @@ export class AppBase {
         callback();
       }
     });
+  }
+
+  download(url, callback, open = false) {
+    wx.downloadFile({
+      url: url, //仅为示例，并非真实的资源
+      success: function (res) {
+        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        if (res.statusCode === 200) {
+          var tempFilePath = res.tempFilePath;
+          console.log(tempFilePath);
+          wx.saveImageToPhotosAlbum({
+            filePath: tempFilePath,
+            success: function (res) {
+              var savedFilePath = res.savedFilePath;
+              if (open == true) {
+                wx.openDocument({
+                  filePath: savedFilePath,
+                });
+              }
+              console.log(savedFilePath);
+              if (callback != null) {
+                callback(savedFilePath);
+              }
+            }
+          })
+        }
+      }
+    })
   }
 } 

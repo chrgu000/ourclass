@@ -26,7 +26,7 @@ class Content extends AppBase {
     }
     console.log(comment);
     var api = new PostApi();
-    api.comment({ news_id: this.Base.options.news_id,  comment: comment, formid: e.detail.formId, reply_member_id: this.Base.options.reply_member_id, reply_comment_id: this.Base.options.reply_comment_id }, (ret) => {
+    api.comment({ news_id: this.Base.options.news_id, notice_id: this.Base.options.notice_id,  comment: comment, formid: e.detail.formId, reply_member_id: this.Base.options.reply_member_id, reply_comment_id: this.Base.options.reply_comment_id }, (ret) => {
 
       this.backPage();
     });

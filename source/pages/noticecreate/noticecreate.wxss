@@ -1,0 +1,53 @@
+/* pages/noticecreate/noticecreate.wxss */
+.selectcover{
+  width:750rpx;
+  height:314rpx;
+}
+.covers{
+  background: white;
+}
+.covdiv{
+  display: inline-block;
+  line-height: 0rpx;
+}
+.coveritem{
+  width: 234rpx;
+  height: 116rpx;
+  border :2rpx #ddd solid;
+  margin-left: 10rpx;
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+}
+.coveritem.selected{
+  border-color:#29A5EE;
+}
+.inputBody{
+  background: white;
+}
+.inputTitle{
+  padding:33rpx;
+}
+.inputTitleBox{
+  font-size: 34rpx;
+  color:#333333;
+}
+.inputDescription{
+  padding:33rpx;
+  padding-top: 25rpx;
+}
+.inputDescriptionBox{
+  font-size: 28rpx;
+  line-height: 36rpx;
+  color:#666666;
+}
+
+.btnNotice{
+  padding-top: 4rpx;
+  padding-bottom: 4rpx;
+  font-size: 32rpx;
+  border-radius: 44rpx;
+  background: -webkit-linear-gradient(left, #50BAFF , #008BE5); 
+  background: -o-linear-gradient(right, #50BAFF , #008BE5);
+  background: -moz-linear-gradient(right, #50BAFF , #008BE5); 
+  background: linear-gradient(to right, #50BAFF , #008BE5); 
+}

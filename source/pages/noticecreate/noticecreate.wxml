@@ -1,0 +1,54 @@
+<!--pages/newscreate/newscreate.wxml-->
+<form bindsubmit="formSubmit" bindreset="formReset">
+<view style='line-height:0rpx;'>
+  <image class='selectcover' src='{{uploadpath}}news/{{cover}}' mode='aspectFit' />
+</view>
+<view style='overflow:hidden;white-space:nowrap;width: 100%;'>
+<scroll-view class='covers ' scroll-x style='width: auto;overflow:hidden;height:136rpx;'>
+  <view class='covdiv' wx:for="{{covers}}" key="k">
+    <image class='coveritem {{selectcover==item.pic?"selected":""}}'  src='{{uploadpath}}news/{{item.pic}}' bindtap='changeCover' id="{{item.pic}}"></image>
+  </view>
+  <view  class='covdiv '>
+  <image class='coveritem' style='margin-right:10rpx;' bindtap='chooseCover' src='https://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/minishare/icon/addblank.png'></image>
+  </view>
+</scroll-view>
+</view>
+
+
+  <view class='padding'>
+    <view>
+      <input name="cover" value='{{cover}}' class='fullimg' hidden='true'></input>
+    </view>
+    <view class='h5 txt-gray'>标题</view>
+    <view class='margin-top-10'>
+      <input name="name" class='fullimg' value='{{name}}' placeholder='请输入文章标题'></input>
+    </view>
+    <view class='margin-top h5 txt-gray'>正文</view>
+    <view class='margin-top-10'>
+      <textarea auto-height='' value='{{content}}' name="content" class='fullimg' placeholder='请输入文章内容'></textarea>
+    </view>
+    <view class='flex-row flex-center margin-top'>
+      <view class=' h5 txt-gray'>置顶</view>
+      <view class='margin-left-10'>
+        <switch name="ontop" checked='{{ontop=="Y"}}'></switch>
+      </view>
+    </view>
+  </view>
+  <view class='flex-row flex-center' wx:if="{{id==undefined}}">
+
+    <view class='flex-1 padding'>
+      <button class='h5' id="A" type='primary' form-type='submit'>直接发布</button>
+    </view>
+    <view class='flex-1 padding'>
+      <button class='h5' id="I" form-type='submit'>暂存</button>
+    </view>
+  </view>
+  <view class='flex-row flex-center' wx:if="{{id>0}}">
+    <view class='flex-1 padding'>
+      <button class='h5' id="A" type='primary' form-type='submit'>更新</button>
+    </view>
+    <view class='flex-1 padding'>
+      <button class='h5' id="I" form-type='submit'>禁用</button>
+    </view>
+  </view>
+</form>

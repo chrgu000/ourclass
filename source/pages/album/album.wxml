@@ -1,0 +1,72 @@
+<!--pages/album/album.wxml-->
+<view class='flex-row tabs fixedtop'>
+  <view class='flex-1 tab  flex-row' wx:key="k" bindtap='changeTab' id="0">
+    <view class='flex-1'></view>
+    <view class='txt-light tabtext  {{currenttab==0?"active":""}}'>照片</view>
+    <view class='flex-1'></view>
+  </view>
+  <view class='flex-1 tab  flex-row' wx:key="k" wx:for-index="idx" bindtap='changeTab' id="1">
+    <view class='flex-1'></view>
+    <view class='txt-light tabtext  {{currenttab==1?"active":""}}'>视频</view>
+    <view class='flex-1'></view>
+  </view>
+</view>
+<view class='white-block' style='min-height:100vh' wx:if="{{currenttab==0}}">
+  <view style='height:50rpx;'></view>
+
+  <view class='text-center' style='padding-top:300rpx;' wx:if="{{photo.length==0}}">
+    <image style='width:50vw' mode='widthFix' src='{{uploadpath}}resource/{{res.egg}}'></image>
+  
+  </view>
+
+  <view class='padding margin-top' wx:for="{{photo}}" wx:key="k" >
+    <view class='txt-bold'>{{item.date}}</view>
+    <view class='flex-row flex-wrap'>
+      <view class='photo-item' wx:for="{{item.photos}}" wx:key="k" wx:for-item="subitem">
+        <image mode='aspectFill' src='{{uploadpath}}photo/{{subitem.photo}}' id="{{subitem.photo}}" bindtap='viewphotos'></image>
+      </view>
+    </view>
+  </view>
+
+
+  <view style='height:150rpx;'></view>
+  <view class='fixedbottom flex-row'>
+    <view class='flex-1 padding '>
+      <button type='primary' bindtap='uploadpic' class='round-button'>上传照片</button>
+    </view>
+    <navigator class='txt-primary flex-1 padding ' url='/pages/photoedit/photoedit'>
+      <button  class='round-button'>编辑</button>
+    </navigator>
+  </view>
+</view>
+
+
+<view class='white-block' style='min-height:100vh' wx:if="{{currenttab==1}}">
+ <view style='height:50rpx;'></view>
+
+
+  <view class='text-center' style='padding-top:300rpx;' wx:if="{{video.length==0}}">
+    <image style='width:50vw' mode='widthFix' src='{{uploadpath}}resource/{{res.egg}}'></image>
+  </view>
+
+
+  <view class='padding margin-top' wx:for="{{video}}" wx:key="k" >
+    <view class='txt-bold'>{{item.date}}</view>
+    <view class='flex-row flex-wrap'>
+      <view class='video-item' wx:for="{{item.videos}}" wx:key="k" wx:for-item="subitem">
+        <video mode='aspectFill' controls='{{false}}' src='{{uploadpath}}photo/{{subitem.video}}'  bindtap='videoplay' bindtap='videoplay'  id="v_{{subitem.id}}"  ></video>
+      </view>
+    </view>
+  </view>
+
+
+  <view style='height:150rpx;'></view>
+  <view class='fixedbottom flex-row'>
+    <view class='flex-1 padding '>
+      <button type='primary' bindtap='uploadvid' class='round-button'>上传视频</button>
+    </view>
+    <navigator class='txt-primary flex-1 padding ' url='/pages/photoedit/photoedit'>
+      <button  class='round-button'>编辑</button>
+    </navigator>
+  </view>
+</view>

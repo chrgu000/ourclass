@@ -9,22 +9,24 @@
 </view>
 
 <view class='white-block'>
-  <navigator url='/pages/news/news?id={{item.id}}' class='border-top white-block padding-20 flex-row ' wx:for="{{newslist}}" wx:key="k" wx:for-index='idx'>
+  <navigator url='/pages/notice/notice?id={{item.id}}' class='border-top white-block padding-20 flex-row ' wx:for="{{noticelist}}" wx:key="k" wx:for-index='idx'>
     <view>
       <image class='cover box-shadow' src='{{uploadpath}}news/{{item.cover}}' mode="aspectFill"></image>
     </view>
     <view class='flex-1'>
       <view class='title'>{{item.name}}</view>
       <view class='margin-top flex-row flex-bottom'>
-        <view class='flex-1 h6 txt-gray'>{{item.cat_id_name}}</view>
+        <view class='flex-1 h6 txt-gray'>{{item.published_date_formatting}}</view>
         <view class='h6 txt-gray'>{{item.readcount}}阅读</view>
       </view>
     </view>
   </navigator>
 </view>
+
+
 <view style='height:150rpx;'></view>
 <view class='fixedbottom'>
-<navigator url='/pages/newscreate/newscreate' class='padding'>
+<navigator url='/pages/noticecreate/noticecreate' class='padding'>
   <button type='primary' class='round-button' >创建文章</button>
 </navigator>
 </view>
