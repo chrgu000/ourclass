@@ -1,0 +1,52 @@
+<!--pages/teacherinfo/teacherinfo.wxml-->
+<view class='line-height-0'>
+  <image src='{{uploadpath}}resource/{{res.teacherinfotop}}' class='fullimg' mode='widthFix'></image>
+</view>
+<view class='margin-top-5 white-block padding' wx:if="{{teacher_id!=''}}" bindtap='phoneCall' id="{{user_mobile}}">
+  <view class='h4 txt-bold '>班主任</view>
+  <view class='flex-row flex-center margin-top-10'>
+    <view class=' line-height-0 padding-20'>
+      <image class='icon-50 radius-50'  src='{{uploadpath}}user/{{user_photo}}'></image>
+    </view>
+    <view class='flex-1 padding-20'>
+      <view>
+      姓名：{{user_user_name}}
+      </view>
+      <view class='margin-top-5'>
+      电话：{{user_mobile}}
+      </view>
+    </view>
+  </view>
+</view>
+<view class='margin-top-5 white-block padding' wx:if="{{teacher2_id!=''}}" bindtap='phoneCall' id="{{user2_mobile}}">
+  <view class='h4 txt-bold '>保育员</view>
+  <view class='flex-row flex-center margin-top-10'>
+    <view class=' line-height-0 padding-20'>
+      <image class='icon-50 radius-50'  src='{{uploadpath}}user/{{user2_photo}}'></image>
+    </view>
+    <view class='flex-1 padding-20'>
+      <view>
+      姓名：{{user2_user_name}}
+      </view>
+      <view class='margin-top-5'>
+      电话：{{user2_mobile}}
+      </view>
+    </view>
+  </view>
+</view>
+<view class='margin-top-5 white-block padding' wx:if="{{teacher3_id!=''}}"  bindtap='phoneCall' id="{{user3_mobile}}">
+  <view class='h4 txt-bold '>代班主任</view>
+  <view class='flex-row flex-center margin-top-10'>
+    <view class=' line-height-0 padding-20'>
+      <image class='icon-50 radius-50'  src='{{uploadpath}}user/{{user3_photo}}'></image>
+    </view>
+    <view class='flex-1 padding-20'>
+      <view>
+      姓名：{{user3_user_name}}
+      </view>
+      <view class='margin-top-5'>
+      电话：{{user3_mobile}}
+      </view>
+    </view>
+  </view>
+</view>

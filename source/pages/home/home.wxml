@@ -10,7 +10,7 @@
 </view>
 <view class='padding white-block'>
   <view class='flex-row flex-center text-center'>
-    <navigator class='flex-1'>
+    <navigator url='/pages/chatroom/chatroom' class='flex-1'>
       <view class='line-height-0'>
         <image class='icon-30' src='{{uploadpath}}inst/{{instinfo.icon1}}'></image>
       </view>

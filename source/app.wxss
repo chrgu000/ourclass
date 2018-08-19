@@ -35,6 +35,9 @@ view,navigator,input,text,textarea{
   font-weight: 350;
   color: #2c2c2c;
 }
+.wordbreak{
+  word-break: break-all;
+}
 .flex-row{
   display: flex;
 }
@@ -197,6 +200,10 @@ button[disabled][type=primary] {
 .icon-50{
   width: 100rpx;
   height: 100rpx;
+}
+.icon-75{
+  width: 150rpx;
+  height: 150rpx;
 }
 .icon-100{
   width: 200rpx;
@@ -522,4 +529,12 @@ display:-webkit-box;
   height: 233rpx;
   margin-top: 100rpx;
   margin-bottom: 50rpx;
+}
+
+.reddot{
+  position: absolute;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background-color: red;
 }

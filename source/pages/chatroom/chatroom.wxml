@@ -1,2 +1,44 @@
 <!--pages/chatroom/chatroom.wxml-->
-<text>pages/chatroom/chatroom.wxml</text>
+<view>
+<view class='flex-row' wx:for="{{chatlist}}" wx:key="k">
+  <block wx:if="{{item.user_id==0}}">
+    <view class='padding-10'>
+      <image class='icon-50'></image>
+    </view>
+    <view class='padding flex-1' style='padding-top:0rpx;'>
+      <view class='h6 txt-gray text-right'>
+        {{item.member_name}} {{item.send_time}}
+      </view>
+      <view class='flex-row' wx:if="{{item.type=='T'}}">
+        <view style='width:50rpx;'></view>
+        <view class='flex-1'></view>
+        <view class='msgbox white-block'><text class='wordbreak h5'>{{item.comment}}</text></view>
+      </view>
+      <view class='flex-row' wx:if="{{item.type=='A'}}">
+        <view style='width:50rpx;'></view>
+        <view class='flex-1'></view>
+        <view class='msgbox white-block' bindtap='playaudio' data-audio="{{uploadpath}}chat/{{item.audio}}"><text class='wordbreak h5 txt-primary'>语音信息{{item.audioduration}}秒</text></view>
+      </view>
+    </view>
+    <view class='padding-10'>
+      <image class='icon-50 radius-50' src='{{uploadpath}}member/{{item.member_photo}}'></image>
+    </view>
+  </block>
+</view>
+</view>
+
+<view class='fixedbottom white-block'>
+  <view class='flex-row '>
+    <view   bindtouchstart="startvoice"  bindtouchend="endvoice" class='line-height-0 padding-10'>
+      <image class='icon-30' src='{{uploadpath}}resource/{{res.voice}}'></image>
+    </view>
+    <view class='flex-1 '>
+      <textarea fixed="{{true}}" class='box h5' placeholder='说点什么？' auto-height='{{true}}' value='{{comment}}' bindinput='commentChange' bindconfirm='sendComment' maxlength='1000' wx:if="{{invoice!=true}}" ></textarea>
+      <textarea fixed="{{true}}" class='box text-center h5' placeholder='开始说话' auto-height='{{true}}' value=''  wx:if="{{invoice==true}}" disabled='{{true}}'></textarea>
+    </view>
+    <view class='line-height-0 padding-10'>
+      <image class='icon-30' src='{{uploadpath}}resource/{{res.chatmore}}' wx:if="{{comment==''}}"></image>
+      <button class='h6 line-height-0' size='mini' type='primary' wx:if="{{comment!=''}}" bindtap='sendComment'>发送</button>
+    </view>
+  </view>
+</view>

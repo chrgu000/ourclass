@@ -2,6 +2,7 @@
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
+import { ClassApi } from "../../apis/class.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -14,6 +15,10 @@ class Content extends AppBase {
   }
   onMyShow() {
     var that = this;
+    var api = new ClassApi();
+    api.info({},(info)=>{
+      this.Base.setMyData(info);
+    });
   }
 
 }

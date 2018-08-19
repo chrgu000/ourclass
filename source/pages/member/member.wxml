@@ -1,2 +1,59 @@
 <!--pages/member/member.wxml-->
-<text>pages/member/member.wxml</text>
+<view class='padding-20 white-block'>
+
+  <view class='flex-row flex-row'>
+    <view class='line-height-0'>
+      <image class='icon-50 radius-50' wx:if="{{UserInfo.photo!=''}}" src='{{uploadpath}}member/{{UserInfo.photo}}'></image>
+      <image class='icon-50 radius-50' wx:if="{{UserInfo.photo==''}}" src='{{uploadpath}}resource/{{res.defaultmember}}'></image>
+    </view>
+    <navigator url='/pages/infoupdate/infoupdate' class='flex-1 padding-20' wx:if="{{UserInfo.name!=''}}">
+      <view>
+        {{UserInfo.name}}
+      </view>
+      <view class='txt-gray h6'>
+        {{UserInfo.mobile}}
+      </view>
+    </navigator>
+    <navigator url='/pages/infoupdate/infoupdate' class='flex-1 txt-bold padding-20' wx:if="{{UserInfo.name==''}}">
+      点击补充个人信息
+    </navigator>
+  </view>
+</view>
+
+<view class='margin-top'>
+  <view class='h5 txt-gray padding-10'>
+    我的孩子
+  </view>
+  <view class='border-bottom flex-row flex-center white-block ' wx:for="{{UserInfo.classmates}}" wx:key="k">
+    <view class='padding-20 line-height-0'>
+      <image class='icon-40 radius-50' src='{{uploadpath}}class/{{item.photo}}'></image>
+    </view>
+    <view class='flex-1 padding-20 h5'>
+      {{item.childname}}
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </view>
+
+  <navigator url='/pages/classrequest/classrequest' class='border-bottom flex-row flex-center white-block '>
+    <view class='padding-20 line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.add}}'></image>
+    </view>
+    <view class='flex-1 padding-20 h5'>
+      继续添加
+    </view>
+  </navigator>
+</view>
+
+<navigator url='/pages/classrequest/classrequest' class='margin-top border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon radius-50' src='{{uploadpath}}resource/{{res.teacher}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    老师信息
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>

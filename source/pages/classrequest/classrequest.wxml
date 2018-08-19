@@ -1,0 +1,54 @@
+<!--pages/classrequest/classrequest.wxml-->
+<!--pages/userbind/userbind.wxml-->
+<form bindsubmit='bind'>
+  <view class='line-height-0'>
+    <image src='{{uploadpath}}resource/{{res.classrequesttop}}' class='fullimg' mode='widthFix'></image>
+  </view>
+  <view class='margin-top h4 txt-bold text-center'>
+    欢迎加入{{classinfo.name}}！
+  </view>
+
+  <view  style='margin-top:80rpx;' class='text-center'  >
+    <image wx:if="{{photo==''}}" class='icon-75' src='{{uploadpath}}resource/{{res.defaultmember}}' bindtap='choosePhoto'></image>
+    <image class='icon-75' src='{{uploadpath}}class/{{photo}}' wx:if="{{photo!=''}}" bindtap='choosePhoto'></image>
+    <input name="photo" value='{{photo}}' class='fullimg' hidden='true'></input>
+  </view>
+  <view class='margin-top '>
+    <view class='flex-row  flex-center'>
+      <view class='flex-1'></view>
+      <view class='line-height-0'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.classrequestname}}'></image>
+      </view>
+      <view class='padding-10 border-bottom' style='width:400rpx;margin-left:20rpx;'>
+        <input  class='h5 fullimg' maxlength='10' placeholder='请输入孩子的姓名' name="name"></input>
+      </view>
+      <view class='flex-1'></view>
+    </view>
+    <view class='flex-row flex-center margin-top-10'>
+      <view class='flex-1'></view>
+      <view class='line-height-0'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.classrequestidno}}'></image>
+      </view>
+      <view class='padding-10 border-bottom flex-row flex-center' style='width:400rpx;margin-left:20rpx;'>
+          <input  maxlength='18' class='h5 fullimg ' placeholder='请输入孩子的身份证号码'  name="idno" type='idcard'></input>
+      </view>
+      <view class='flex-1'></view>
+    </view>
+    <view class='flex-row flex-center margin-top-10'>
+      <view class='flex-1'></view>
+      <view class='line-height-0'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.classrequestguanxi}}'></image>
+      </view>
+      <view class='padding-10 border-bottom flex-row flex-center' style='width:400rpx;margin-left:20rpx;'>
+          <input  maxlength='10' class='h5 fullimg ' placeholder='您是孩子的？父亲或母亲'  name="relationship"></input>
+      </view>
+      <view class='flex-1'></view>
+    </view>
+  </view>
+
+
+  <view class='padding' style='margin-top:60rpx;' >
+    <button type='primary' form-type='submit'>绑定身份</button>
+  </view>
+
+</form>

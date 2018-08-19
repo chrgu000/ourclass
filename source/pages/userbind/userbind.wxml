@@ -1,2 +1,48 @@
 <!--pages/userbind/userbind.wxml-->
-<text>pages/userbind/userbind.wxml</text>
+<form bindsubmit='bind'>
+  <view class='line-height-0'>
+    <image src='{{uploadpath}}resource/{{res.bindtop}}' class='fullimg' mode='widthFix'></image>
+  </view>
+  <view class='margin-top h4 txt-bold text-center'>
+    欢迎来到我们班！
+  </view>
+
+  <view  style='margin-top:80rpx;' class='text-center'  >
+    <image wx:if="{{photo==''}}" class='icon-75' src='{{uploadpath}}resource/{{res.defaultmember}}' bindtap='choosePhoto'></image>
+    <image class='icon-75' src='{{uploadpath}}user/{{photo}}' wx:if="{{photo!=''}}" bindtap='choosePhoto'></image>
+    <input name="photo" value='{{photo}}' class='fullimg' hidden='true'></input>
+  </view>
+  <view class='margin-top '>
+    <view class='flex-row  flex-center'>
+      <view class='flex-1'></view>
+      <view class='line-height-0'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.binduser}}'></image>
+      </view>
+      <view class='padding-10 border-bottom' style='width:400rpx;margin-left:20rpx;'>
+        <input class='h5' maxlength='10' placeholder='请输入你的姓名' name="user_name"></input>
+      </view>
+      <view class='flex-1'></view>
+    </view>
+    <view class='flex-row flex-center margin-top-10'>
+      <view class='flex-1'></view>
+      <view class='line-height-0'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.bindmobile}}'></image>
+      </view>
+      <view class='padding-10 border-bottom flex-row flex-center' style='width:400rpx;margin-left:20rpx;'>
+        <view class='flex-1 line-height-0'>
+          <input disabled='disabled' class='h5' placeholder='点击绑定手机' value='{{mobile}}' name="mobile"></input>
+        </view>
+        <view>
+          <button size='mini' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber'>绑定</button>
+        </view>
+      </view>
+      <view class='flex-1'></view>
+    </view>
+  </view>
+
+
+  <view class='padding' style='margin-top:60rpx;' >
+    <button type='primary' form-type='submit'>绑定身份</button>
+  </view>
+
+</form>

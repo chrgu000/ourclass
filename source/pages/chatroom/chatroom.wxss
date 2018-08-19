@@ -1,1 +1,20 @@
 /* pages/chatroom/chatroom.wxss */
+.box{
+  border:2rpx solid #cbcbcb;
+  border-radius: 8rpx;
+  padding:6rpx;
+  width: calc( 100% - 20rpx );
+  margin-top:16rpx;
+  margin-bottom:10rpx;
+}
+page{
+  background-image: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/ourclass/resource/5dcbfafcc403aad5828ae694d9630447_18081918021.png);
+  background-size: 100% 100%;
+}
+.msgbox{
+  border:2rpx solid #cbcbcb;
+  border-radius: 12rpx;
+  padding:10rpx;
+  margin-top:16rpx;
+  margin-bottom:10rpx;
+}

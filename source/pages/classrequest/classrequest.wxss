@@ -1,0 +1,4 @@
+/* pages/classrequest/classrequest.wxss */
+page{
+  background-color: white;
+}

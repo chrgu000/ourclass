@@ -1,11 +1,15 @@
 {
   "pages":[
+    "pages/chatroom/chatroom",
     "pages/home/home",
+    "pages/member/member",
+    "pages/teacherinfo/teacherinfo",
+    "pages/infoupdate/infoupdate",
+    "pages/classrequest/classrequest",
+    "pages/userbind/userbind",
     "pages/newscreate/newscreate",
     "pages/album/album",
     "pages/videoplay/videoplay",
-    "pages/userbind/userbind",
-    "pages/chatroom/chatroom",
     "pages/photoedit/photoedit",
     "pages/noticecreate/noticecreate",
     "pages/newslist/newslist",
@@ -23,7 +27,6 @@
     "pages/aboutus/aboutus",
     "pages/index/index",
     "pages/servicelist/servicelist",
-    "pages/member/member",
     "pages/content/content",
     "pages/logs/logs"
   ],
@@ -52,7 +55,7 @@
       },
       {
         "text": "我的",
-        "pagePath": "pages/productlist/productlist",
+        "pagePath": "pages/member/member",
         "iconPath": "images/icons/store-o.png",
         "selectedIconPath": "images/icons/store.png"
       }

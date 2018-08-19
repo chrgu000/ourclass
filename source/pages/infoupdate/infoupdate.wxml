@@ -1,0 +1,45 @@
+<!--pages/infoupdate/infoupdate.wxml-->
+<form bindsubmit='confirm'>
+
+<view class='padding-20 white-block border-bottom'>
+
+  <view class='flex-row flex-row'  bindtap='choosePhoto'>
+    <view class='flex-1 padding-20'>
+      头像
+    </view>
+    <view class='line-height-0' >
+      <image class='icon-40 radius-50' wx:if="{{photo!=''}}" src='{{uploadpath}}member/{{photo}}'></image>
+      <image class='icon-40 radius-50' wx:if="{{photo==''}}" src='{{uploadpath}}resource/{{res.defaultmember}}'></image>
+    <input name="photo" value='{{photo}}' class='fullimg' hidden='true'></input>
+    </view>
+  </view>
+</view>
+<view class='padding-20 white-block border-bottom'>
+
+  <view class='flex-row flex-row'>
+    <view class='flex-1 padding-20'>
+      姓名
+    </view>
+    <view class='padding-20 text-right line-height-0'>
+      <input style='width:180rpx;' maxlength='10' placeholder='输入我的姓名' class='h5' name="name"></input>
+    </view>
+  </view>
+</view>
+<view class='padding-20 white-block border-bottom'>
+
+  <view class='flex-row flex-row'>
+    <view class='flex-1 padding-20'>
+      手机号码
+    </view>
+    <view class='padding-20 line-height-0'>
+      <input style='width:180rpx;' disabled='true' hidden='{{mobile==""}}' maxlength='11'  class='h5' name="mobile" value='{{mobile}}'></input>
+      <button size='mini' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber'  hidden='{{mobile!=""}}'>获取</button>
+    </view>
+  </view>
+</view>
+
+<view class='margin-top padding'>
+  <button form-type='submit' type='primary' >确认修改</button>
+</view>
+
+</form>

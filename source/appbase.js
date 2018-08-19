@@ -97,7 +97,8 @@ export class AppBase {
       navtoPage: base.navtoPage,
       openContent: base.openContent,
       phonenoCallback: base.phonenoCallback,
-      getPhoneNo: base.getPhoneNo
+      getPhoneNo: base.getPhoneNo,
+      checkPermission: base.checkPermission
     }
   }
   log() {
@@ -112,8 +113,7 @@ export class AppBase {
 
     if (options.class_id == undefined) {
       var class_id = wx.getStorageSync("class_id");
-      console.log("class_id");
-      console.log(class_id);
+      this.Base.log("class_id", class_id);
       options.class_id=class_id;
     }else{
       wx.setStorageSync("class_id", options.class_id);
@@ -179,22 +179,30 @@ export class AppBase {
               memberapi.getuserinfo({ code: res.code, grant_type: "authorization_code" }, data => {
                 console.log("here");
                 console.log(data);
-                AppBase.UserInfo.openid = data.openid;
-                AppBase.UserInfo.session_key = data.session_key;
                 console.log(AppBase.UserInfo);
                 ApiConfig.SetToken(data.openid);
-                console.log("goto update info");
+                AppBase.UserInfo.openid = data.openid;
+                AppBase.UserInfo.session_key = data.session_key;
+                that.Base.log("goto update info", data);
                 memberapi.update(AppBase.UserInfo, (ret) => {
-                  console.log("member update");
-                  console.log(ret);
-                });
+                  
+                  that.Base.log("member update", ret);
+
+                  memberapi.info({}, data => {
+                    AppBase.UserInfo = data;
+                    that.Base.setMyData({ UserInfo: AppBase.UserInfo });
+                    that.Base.log("check permission", AppBase.UserInfo);
+                    that.checkPermission();
+
+                    that.onMyShow();
+                  }, false);
+
+                }, false);
 
 
-                console.log(AppBase.UserInfo);
-                that.Base.setMyData({ UserInfo: AppBase.UserInfo });
-                that.onMyShow();
+                
                 //that.Base.getAddress();
-              });
+              }, false);
             },
             fail: res => {
               console.log(res);
@@ -214,12 +222,13 @@ export class AppBase {
       })
       return false;
     } else {
-      if (that.setMyData != undefined) {
-        that.setMyData({ UserInfo: AppBase.UserInfo });
-      } else {
+      var memberapi = new MemberApi();
+      memberapi.info({}, data => {
+        AppBase.UserInfo = data;
         that.Base.setMyData({ UserInfo: AppBase.UserInfo });
-      }
-      that.onMyShow();
+        that.checkPermission();
+        that.onMyShow();
+      },false);
       //that.Base.getAddress();
     }
 
@@ -251,6 +260,23 @@ export class AppBase {
   }
   getMyData() {
     return this.Page.data;
+  }
+  checkPermission(){
+    var userinfo = AppBase.UserInfo;
+    this.Base.log("check permission", userinfo );
+    if (userinfo.isuser == "N") {
+      this.Base.log("check permission", userinfo);
+      if (userinfo.inclassstatus=="N"){
+        wx.reLaunch({
+          url: '/pages/classrequest/classrequest',
+        })
+      }
+    }
+    if (userinfo.tipsmemberinfo=="Y"){
+      wx.showTabBarRedDot({
+        index: 2,
+      })
+    }
   }
   viewPhoto(e) {
     var img = e.currentTarget.id;
@@ -587,6 +613,10 @@ export class AppBase {
         }
       }
     })
+  }
+  log(tag,data){
+    var data={tag:tag,data:data};
+    console.log(data);
   }
   info(message) {
     wx.showModal({
