@@ -1,9 +1,12 @@
 <!--pages/chatroom/chatroom.wxml-->
-<view>
+<scroll-view class="{{showmore==false?'ml':'mlb'}}" scroll-y scroll-into-view='v{{indid}}' >
+
+<view class='margin-top'>
 <view class='flex-row' wx:for="{{chatlist}}" wx:key="k">
   <block wx:if="{{item.user_id==0}}">
-    <view class='padding-10'>
+    <view class='padding-20' style='padding-right:0rpx;'>
       <image class='icon-50'></image>
+      <view  id="v{{item.id}}"></view>
     </view>
     <view class='padding flex-1' style='padding-top:0rpx;'>
       <view class='h6 txt-gray text-right'>
@@ -12,33 +15,171 @@
       <view class='flex-row' wx:if="{{item.type=='T'}}">
         <view style='width:50rpx;'></view>
         <view class='flex-1'></view>
-        <view class='msgbox white-block'><text class='wordbreak h5'>{{item.comment}}</text></view>
+        <view hover-class="msgboxhover" hover-stay-time="50" class='msgbox white-block'><text class='wordbreak h5'>{{item.comment}}</text></view>
       </view>
-      <view class='flex-row' wx:if="{{item.type=='A'}}">
+      <view class='flex-row flex-center' wx:if="{{item.type=='A'}}">
         <view style='width:50rpx;'></view>
         <view class='flex-1'></view>
-        <view class='msgbox white-block' bindtap='playaudio' data-audio="{{uploadpath}}chat/{{item.audio}}"><text class='wordbreak h5 txt-primary'>语音信息{{item.audioduration}}秒</text></view>
+        <view hover-class="msgboxhover" hover-stay-time="50" class='margin-right-10 h5 txt-gray'>{{item.audioduration}}秒</view>
+        <view hover-class="msgboxhover"  class='msgbox white-block line-height-0' bindtap='playaudio' data-audio="{{uploadpath}}chat/{{item.audio}}">
+          <image src='{{uploadpath}}resource/{{res.play}}' class='icon' style='margin-left:30rpx'></image>
+        </view>
+      </view>
+      <view class='flex-row flex-center' wx:if="{{item.type=='P'}}">
+        <view style='width:50rpx;'></view>
+        <view class='flex-1'></view>
+        <view class='line-height-0 margin-top-10' >
+          
+        </view>
+      </view>
+      <view class='flex-row flex-center' wx:if="{{item.type=='V'}}">
+        <view style='width:50rpx;'></view>
+        <view class='flex-1'></view>
+        <view class='line-height-0 margin-top-10' >
+          <video src='{{uploadpath}}chat/{{item.video}}' data-src='{{uploadpath}}chat/{{item.video}}' id="video_{{item.id}}"  style='width:350rpx;height:196rpx; border-radius:8rpx;' bindtap='playvideo'  ></video>
+        </view>
+      </view>
+      <view class='flex-row flex-center' wx:if="{{item.type=='N'}}">
+        <view style='width:50rpx;'></view>
+        <view class='flex-1'></view>
+        <navigator  url='/pages/notice/notice?id={{item.notice_id}}'  hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row' bindtap='playaudio' >
+          <view class=' line-height-0  margin-right-10'>
+          <image src='{{uploadpath}}news/{{item.notice_cover}}' class='icon-50' ></image>
+          </view>
+          <view style='width:100rpx;'>
+            {{item.notice_name}}
+          </view>
+        </navigator>
+      </view>
+      <view class='flex-row flex-center' wx:if="{{item.type=='W'}}">
+        <view style='width:50rpx;'></view>
+        <view class='flex-1'></view>
+        <navigator url='/pages/news/news?id={{item.news_id}}' hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row' bindtap='playaudio'>
+          <view class=' line-height-0  margin-right-10'>
+          <image src='{{uploadpath}}news/{{item.news_cover}}' class='icon-50' ></image>
+          </view>
+          <view style='width:100rpx;'>
+            {{item.news_name}}
+          </view>
+        </navigator>
       </view>
     </view>
-    <view class='padding-10'>
-      <image class='icon-50 radius-50' src='{{uploadpath}}member/{{item.member_photo}}'></image>
+    <view class='padding-20' style='padding-left:0rpx;'>
+      <image class='icon-50 radius-50' src='{{uploadpath}}member/{{item.member_photo}}' bindtap='talktoStudent' id="{{item.member_id}}"></image>
+    </view>
+  </block>
+
+
+  <block wx:else>
+    <view class='padding-20' style='padding-right:0rpx;'>
+      <image class='icon-50 radius-50' src='{{uploadpath}}user/{{item.user_photo}}' bindtap='talktoTeacher'></image>
+    </view>
+    <view class='padding flex-1' style='padding-top:0rpx;'>
+      <view class='h6 txt-gray '>
+        {{item.user_user_name}} {{item.send_time}}
+      </view>
+      <view class='flex-row' wx:if="{{item.type=='T'}}">
+        <view hover-class="msgboxhover" hover-stay-time="50" class='msgbox white-block'><text class='wordbreak h5'>{{item.comment}}</text></view>
+        <view class='flex-1'></view>
+        <view style='width:50rpx;'></view>
+      </view>
+      <view class='flex-row flex-center' wx:if="{{item.type=='A'}}">
+        <view hover-class="msgboxhover"  class='msgbox white-block line-height-0' bindtap='playaudio' data-audio="{{uploadpath}}chat/{{item.audio}}">
+          <image src='{{uploadpath}}resource/{{res.play}}' class='icon' style='margin-right:30rpx'></image>
+        </view>
+        <view hover-class="msgboxhover" hover-stay-time="50" class='margin-left-10 h5 txt-gray'>{{item.audioduration}}秒</view>
+        <view class='flex-1'></view>
+        <view style='width:50rpx;'></view>
+      </view>
+      <view class='flex-row flex-center' wx:if="{{item.type=='P'}}">
+        <view class='line-height-0 margin-top-10' >
+          <image src='{{uploadpath}}chat/{{item.pic}}'  style='width:250rpx;border-radius:8rpx;' mode='widthFix' bindtap='viewPhoto' id="{{uploadpath}}chat/{{item.pic}}"></image>
+        </view>
+        <view class='flex-1'></view>
+        <view style='width:50rpx;'></view>
+      </view>
+      <view class='flex-row flex-center' wx:if="{{item.type=='V'}}">
+        <view class='line-height-0 margin-top-10' >
+          <video src='{{uploadpath}}chat/{{item.video}}' data-src='{{uploadpath}}chat/{{item.video}}' id="video_{{item.id}}"  style='width:350rpx;height:196rpx; border-radius:8rpx;' bindtap='playvideo' ></video>
+        </view>
+        <view class='flex-1'></view>
+        <view style='width:50rpx;'></view>
+      </view>
+
+      <view class='flex-row flex-center' wx:if="{{item.type=='N'}}">
+        <navigator  url='/pages/notice/notice?id={{item.notice_id}}'  hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row' bindtap='playaudio' >
+          <view class=' line-height-0 margin-right-10'>
+          <image src='{{uploadpath}}news/{{item.notice_cover}}' class='icon-50' ></image>
+          </view>
+          <view style='width:300rpx;'>
+            {{item.notice_name}}
+          </view>
+        </navigator>
+        <view style='width:50rpx;'></view>
+        <view class='flex-1'></view>
+      </view>
+      <view class='flex-row flex-center' wx:if="{{item.type=='W'}}">
+        <navigator url='/pages/news/news?id={{item.news_id}}' hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row' bindtap='playaudio'>
+          <view class=' line-height-0  margin-right-10'>
+          <image src='{{uploadpath}}news/{{item.news_cover}}' class='icon-50' ></image>
+          </view>
+          <view style='width:300rpx;'>
+            {{item.news_name}}
+          </view>
+        </navigator>
+        <view style='width:50rpx;'></view>
+        <view class='flex-1'></view>
+      </view>
+    </view>
+    <view class='padding-20' style='padding-left:0rpx;'>
+      <image class='icon-50 radius-50'></image>
+        <view id="v{{item.id}}"></view>
     </view>
   </block>
 </view>
 </view>
 
-<view class='fixedbottom white-block'>
+</scroll-view>
+
+<view class='white-block'>
   <view class='flex-row '>
-    <view   bindtouchstart="startvoice"  bindtouchend="endvoice" class='line-height-0 padding-10'>
-      <image class='icon-30' src='{{uploadpath}}resource/{{res.voice}}'></image>
+    <view class='line-height-0 padding-10'>
+      <image class='icon-30' src='{{uploadpath}}resource/{{res.voice}}' wx:if="{{sendtype=='K'}}" bindtap='changeSendtype' id="V"></image>
+      <image class='icon-30' src='{{uploadpath}}resource/{{res.keyboard}}' wx:if="{{sendtype=='V'}}" bindtap='changeSendtype' id="K"></image>
     </view>
     <view class='flex-1 '>
-      <textarea fixed="{{true}}" class='box h5' placeholder='说点什么？' auto-height='{{true}}' value='{{comment}}' bindinput='commentChange' bindconfirm='sendComment' maxlength='1000' wx:if="{{invoice!=true}}" ></textarea>
-      <textarea fixed="{{true}}" class='box text-center h5' placeholder='开始说话' auto-height='{{true}}' value=''  wx:if="{{invoice==true}}" disabled='{{true}}'></textarea>
+      <textarea fixed="{{true}}" class='box' placeholder='说点什么？' auto-height='{{true}}' value='{{comment}}' bindinput='commentChange' bindconfirm='sendComment' maxlength='1000' wx:if="{{sendtype=='K'}}" ></textarea>
+      <button fixed="{{true}}" class='margin-top-5 text-center h5 txt-gray' wx:if="{{sendtype=='V'}}"   bindtouchstart="startvoice"  bindtouchend="endvoice" bindtouchmove="cancelvoice" >{{invoice=="A"?"按住讲话":""}}{{invoice=="B"?"松开发送":""}}{{invoice=="C"?"松开取消":""}}</button>
     </view>
     <view class='line-height-0 padding-10'>
-      <image class='icon-30' src='{{uploadpath}}resource/{{res.chatmore}}' wx:if="{{comment==''}}"></image>
+      <image class='icon-30' src='{{uploadpath}}resource/{{res.chatmore}}' wx:if="{{comment==''}}" bindtap='showmore'></image>
       <button class='h6 line-height-0' size='mini' type='primary' wx:if="{{comment!=''}}" bindtap='sendComment'>发送</button>
+    </view>
+  </view>
+  <view class='border-top flex-row flex-center' wx:if="{{showmore==true}}" >
+    <view class='text-center flex-1 padding-10 margin-top-10' bindtap='sendPic'>
+      <view class=''>
+        <image src='{{uploadpath}}resource/{{res.chatpic}}' class='icon-40'></image>
+      </view>
+      <view class='h6 txt-gray'>图片</view>
+    </view>
+    <view class='text-center flex-1 padding-10 margin-top-10' bindtap='sendVideo'>
+      <view class=''>
+        <image src='{{uploadpath}}resource/{{res.chatvideo}}' class='icon-40'></image>
+      </view>
+      <view class='h6 txt-gray'>视频</view>
+    </view>
+    <view class='text-center flex-1 padding-10 margin-top-10' bindtap='sendNotice'>
+      <view class=''>
+        <image src='{{uploadpath}}resource/{{res.chatnotice}}' class='icon-40'></image>
+      </view>
+      <view class='h6 txt-gray'>通知</view>
+    </view>
+    <view class='text-center flex-1 padding-10 margin-top-10' bindtap='sendNews'>
+      <view >
+        <image src='{{uploadpath}}resource/{{res.chatnews}}' class='icon-40'></image>
+      </view>
+      <view class='h6 txt-gray'>文章</view>
     </view>
   </view>
 </view>

@@ -63,7 +63,8 @@ class Content extends AppBase {
     var json=e.detail.value;
     json.inhome = json.inhome ? "Y" : "N";
     json.ontop = json.ontop ? "Y" : "N";
-    json.status = e.detail.target.id;
+    json.status = e.detail.target.id; 
+    json.cat_id = 4;//e.detail.target.id;
     if(that.Base.options.id!=undefined){
       json.primary_id = that.Base.options.id;
     }

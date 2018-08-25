@@ -14,7 +14,18 @@ page{
 .msgbox{
   border:2rpx solid #cbcbcb;
   border-radius: 12rpx;
-  padding:10rpx;
+  padding:20rpx;
   margin-top:16rpx;
   margin-bottom:10rpx;
+}
+.msgboxhover{
+  background: #f2f2f2;
+}
+
+.ml{
+  height: calc( 100vh - 85rpx )
+}
+
+.mlb{
+  height: calc( 100vh - 248rpx )
 }

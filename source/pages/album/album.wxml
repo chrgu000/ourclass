@@ -65,8 +65,5 @@
     <view class='flex-1 padding '>
       <button type='primary' bindtap='uploadvid' class='round-button'>上传视频</button>
     </view>
-    <navigator class='txt-primary flex-1 padding ' url='/pages/photoedit/photoedit'>
-      <button  class='round-button'>编辑</button>
-    </navigator>
   </view>
 </view>

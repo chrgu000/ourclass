@@ -1,8 +1,21 @@
 {
   "pages":[
-    "pages/chatroom/chatroom",
+    "pages/notice/notice",
+    "pages/reply/reply",
     "pages/home/home",
+    "pages/search/search",
+    "pages/noticemgr/noticemgr",
+    "pages/newslist/newslist",
+    "pages/newsmgr/newsmgr",
+    "pages/news/news",
+    "pages/instnewslist/instnewslist",
+    "pages/classassess/classassess",
     "pages/member/member",
+    "pages/classassesshistory/classassesshistory",
+    "pages/childinfo/childinfo",
+    "pages/chatroom/chatroom",
+    "pages/newsselect/newsselect",
+    "pages/noticeselect/noticeselect",
     "pages/teacherinfo/teacherinfo",
     "pages/infoupdate/infoupdate",
     "pages/classrequest/classrequest",
@@ -12,10 +25,7 @@
     "pages/videoplay/videoplay",
     "pages/photoedit/photoedit",
     "pages/noticecreate/noticecreate",
-    "pages/newslist/newslist",
-    "pages/notice/notice",
     "pages/noticelist/noticelist",
-    "pages/news/news",
     "pages/comment/comment",
     "pages/product/product",
     "pages/auth/auth",
@@ -43,21 +53,21 @@
     "list": [
       {
         "text": "搜索",
-        "pagePath": "pages/aboutuslist/aboutuslist",
-        "iconPath": "images/icons/hotel-o.png",
-        "selectedIconPath": "images/icons/hotel.png"
+        "pagePath": "pages/search/search",
+        "iconPath": "images/icons/search.png",
+        "selectedIconPath": "images/icons/search-a.png"
       },
       {
         "text": "首页",
         "pagePath": "pages/home/home",
-        "iconPath": "images/icons/home-o.png",
-        "selectedIconPath": "images/icons/home.png"
+        "iconPath": "images/icons/home.png",
+        "selectedIconPath": "images/icons/home-a.png"
       },
       {
         "text": "我的",
         "pagePath": "pages/member/member",
-        "iconPath": "images/icons/store-o.png",
-        "selectedIconPath": "images/icons/store.png"
+        "iconPath": "images/icons/user.png",
+        "selectedIconPath": "images/icons/user-a.png"
       }
     ]
   }

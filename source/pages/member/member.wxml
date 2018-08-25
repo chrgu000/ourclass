@@ -1,4 +1,5 @@
 <!--pages/member/member.wxml-->
+<block wx:if="{{UserInfo&&UserInfo.isuser!='Y'}}">
 <view class='padding-20 white-block'>
 
   <view class='flex-row flex-row'>
@@ -8,7 +9,7 @@
     </view>
     <navigator url='/pages/infoupdate/infoupdate' class='flex-1 padding-20' wx:if="{{UserInfo.name!=''}}">
       <view>
-        {{UserInfo.name}}
+        你好，{{UserInfo.name}}！
       </view>
       <view class='txt-gray h6'>
         {{UserInfo.mobile}}
@@ -24,9 +25,9 @@
   <view class='h5 txt-gray padding-10'>
     我的孩子
   </view>
-  <view class='border-bottom flex-row flex-center white-block ' wx:for="{{UserInfo.classmates}}" wx:key="k">
+  <navigator url='/pages/childinfo/childinfo?id={{item.id}}' class='border-bottom flex-row flex-center white-block ' wx:for="{{UserInfo.classmates}}" wx:key="k">
     <view class='padding-20 line-height-0'>
-      <image class='icon-40 radius-50' src='{{uploadpath}}class/{{item.photo}}'></image>
+      <image class='icon-40  radius-50' src='{{uploadpath}}class/{{item.photo}}'></image>
     </view>
     <view class='flex-1 padding-20 h5'>
       {{item.childname}}
@@ -34,21 +35,21 @@
     <view class='line-height-0 margin-right-10'>
       <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
     </view>
-  </view>
+  </navigator>
 
   <navigator url='/pages/classrequest/classrequest' class='border-bottom flex-row flex-center white-block '>
-    <view class='padding-20 line-height-0'>
+    <view class='padding-20 line-height-0' style='margin-left:35vw;'>
       <image class='icon' src='{{uploadpath}}resource/{{res.add}}'></image>
     </view>
-    <view class='flex-1 padding-20 h5'>
+    <view class='flex-1 padding-20 h5 txt-gray'>
       继续添加
     </view>
   </navigator>
 </view>
 
-<navigator url='/pages/classrequest/classrequest' class='margin-top border-bottom flex-row flex-center white-block'>
+<navigator url='/pages/teacherinfo/teacherinfo' class='margin-top border-bottom flex-row flex-center white-block'>
   <view class='padding line-height-0'>
-    <image class='icon radius-50' src='{{uploadpath}}resource/{{res.teacher}}'></image>
+    <image class='icon' src='{{uploadpath}}resource/{{res.teacher}}'></image>
   </view>
   <view class='flex-1 padding h5'>
     老师信息
@@ -57,3 +58,104 @@
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
   </view>
 </navigator>
+<navigator url='/pages/chatroom/chatroom?onlymember_id={{UserInfo.id}}' class='border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.teacherchat}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    老师沟通
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+</block>
+
+
+<block wx:if="{{UserInfo&&UserInfo.isuser=='Y'}}">
+<view class='padding-20 white-block'>
+
+  <view class='flex-row flex-row'>
+    <view class='line-height-0'>
+      <image class='icon-50 radius-50'  src='{{uploadpath}}user/{{UserInfo.user.photo}}'></image>
+    </view>
+    <navigator url='/pages/infoupdate/infoupdate' class='flex-1 padding-20' wx:if="{{UserInfo.name!=''}}">
+      <view>
+        你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"代班主任":""}}，{{UserInfo.user.user_name}}！
+      </view>
+      <view class='txt-gray h6'>
+        {{UserInfo.mobile}}
+      </view>
+    </navigator>
+  </view>
+</view>
+
+
+<navigator url='/pages/classassesshistory/classassesshistory' class='margin-top border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.assessrecord}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    历史评分
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+<navigator wx:if="{{UserInfo.isteacher1=='Y'}}" url='/pages/classassess/classassess' class='border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.teacherchat}}'></image>
+  </view>
+  <view class='flex-1 padding h5' wx:if="{{UserInfo.noschedule!='Y'}}">
+    {{UserInfo.schedule.name}}评分 <text class='txt-primary h5' wx:if="{{UserInfo.classmember.length<=UserInfo.assesscount}}">已完成</text>
+    <text class='txt-red h5' wx:if="{{UserInfo.classmember.length>UserInfo.assesscount}}">已完成{{UserInfo.assesscount}}/{{UserInfo.classmember.length}}</text>
+  </view>
+  <view class='flex-1 padding h5 txt-gray' wx:if="{{UserInfo.noschedule=='Y'}}">
+    本周无安排
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+
+
+<navigator url='/pages/noticemgr/noticemgr' class='margin-top border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.noticemgr}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    通知管理
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+
+
+<navigator url='/pages/newsmgr/newsmgr' class='border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.newsmgr}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    文章管理
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+
+
+<navigator url='/pages/photoedit/photoedit' class='border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    图片管理
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+
+
+</block>

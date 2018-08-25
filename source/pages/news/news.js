@@ -19,7 +19,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    //options.id = 1;
+    //options.id = 10;
     options.id = parseInt(options.id);
     this.Base.Page = this;
     this.Base.pagetitle = "";
@@ -72,9 +72,7 @@ class Content extends AppBase {
           }
         },1000);
       }
-
       
-
       wx.setNavigationBarTitle({
         title: news.name
       });

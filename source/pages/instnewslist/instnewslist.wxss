@@ -1,0 +1,20 @@
+/* pages/instnewslist/instnewslist.wxss */
+.title {
+  height: 86rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.cover{
+  margin-right: 30rpx;
+  width: 200rpx;
+  height:156rpx;
+  border-radius: 6rpx;
+}
+.round-button{
+  border-radius: 30rpx;
+}
+button.round-button{
+  border-radius: 50rpx;
+}

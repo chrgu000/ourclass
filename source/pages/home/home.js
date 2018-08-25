@@ -20,7 +20,7 @@ class Content extends AppBase {
     instapi.indexbanner({position:"home"},(indexbanner)=>{
       that.Base.setMyData({ indexbanner: indexbanner});
     });
-    instapi.info({}, (info) => {
+    instapi.info({ }, (info) => {
       that.Base.setMyData(info);
     });
 
@@ -29,7 +29,7 @@ class Content extends AppBase {
     // instapi.aboutuslist({ inhome: "Y" }, (aboutuslist) => {
     //   that.Base.setMyData({ aboutuslist: aboutuslist });
     // });
-    instapi.newslist({ inhome:"Y" }, (newslist) => {
+    instapi.newslist({ cat_id: "1,2", inhome:"Y" }, (newslist) => {
        that.Base.setMyData({ newslist: newslist });
     });
     // instapi.servicelist({ inhome: "Y" }, (servicelist) => {

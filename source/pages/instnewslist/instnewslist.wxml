@@ -1,0 +1,76 @@
+<!--pages/instnewslist/instnewslist.wxml-->
+<!--pages/newslist/newslist.wxml-->
+<!--pages/home/home.wxml-->
+<view class='flex-row tabs'>
+    <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="0">
+      <view class='flex-1'></view>
+      <view class='tabtext {{currenttab==0?"active":""}}'>园区信息</view>
+      <view class='flex-1'></view>
+    </view>
+    <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="1">
+      <view class='flex-1'></view>
+      <view class='tabtext {{currenttab==1?"active":""}}'>家委会信息</view>
+      <view class='flex-1'></view>
+    </view>
+</view>
+
+<swiper indicator-dots="{{false}}" class='bottomtabs ' current='{{currenttab}}' bindchange="changeCurrentTab" class="maintab">
+  <swiper-item  style='height:100%'>
+    <scroll-view scroll-y style='height:100%'>
+      
+      <view class="text-center"   wx:if="{{newslist_1.length==0}}">
+        <view>
+        <image class='icon-100' mode="widthFix" src='{{uploadpath}}resource/{{res.empty}}' style='margin-top:100rpx;'></image> 
+        </view>
+        <view class='txt-gray h6 margin-top'>
+          暂无数据
+        </view>
+      </view>
+
+
+      <view class='white-block'>
+  <navigator url='/pages/news/news?id={{item.id}}' class='border-top white-block padding-20 flex-row ' wx:for="{{newslist_1}}" wx:key="k" wx:for-index='idx'>
+    <view>
+      <image class='cover box-shadow' src='{{uploadpath}}news/{{item.cover}}' mode="aspectFill"></image>
+    </view>
+    <view class='flex-1'>
+      <view class='title'>{{item.name}}</view>
+      <view class='margin-top flex-row flex-bottom'>
+        <view class='flex-1 h6 txt-gray'>{{item.cat_id_name}}</view>
+        <view class='h6 txt-gray'>{{item.readcount}}阅读</view>
+      </view>
+    </view>
+  </navigator>
+</view>
+    </scroll-view>
+
+  </swiper-item>
+  <swiper-item  style='height:100%'>
+    <scroll-view scroll-y style='height:100%'>
+      
+      <view class="text-center"   wx:if="{{newslist_2.length==0}}">
+        <view>
+        <image class='icon-100' mode="widthFix" src='{{uploadpath}}resource/{{res.empty}}' style='margin-top:100rpx;'></image> 
+        </view>
+        <view class='txt-gray h6 margin-top'>
+          暂无数据
+        </view>
+      </view>
+      <view class='white-block'>
+  <navigator url='/pages/news/news?id={{item.id}}' class='border-top white-block padding-20 flex-row ' wx:for="{{newslist_2}}" wx:key="k" wx:for-index='idx'>
+    <view>
+      <image class='cover box-shadow' src='{{uploadpath}}news/{{item.cover}}' mode="aspectFill"></image>
+    </view>
+    <view class='flex-1'>
+      <view class='title'>{{item.name}}</view>
+      <view class='margin-top flex-row flex-bottom'>
+        <view class='flex-1 h6 txt-gray'>{{item.cat_id_name}}</view>
+        <view class='h6 txt-gray'>{{item.readcount}}阅读</view>
+      </view>
+    </view>
+  </navigator>
+</view>
+    </scroll-view>
+
+  </swiper-item>
+</swiper>

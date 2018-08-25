@@ -1,0 +1,41 @@
+<!--pages/comment/comment.wxml-->
+<form bindsubmit="confirm" bindreset="formReset" report-submit="{{true}}">
+  <view class='padding'>
+
+    <view wx:if="{{commentinfo.notice_id>0}}" class="flex-row">
+      <view class='txt-gray'>通知：</view>
+      <view class='flex-1'>{{commentinfo.notice_name}}</view>
+    </view>
+    <view wx:if="{{commentinfo.news_id>0}}" class="flex-row">
+      <view class='txt-gray'>文章：</view>
+      <view class='flex-1'>{{commentinfo.news_name}}</view>
+    </view>
+    <view class="flex-row flex-bottom" wx:if="{{commentinfo.classmate.id>0}}" >
+      <view class='txt-gray'>评论人：</view>
+      <view >{{commentinfo.classmate.name}}</view>
+      <view class='txt-gray h5 margin-left-10'>({{commentinfo.classmate.childname}}，关系：{{commentinfo.classmate.relationship}})</view>
+    </view>
+    <view  class="flex-row">
+      <view class='txt-gray'>评论内容：</view>
+      <view class='flex-1'>{{commentinfo.comment}}</view>
+    </view>
+  </view>
+  <view class='padding white-block'>
+    <textarea placeholder='回复内容...' name="reply" class='fullimg' maxlength='-1' auto-focus='{{true}}' value='{{reply}}'></textarea>
+  </view>
+  <view class='flex-row flex-center'>
+    <view class='padding-20 flex-1'>
+      <button bindtap='backPage'>取消</button>
+    </view>
+    <view class='padding-20 flex-1'>
+      <button type='primary' form-type='submit'>发送</button>
+    </view>
+  </view>
+</form>
+
+<view class='padding-10 txt-gray h6 margin-top'>
+点击以下栏目快速复制到回复内容
+</view>
+<view class='padding-20 border-bottom white-block h5' wx:for="{{quickreply}}" data-txt="{{item.name}}" bindtap='copy' wx:key="k" >
+{{item.name}}
+</view>

@@ -1,0 +1,67 @@
+<!--pages/childinfo/childinfo.wxml-->
+<view class='padding-20 white-block'>
+
+  <view class='flex-row flex-row'>
+    <view class='line-height-0'>
+      <image class='icon-50 radius-50' src='{{uploadpath}}class/{{childinfo.photo}}' bindtap='updatephoto' ></image>
+    </view>
+    <navigator url='/pages/infoupdate/infoupdate' class='flex-1 padding-20' wx:if="{{UserInfo.name!=''}}">
+      <view>
+        {{childinfo.childname}}
+      </view>
+      <view class='txt-gray h6'>
+        {{childinfo.class_name}}
+      </view>
+    </navigator>
+  </view>
+</view>
+
+
+<view class="text-center"   wx:if="{{assessrecord.length==0}}">
+  <view>
+  <image class='icon-100' mode="widthFix" src='{{uploadpath}}resource/{{res.empty}}' style='margin-top:100rpx;'></image> 
+  </view>
+  <view class='txt-gray h6 margin-top'>
+    暂无数据
+  </view>
+</view>
+
+<view class='padding-20 h5 txt-gray'  wx:if="{{assessrecord.length>0}}">
+  老师评分
+</view>
+<view class='padding white-block border-bottom' wx:for="{{assessrecord}}" wx:key="key">
+  <view>{{item.name}}</view>
+  <view class='flex-row margin-top'>
+    <view class='margin-right-10 h5'>评分：</view>
+    <view class='flex-1 margin-left-10 flex-row'>
+      <view class='margin-right-10'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{item.childlist[0].score<1}}"></image>
+        <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{item.childlist[0].score>=1}}"></image>
+      </view>
+      <view class='margin-right-10'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{item.childlist[0].score<2}}"></image>
+        <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{item.childlist[0].score>=2}}"></image>
+      </view>
+      <view class='margin-right-10'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{item.childlist[0].score<3}}"></image>
+        <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{item.childlist[0].score>=3}}"></image>
+      </view>
+      <view class='margin-right-10'>
+        <image class='icon' class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{item.childlist[0].score<4}}"></image>
+        <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{item.childlist[0].score>=4}}"></image>
+      </view>
+      <view class='margin-right-10'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{item.childlist[0].score<5}}"></image>
+        <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{item.childlist[0].score>=5}}"></image>
+      </view>
+    </view>
+  </view>
+  <view class='flex-row margin-top'>
+    <view class='margin-right-10 h5'>评价：</view>
+    <view class='flex-1 margin-left-10 flex-row'>
+      <view class='gray-block padding-10 radius-10 h6 txt-gray'>
+        {{item.childlist[0].summary==''?'没有评价哦':item.childlist[0].summary}}
+      </view>
+    </view>
+  </view>
+</view>

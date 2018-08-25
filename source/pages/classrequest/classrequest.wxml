@@ -4,7 +4,7 @@
   <view class='line-height-0'>
     <image src='{{uploadpath}}resource/{{res.classrequesttop}}' class='fullimg' mode='widthFix'></image>
   </view>
-  <view class='margin-top h4 txt-bold text-center'>
+  <view class='h4 txt-bold text-center'>
     欢迎加入{{classinfo.name}}！
   </view>
 

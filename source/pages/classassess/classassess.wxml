@@ -1,0 +1,59 @@
+<!--pages/childinfo/childinfo.wxml-->
+<view class="text-center" wx:if="{{assessrecord.id==0}}">
+  <view>
+    <image class='icon-100' mode="widthFix" src='{{uploadpath}}resource/{{res.empty}}' style='margin-top:100rpx;'></image>
+  </view>
+  <view class='txt-gray h6 margin-top'>
+    暂无数据
+  </view>
+</view>
+<view class='padding white-block border-bottom' wx:if="{{assessrecord.id>0}}">
+  <view class='txt-primary h4'>{{assessrecord.name}}</view>
+  <view class='flex-row margin-top {{idx<assessrecord.childlist.length-1?"border-bottom":""}}' wx:for="{{assessrecord.childlist}}" wx:key='k' wx:for-item='subitem' wx:for-index='idx' style='padding-bottom:20rpx;'>
+    <view class='' style='width:150rpx;'>
+      <view>
+        <image class='icon-40 radius-50' src='{{uploadpath}}class/{{subitem.photo}}'></image>
+      </view>
+      <view class='h6'>
+        {{subitem.childname}}
+      </view>
+    </view>
+    <view class='flex-1'>
+      <view class='flex-row'>
+        <view class='margin-right-10 h5'>评分：</view>
+        <view class='flex-1 margin-left-10 flex-row'>
+          <view class='margin-right-10' bindtap='scroe' id="{{idx}}_1_{{assessrecord.id}}_{{subitem.classmate_id}}">
+            <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<1}}"></image>
+            <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=1}}"></image>
+          </view>
+          <view class='margin-right-10' bindtap='scroe' id="{{idx}}_2_{{assessrecord.id}}_{{subitem.classmate_id}}">
+            <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<2}}"></image>
+            <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=2}}"></image>
+          </view>
+          <view class='margin-right-10' bindtap='scroe' id="{{idx}}_3_{{assessrecord.id}}_{{subitem.classmate_id}}">
+            <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<3}}"></image>
+            <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=3}}"></image>
+          </view>
+          <view class='margin-right-10' bindtap='scroe' id="{{idx}}_4_{{assessrecord.id}}_{{subitem.classmate_id}}">
+            <image class='icon' class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<4}}"></image>
+            <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=4}}"></image>
+          </view>
+          <view class='margin-right-10' bindtap='scroe' id="{{idx}}_5_{{assessrecord.id}}_{{subitem.classmate_id}}">
+            <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<5}}"></image>
+            <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=5}}"></image>
+          </view>
+        </view>
+      </view>
+      <view class='flex-row margin-top'>
+        <view class='margin-right-10 h5'>评价：</view>
+        <view class='flex-1 margin-left-10 flex-row'>
+            <textarea class='fullimg padding-10' id="{{idx}}_{{assessrecord.id}}_{{subitem.classmate_id}}" value='{{subitem.summary}}' bindblur='committext' bindconfirm='committext' style='border:2rpx solid #ccc' maxlength='255' auto-height='{{true}}' ></textarea>
+        </view>
+      </view>
+    </view>
+    <view>
+      <image class='icon-40' src='{{uploadpath}}resource/{{res.undone}}'  wx:if="{{subitem.score==0}}"></image>
+      <image class='icon-40' src='{{uploadpath}}resource/{{res.done}}'  wx:if="{{subitem.score>0}}"></image>
+    </view>
+  </view>
+</view>

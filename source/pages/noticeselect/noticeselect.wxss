@@ -1,0 +1,13 @@
+/* pages/noticeselect/noticeselect.wxss */
+.title {
+  height: 86rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.cover{
+  margin-right: 30rpx;
+  width: 100rpx;
+  height:78rpx;
+}

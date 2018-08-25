@@ -57,6 +57,9 @@ class Content extends AppBase {
       }
     });
   }
+  checkPermission() {
+
+  }
 }
 var content = new Content();
 var body = content.generateBodyJson();

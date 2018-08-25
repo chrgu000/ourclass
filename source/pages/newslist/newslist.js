@@ -21,7 +21,7 @@ class Content extends AppBase {
       that.Base.setMyData({ indexbanner: indexbanner });
     });
 
-    instapi.newslist({  }, (newslist) => {
+    instapi.newslist({ cat_id:4 }, (newslist) => {
       that.Base.setMyData({ newslist: newslist });
     });
   }

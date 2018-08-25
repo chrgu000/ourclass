@@ -1,0 +1,19 @@
+<view class='padding-20 h5 txt-gray'>
+  请点击选择一个栏目显示到聊天
+</view>
+
+<view class='white-block'>
+  <view  class='border-top white-block padding-20 flex-row ' wx:for="{{newslist}}" wx:key="k" bindtap='backToSend' id="{{item.id}}" wx:for-index='idx'>
+    <view>
+      <image class='cover box-shadow' src='{{uploadpath}}news/{{item.cover}}' mode="aspectFill"></image>
+    </view>
+    <view class='flex-1'>
+      <view class='title'>{{item.name}}</view>
+      <view class='margin-top flex-row flex-bottom'>
+        <view class='flex-1 h6 txt-gray'>{{item.published_date_formatting}}</view>
+        <view class='h6 txt-gray'>{{item.readcount}}阅读</view>
+      </view>
+    </view>
+  </view>
+</view>
+

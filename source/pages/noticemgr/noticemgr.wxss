@@ -1,0 +1,14 @@
+/* pages/newsmgr/newsmgr.wxss */
+.title {
+  height: 86rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.cover{
+  margin-right: 30rpx;
+  width: 160rpx;
+  height:122rpx;
+  border-radius: 6rpx;
+}

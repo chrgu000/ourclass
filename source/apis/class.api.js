@@ -416,5 +416,472 @@ export class ClassApi
       }
     })
   }
+  //获取机构的基础信息
+  assessrecord(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/assessrecord',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  childinfo(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/childinfo',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  childphotoupdate(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/childphotoupdate',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  teacherassess(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/teacherassess',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  childassess(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/childassess',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  newsontopupdate(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/newsontopupdate',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  newsstatusupdate(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/newsstatusupdate',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  noticeontopupdate(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/noticeontopupdate',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  noticestatusupdate(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/noticestatusupdate',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  clearkeyword(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/clearkeyword',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  search(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/search',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  searchkeyword(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/searchkeyword',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  quickreply(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/quickreply',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  commentinfo(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/commentinfo',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
+  //获取机构的基础信息
+  reply(json, callback, showLoading = true) {
+
+    if (showLoading)
+      ApiConfig.ShowLoading();
+
+    var header = ApiConfig.GetHeader();
+    console.log(header);
+    wx.request({
+      url: ApiConfig.GetApiUrl() + 'class/reply',
+      data: json,
+      method: 'POST',
+      dataType: 'json',
+      header: header,
+      success: function (res) {
+        if (callback != null) {
+          callback(res.data);
+        }
+      },
+      fail: function (res) {
+        console.log(res);
+        callback(false);
+      },
+      complete: function (res) {
+        console.log(res);
+
+        if (showLoading)
+          ApiConfig.CloseLoading();
+      }
+    })
+  }
 }
+
+
 
