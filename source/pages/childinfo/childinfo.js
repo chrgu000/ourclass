@@ -19,6 +19,9 @@ class Content extends AppBase {
     api.assessrecord({ classmate_id: this.Base.options.id }, (assessrecord) => {
       this.Base.setMyData({ assessrecord: assessrecord });
     });
+    api.childinfo({ id: this.Base.options.id }, (childinfo) => {
+      this.Base.setMyData({ childinfo: childinfo });
+    });
   }
   updatephoto(){
     this.Base.uploadImage("class",(file)=>{

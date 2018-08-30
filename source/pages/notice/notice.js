@@ -22,7 +22,7 @@ class Content extends AppBase {
     super();
   }
   onLoad(options) {
-    options.id = 1;
+    //options.id = 1;
     options.id = parseInt(options.id);
     this.Base.Page = this;
     this.Base.pagetitle = "";

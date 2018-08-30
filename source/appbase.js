@@ -12,6 +12,9 @@ import {
   InstApi
 } from "apis/inst.api.js";
 import {
+  ClassApi
+} from "apis/class.api.js";
+import {
   MemberApi
 } from "apis/member.api";
 import {
@@ -44,11 +47,12 @@ export class AppBase {
     //ApiConfig.SetToken("10e991a4ca7a93c60794628c11edaea3");
   }
   setPageTitle() {
-    var instinfo = this.getMyData().instinfo;
-    console.log(instinfo);
-    wx.setNavigationBarTitle({
-      title: instinfo.name
-    })
+    var api=new ClassApi();
+    api.info({},(classinfo)=>{
+      wx.setNavigationBarTitle({
+        title: classinfo.name
+      })
+    },false);
   }
   generateBodyJson() {
     var base = this;
@@ -168,7 +172,6 @@ export class AppBase {
 
     instapi.info({}, (instinfo) => {
       if (instinfo == null || instinfo == false) {
-
         return;
       }
       this.Base.setMyData({
@@ -300,19 +303,26 @@ export class AppBase {
         })
       }
     }
+    var needshowreddot=false;
     if (userinfo.tipsmemberinfo == "Y") {
-      wx.showTabBarRedDot({
-        index: 2,
-      })
+      needshowreddot=true;
     }
     if (userinfo.isteacher1 == "Y") {
       if (userinfo.noschedule != 'N') {
         if (userinfo.classmember.length > userinfo.assesscount) {
-          wx.showTabBarRedDot({
-            index: 2,
-          })
+
+          needshowreddot = true;
         }
       }
+    }
+    if (needshowreddot==true){
+      wx.showTabBarRedDot({
+        index: 2,
+      })
+    }else{
+      wx.hideTabBarRedDot({
+        index: 2,
+      })
     }
   }
   viewPhoto(e) {

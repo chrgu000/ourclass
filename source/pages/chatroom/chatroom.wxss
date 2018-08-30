@@ -8,8 +8,7 @@
   margin-bottom:10rpx;
 }
 page{
-  background-image: url(http://applinkupload.oss-cn-shenzhen.aliyuncs.com/alucard263096/ourclass/resource/5dcbfafcc403aad5828ae694d9630447_18081918021.png);
-  background-size: 100% 100%;
+  background-color: white;
 }
 .msgbox{
   border:2rpx solid #cbcbcb;

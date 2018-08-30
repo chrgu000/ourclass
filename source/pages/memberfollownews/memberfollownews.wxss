@@ -1,4 +1,4 @@
-/* pages/noticelist/noticelist.wxss *//* pages/newslist/newslist.wxss */
+/* pages/newslist/newslist.wxss */
 .title {
   height: 86rpx;
   display: -webkit-box;
@@ -12,9 +12,13 @@
   height:156rpx;
   border-radius: 6rpx;
 }
-
+.round-button{
+  border-radius: 30rpx;
+}
+button.round-button{
+  border-radius: 50rpx;
+}
 .ontop{
   position: absolute;
   margin-top: -110rpx;
-  margin-left: -20rpx;
 }

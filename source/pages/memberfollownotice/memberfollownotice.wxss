@@ -16,5 +16,4 @@
 .ontop{
   position: absolute;
   margin-top: -110rpx;
-  margin-left: -20rpx;
 }

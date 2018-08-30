@@ -11,7 +11,7 @@ class Content extends AppBase {
     this.Base.Page = this;
     //options.id=5;
     super.onLoad(options);
-    this.Base.setMyData({loaded:false});
+    this.Base.setMyData({loaded:false,mobile:""});
   }
   onMyShow() {
     var that = this;

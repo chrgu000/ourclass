@@ -1,8 +1,11 @@
 {
   "pages":[
+    "pages/home/home",
+    "pages/classmatelist/classmatelist",
+    "pages/memberfollownews/memberfollownews",
+    "pages/memberfollownotice/memberfollownotice",
     "pages/notice/notice",
     "pages/reply/reply",
-    "pages/home/home",
     "pages/search/search",
     "pages/noticemgr/noticemgr",
     "pages/newslist/newslist",

@@ -10,7 +10,7 @@ page{
   opacity: 1;
   background: orange;
 }
-.clear-button{ 
+.clear-button{
   padding: 0rpx;
   font-size: unset;
   text-align: unset;

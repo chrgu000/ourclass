@@ -69,6 +69,29 @@
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
   </view>
 </navigator>
+
+<navigator url='/pages/memberfollownotice/memberfollownotice' class='margin-top border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.follownotice}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    收藏的通知
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+<navigator url='/pages/memberfollownews/memberfollownews'  class='border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.follownews}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    收藏的资讯文章
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
 </block>
 
 
@@ -77,11 +100,11 @@
 
   <view class='flex-row flex-row'>
     <view class='line-height-0'>
-      <image class='icon-50 radius-50'  src='{{uploadpath}}user/{{UserInfo.user.photo}}'></image>
+      <image class='icon-50 radius-50'  src='{{uploadpath}}user/{{UserInfo.user.photo}}' bindtap='updateuserphoto'></image>
     </view>
-    <navigator url='/pages/infoupdate/infoupdate' class='flex-1 padding-20' wx:if="{{UserInfo.name!=''}}">
+    <navigator  class='flex-1 padding-20' >
       <view>
-        你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"代班主任":""}}，{{UserInfo.user.user_name}}！
+        你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"代班老师":""}}，{{UserInfo.user.user_name}}！
       </view>
       <view class='txt-gray h6'>
         {{UserInfo.mobile}}
@@ -91,7 +114,18 @@
 </view>
 
 
-<navigator url='/pages/classassesshistory/classassesshistory' class='margin-top border-bottom flex-row flex-center white-block'>
+<navigator url='/pages/classmatelist/classmatelist' class='margin-top border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.member}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    本班成员 <text class='txt-primary h5'>{{UserInfo.classmember.length}}</text>人
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+<navigator url='/pages/classassesshistory/classassesshistory' class='border-bottom flex-row flex-center white-block'>
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.assessrecord}}'></image>
   </view>
@@ -119,7 +153,7 @@
 </navigator>
 
 
-<navigator url='/pages/noticemgr/noticemgr' class='margin-top border-bottom flex-row flex-center white-block'>
+<navigator url='/pages/noticemgr/noticemgr' class='margin-top border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'}}">
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.noticemgr}}'></image>
   </view>
@@ -132,7 +166,7 @@
 </navigator>
 
 
-<navigator url='/pages/newsmgr/newsmgr' class='border-bottom flex-row flex-center white-block'>
+<navigator url='/pages/newsmgr/newsmgr' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.newsmgr}}'></image>
   </view>
@@ -145,7 +179,7 @@
 </navigator>
 
 
-<navigator url='/pages/photoedit/photoedit' class='border-bottom flex-row flex-center white-block'>
+<navigator url='/pages/photoedit/photoedit' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
   </view>
@@ -157,5 +191,18 @@
   </view>
 </navigator>
 
+<block wx:if="{{UserInfo.otherclass.length>0}}">
+<view class='padding-10 h6 txt-gray margin-top-10'>
+  其它班
+</view>
+<navigator url='/pages/home/home?class_id={{item.id}}' open-type='reLaunch' class='border-bottom flex-row flex-center white-block' wx:for="{{UserInfo.otherclass}}" wx:key="k">
+  <view class='flex-1 padding h5'>
+    {{item.name}}
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+</block>
 
 </block>

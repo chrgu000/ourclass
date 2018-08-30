@@ -148,7 +148,7 @@
       <image class='icon-30' src='{{uploadpath}}resource/{{res.keyboard}}' wx:if="{{sendtype=='V'}}" bindtap='changeSendtype' id="K"></image>
     </view>
     <view class='flex-1 '>
-      <textarea fixed="{{true}}" class='box' placeholder='说点什么？' auto-height='{{true}}' value='{{comment}}' bindinput='commentChange' bindconfirm='sendComment' maxlength='1000' wx:if="{{sendtype=='K'}}" ></textarea>
+      <textarea fixed="{{true}}" class='box' placeholder='说点什么？' auto-height='{{true}}' value='{{comment}}' bindinput='commentChange' bindconfirm='sendComment' confirm-type="发送" maxlength='1000' wx:if="{{sendtype=='K'}}" ></textarea>
       <button fixed="{{true}}" class='margin-top-5 text-center h5 txt-gray' wx:if="{{sendtype=='V'}}"   bindtouchstart="startvoice"  bindtouchend="endvoice" bindtouchmove="cancelvoice" >{{invoice=="A"?"按住讲话":""}}{{invoice=="B"?"松开发送":""}}{{invoice=="C"?"松开取消":""}}</button>
     </view>
     <view class='line-height-0 padding-10'>

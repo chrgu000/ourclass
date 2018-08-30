@@ -1,0 +1,30 @@
+<!--pages/classmatelist/classmatelist.wxml-->
+<view class='white-block padding border-bottom' wx:for="{{classmatelist}}" wx:key="k" wx:for-index="ipq">
+  <view  class='flex-row'>
+    <navigator url='/pages/childinfo/childinfo?id={{item.id}}'  class='margin-right-10'>
+      <image class='icon-40 radius-50' src='{{uploadpath}}class/{{item.photo}}'></image>
+    </navigator>
+    <view class='flex-1 margin-left-10'>
+      <navigator url='/pages/childinfo/childinfo?id={{item.id}}'  class=' flex-row '>
+        <view class='h5 txt-primary'>{{item.childname}}</view>
+        <view class='margin-left-10'>
+          <image class='icon' src='{{uploadpath}}resource/{{res.male}}' wx:if="{{item.gender=='M'}}"></image>
+          <image class='icon' src='{{uploadpath}}resource/{{res.female}}' wx:if="{{item.gender=='F'}}">></image>
+        </view>
+        <view class='h5 margin-left-10'>生日：{{item.birthday}}</view>
+      </navigator>
+      <view class='txt-gray h6 margin-top-10' style='margin-left:30rpx;' wx:if="{{item.parents.length==0}}" >
+        没有联系人
+      </view>
+      <view class='flex-row margin-top-10' style='margin-left:30rpx;' wx:for="{{item.parents}}" wx:for-index='idx' wx:for-item="subitem" wx:key="k2">
+        <view class='txt-gray h6'>联系人{{idx+1}}</view>
+        <view class='txt-gray h6 margin-left-10'>{{subitem.relationship}}</view>
+        <view class='txt-primary h6 margin-left-10'>{{subitem.name}}</view>
+        <view class=' margin-left-10 flex-1 txt-primary h6' bindtap='phoneCall' id="{{subitem.mobile}}">{{subitem.mobile}}</view>
+        <view id="{{subitem.id}}_{{ipq}}_{{idx}}_{{subitem.status=='A'?'I':'A'}}" bindtap='updateparentstatus' class="{{subitem.status=='A'?'txt-gray':'txt-primary'}} h6"  >
+          {{subitem.status=='A'?"点击禁用":"点击启用"}}
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

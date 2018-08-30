@@ -77,10 +77,10 @@
       <view class='txt-gray flex-1  text-right line-height-0 margin-right-10' wx:if="{{fav=='Y'}}">
         <image class='icon' src='{{uploadpath}}resource/{{res.faved}}'></image>
       </view>
-      <view class='txt-gray flex-1' wx:if="{{fav=='N'}}">
+      <view class='txt-gray flex-1 h5' wx:if="{{fav=='N'}}">
         收藏
       </view>
-      <view class='txt-primary flex-1' wx:if="{{fav=='Y'}}">
+      <view class='txt-primary flex-1 h5' wx:if="{{fav=='Y'}}">
         已收藏
       </view>
     </view>
@@ -92,10 +92,10 @@
       <view class='txt-gray flex-1  text-right line-height-0 margin-right-10' wx:if="{{like=='Y'}}">
         <image class='icon' src='{{uploadpath}}resource/{{res.liked}}'></image>
       </view>
-      <view class='txt-gray flex-1' wx:if="{{like=='N'}}">
+      <view class='txt-gray flex-1 h5' wx:if="{{like=='N'}}">
         赞
       </view>
-      <view class='txt-primary flex-1' wx:if="{{like=='Y'}}">
+      <view class='txt-primary flex-1 h5' wx:if="{{like=='Y'}}">
         已赞
       </view>
     </view>
@@ -104,7 +104,7 @@
       <view class='txt-gray flex-1  text-right line-height-0 margin-right-10'>
         <image class='icon' src='{{uploadpath}}resource/{{res.comment}}'></image>
       </view>
-      <view class='txt-gray flex-1'>
+      <view class='txt-gray flex-1 h5'>
         评论
       </view>
     </navigator>

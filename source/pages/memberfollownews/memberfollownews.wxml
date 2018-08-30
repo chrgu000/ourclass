@@ -1,14 +1,3 @@
-<view>
-  <swiper autoplay='true' indicator-dots='true' style='width:750rpx;height:400rpx;' circular>
-    <swiper-item wx:for="{{indexbanner}}" wx:key="k">
-      <view>
-        <image src='{{uploadpath}}indexbanner/{{item.img}}' style='width:750rpx;height:400rpx;' mode="aspectFill"></image>
-      </view>
-    </swiper-item>
-  </swiper>
-</view>
-
-
 <view class="text-center"   wx:if="{{newslist.length==0}}">
   <view>
   <image class='icon-100' mode="widthFix" src='{{uploadpath}}resource/{{res.empty}}' style='margin-top:100rpx;'></image> 
@@ -27,16 +16,9 @@
       <view class='title'>{{item.name}}</view>
       <view class='margin-top flex-row flex-bottom'>
         <view class='flex-1 h6 txt-gray'>{{item.cat_id_name}}</view>
-        <view class='h6 txt-gray'>{{item.readcount}}人阅读
-          <image src='{{uploadpath}}resource/{{res.ontop}}' mode='widthFix' class='icon-40 ontop' wx:if="{{item.ontop_value=='Y'}}"></image>
-        </view>
+        <view class='h6 txt-gray'>{{item.readcount}}人阅读</view>
       </view>
     </view>
   </navigator>
 </view>
 <view style='height:150rpx;'></view>
-<view class='fixedbottom'>
-<navigator url='/pages/newscreate/newscreate' class='padding'>
-  <button type='primary' class='round-button' >创建文章</button>
-</navigator>
-</view>
