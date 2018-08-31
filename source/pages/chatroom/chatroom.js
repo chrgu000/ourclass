@@ -143,7 +143,7 @@ class Content extends AppBase {
           return;
         }
       var chatlistcount = this.Base.getMyData().chatlist.length;
-      if (firstloaded == false || chatlistcount!=chatlist.length) {
+        if (firstloaded == false || chatlistcount != chatlist.length || chatlist.length>0) {
         firstloaded = true;
         
         this.Base.setMyData({ chatlist, indid: chatlist[chatlist.length - 1].id });
@@ -184,24 +184,13 @@ class Content extends AppBase {
       this.Base.setMyData({ invoice: "B" });
     }
   }
-  playaudio(e){
+  playaudio(e) {
+    var that = this;
     console.log(e);
 
-    var url = e.currentTarget.dataset.audio;
-    console.log(url);
-    wx.downloadFile({
-      url: url,
-      success: function (res) {
-        console.log(res.tempFilePath)
-        wx.playVoice({
-          filePath: res.tempFilePath,
-          complete: function (res) {
-            console.log('playVoice res')
-            console.log(res)
-          }
-        })
-      }
-    })
+    var id = e.currentTarget.id;
+    var audioCtx = wx.createAudioContext('a_'+id);
+    audioCtx.play();
 
 
 

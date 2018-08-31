@@ -21,8 +21,9 @@
         <view style='width:50rpx;'></view>
         <view class='flex-1'></view>
         <view hover-class="msgboxhover" hover-stay-time="50" class='margin-right-10 h5 txt-gray'>{{item.audioduration}}秒</view>
-        <view hover-class="msgboxhover"  class='msgbox white-block line-height-0' bindtap='playaudio' data-audio="{{uploadpath}}chat/{{item.audio}}">
+        <view hover-class="msgboxhover"  class='msgbox white-block line-height-0' bindtap='playaudio' id="{{item.id}}">
           <image src='{{uploadpath}}resource/{{res.play}}' class='icon' style='margin-left:30rpx'></image>
+          <audio  id="a_{{item.id}}" src='{{uploadpath}}chat/{{item.audio}}'></audio>
         </view>
       </view>
       <view class='flex-row flex-center' wx:if="{{item.type=='P'}}">
@@ -42,7 +43,7 @@
       <view class='flex-row flex-center' wx:if="{{item.type=='N'}}">
         <view style='width:50rpx;'></view>
         <view class='flex-1'></view>
-        <navigator  url='/pages/notice/notice?id={{item.notice_id}}'  hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row' bindtap='playaudio' >
+        <navigator  url='/pages/notice/notice?id={{item.notice_id}}'  hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row'  >
           <view class=' line-height-0  margin-right-10'>
           <image src='{{uploadpath}}news/{{item.notice_cover}}' class='icon-50' ></image>
           </view>
@@ -54,7 +55,7 @@
       <view class='flex-row flex-center' wx:if="{{item.type=='W'}}">
         <view style='width:50rpx;'></view>
         <view class='flex-1'></view>
-        <navigator url='/pages/news/news?id={{item.news_id}}' hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row' bindtap='playaudio'>
+        <navigator url='/pages/news/news?id={{item.news_id}}' hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row'>
           <view class=' line-height-0  margin-right-10'>
           <image src='{{uploadpath}}news/{{item.news_cover}}' class='icon-50' ></image>
           </view>
@@ -84,8 +85,9 @@
         <view style='width:50rpx;'></view>
       </view>
       <view class='flex-row flex-center' wx:if="{{item.type=='A'}}">
-        <view hover-class="msgboxhover"  class='msgbox white-block line-height-0' bindtap='playaudio' data-audio="{{uploadpath}}chat/{{item.audio}}">
+        <view hover-class="msgboxhover"  class='msgbox white-block line-height-0' bindtap='playaudio'  id="{{item.id}}">
           <image src='{{uploadpath}}resource/{{res.play}}' class='icon' style='margin-right:30rpx'></image>
+          <audio id="a_{{item.id}}" src='{{uploadpath}}chat/{{item.audio}}'></audio>
         </view>
         <view hover-class="msgboxhover" hover-stay-time="50" class='margin-left-10 h5 txt-gray'>{{item.audioduration}}秒</view>
         <view class='flex-1'></view>
@@ -100,14 +102,14 @@
       </view>
       <view class='flex-row flex-center' wx:if="{{item.type=='V'}}">
         <view class='line-height-0 margin-top-10' >
-          <video src='{{uploadpath}}chat/{{item.video}}' data-src='{{uploadpath}}chat/{{item.video}}' id="video_{{item.id}}"  style='width:350rpx;height:196rpx; border-radius:8rpx;' bindtap='playvideo' ></video>
+          <video src='{{uploadpath}}chat/{{item.video}}' data-src='{{uploadpath}}chat/{{item.video}}' id="video_{{item.id}}"  style='width:350rpx;height:196rpx; border-radius:8rpx;' bindtap='playvideo' bindplay='playvideo' ></video>
         </view>
         <view class='flex-1'></view>
         <view style='width:50rpx;'></view>
       </view>
 
       <view class='flex-row flex-center' wx:if="{{item.type=='N'}}">
-        <navigator  url='/pages/notice/notice?id={{item.notice_id}}'  hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row' bindtap='playaudio' >
+        <navigator  url='/pages/notice/notice?id={{item.notice_id}}'  hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row' >
           <view class=' line-height-0 margin-right-10'>
           <image src='{{uploadpath}}news/{{item.notice_cover}}' class='icon-50' ></image>
           </view>
@@ -119,7 +121,7 @@
         <view class='flex-1'></view>
       </view>
       <view class='flex-row flex-center' wx:if="{{item.type=='W'}}">
-        <navigator url='/pages/news/news?id={{item.news_id}}' hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row' bindtap='playaudio'>
+        <navigator url='/pages/news/news?id={{item.news_id}}' hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row' >
           <view class=' line-height-0  margin-right-10'>
           <image src='{{uploadpath}}news/{{item.news_cover}}' class='icon-50' ></image>
           </view>
@@ -141,14 +143,14 @@
 
 </scroll-view>
 
-<view class='white-block'>
+<view class='white-block' style='margin-bottom:4rpx'>
   <view class='flex-row '>
     <view class='line-height-0 padding-10'>
       <image class='icon-30' src='{{uploadpath}}resource/{{res.voice}}' wx:if="{{sendtype=='K'}}" bindtap='changeSendtype' id="V"></image>
       <image class='icon-30' src='{{uploadpath}}resource/{{res.keyboard}}' wx:if="{{sendtype=='V'}}" bindtap='changeSendtype' id="K"></image>
     </view>
     <view class='flex-1 '>
-      <textarea fixed="{{true}}" class='box' placeholder='说点什么？' auto-height='{{true}}' value='{{comment}}' bindinput='commentChange' bindconfirm='sendComment' confirm-type="发送" maxlength='1000' wx:if="{{sendtype=='K'}}" ></textarea>
+      <textarea class='box h5' placeholder='说点什么？' auto-height='{{true}}' value='{{comment}}' bindinput='commentChange' bindconfirm='sendComment' maxlength='1000' wx:if="{{sendtype=='K'}}" ></textarea>
       <button fixed="{{true}}" class='margin-top-5 text-center h5 txt-gray' wx:if="{{sendtype=='V'}}"   bindtouchstart="startvoice"  bindtouchend="endvoice" bindtouchmove="cancelvoice" >{{invoice=="A"?"按住讲话":""}}{{invoice=="B"?"松开发送":""}}{{invoice=="C"?"松开取消":""}}</button>
     </view>
     <view class='line-height-0 padding-10'>

@@ -70,7 +70,7 @@
       <view class='title'>{{item.name}}</view>
       <view class='margin-top flex-row flex-bottom'>
         <view class='flex-1 h6 txt-gray'>{{item.cat_id_name}}</view>
-        <view class='h6 txt-gray'>{{item.readcount}}阅读</view>
+        <view class='h6 txt-gray'>{{item.readcount}}人阅读</view>
       </view>
     </view>
   </navigator>

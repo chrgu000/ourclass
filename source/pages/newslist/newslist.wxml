@@ -26,8 +26,11 @@
     <view class='flex-1'>
       <view class='title'>{{item.name}}</view>
       <view class='margin-top flex-row flex-bottom'>
+
         <view class='flex-1 h6 txt-gray'>{{item.cat_id_name}}</view>
-        <view class='h6 txt-gray'>{{item.readcount}}人阅读
+        <view class=''>
+        <view class='h6 txt-gray'>{{item.readcount}}人阅读</view>
+        
           <image src='{{uploadpath}}resource/{{res.ontop}}' mode='widthFix' class='icon-40 ontop' wx:if="{{item.ontop_value=='Y'}}"></image>
         </view>
       </view>

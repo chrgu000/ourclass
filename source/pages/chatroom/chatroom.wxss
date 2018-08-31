@@ -1,11 +1,7 @@
 /* pages/chatroom/chatroom.wxss */
 .box{
-  border:2rpx solid #cbcbcb;
-  border-radius: 8rpx;
   padding:6rpx;
   width: calc( 100% - 20rpx );
-  margin-top:16rpx;
-  margin-bottom:10rpx;
 }
 page{
   background-color: white;
