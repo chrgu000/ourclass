@@ -52,7 +52,29 @@ class Content extends AppBase {
     var inputVal = this.Base.getMyData().inputVal;
     var api = new ClassApi();
     api.search({keyword:inputVal},(searchresult)=>{
-      this.Base.setMyData({ searchresult});
+      var a = searchresult[0];
+      var b = searchresult[1];
+      var c = searchresult[2];
+      var vnew=[];
+      for(var i=0;i<a.length;i++){
+        a[i].pagename="news";
+        vnew.push(a[i]);
+      }
+      for (var i = 0; i < b.length; i++) {
+        b[i].pagename = "notice";
+        vnew.push(b[i]);
+      }
+      for (var i = 0; i < c.length; i++) {
+        c[i].pagename = "news";
+        vnew.push(c[i]);
+      }
+
+      vnew.sort(function(a,b){
+        return a.published_date_timespan > b.published_date_timespan?1:-1;
+      });
+
+
+      this.Base.setMyData({ searchresult:vnew});
     });
   }
   searchKeyword(e){

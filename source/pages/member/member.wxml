@@ -58,7 +58,7 @@
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
   </view>
 </navigator>
-<navigator url='/pages/chatroom/chatroom?onlymember_id={{UserInfo.id}}' class='border-bottom flex-row flex-center white-block'>
+<navigator url='/pages/chatroomonly/chatroomonly?onlymember_id={{UserInfo.id}}' class='border-bottom flex-row flex-center white-block'>
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.teacherchat}}'></image>
   </view>
@@ -185,6 +185,43 @@
   </view>
   <view class='flex-1 padding h5'>
     图片管理
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+
+<navigator url='/pages/commentmgr/commentmgr' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    评论管理
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+
+
+
+<navigator url='/pages/memberfollownotice/memberfollownotice' class='margin-top border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.follownotice}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    收藏的通知
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+<navigator url='/pages/memberfollownews/memberfollownews'  class='border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.follownews}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    收藏的资讯文章
   </view>
   <view class='line-height-0 margin-right-10'>
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>

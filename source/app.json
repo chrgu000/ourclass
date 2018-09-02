@@ -1,13 +1,15 @@
 {
   "pages":[
+    "pages/commentmgr/commentmgr",
     "pages/home/home",
+    "pages/search/search",
     "pages/chatroom/chatroom",
+    "pages/chatroomonly/chatroomonly",
     "pages/classmatelist/classmatelist",
     "pages/memberfollownews/memberfollownews",
     "pages/memberfollownotice/memberfollownotice",
     "pages/notice/notice",
     "pages/reply/reply",
-    "pages/search/search",
     "pages/noticemgr/noticemgr",
     "pages/newslist/newslist",
     "pages/newsmgr/newsmgr",

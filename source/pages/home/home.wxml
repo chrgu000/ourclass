@@ -15,7 +15,7 @@
         <image class='icon-30' src='{{uploadpath}}inst/{{instinfo.icon1}}'></image>
       </view>
       <view class='h6 margin-top-10'>
-        我们班群
+        我班群
       </view>
     </navigator>
     <navigator url='/pages/noticelist/noticelist' class='flex-1'>

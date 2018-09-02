@@ -303,6 +303,21 @@ export class AppBase {
         })
       }
     }
+    if(userinfo.isuser=="Y"){
+      if(userinfo.isteacher1=='Y'
+        || userinfo.isteacher2 == 'Y'
+        || userinfo.isteacher3 == 'Y'
+        || userinfo.positionname == '园长'
+        || userinfo.positionname == '家委会主席'
+        || userinfo.positionname == '管理员'){
+
+        }else{
+          wx.reLaunch({
+            url: '/pages/classrequest/classrequest',
+          })
+          return;
+        }
+    }
     var needshowreddot=false;
     if (userinfo.tipsmemberinfo == "Y") {
       needshowreddot=true;

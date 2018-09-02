@@ -36,31 +36,10 @@
   </block>
   <block wx:else>
 
-<view class='flex-row tabs'>
-    <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="0">
-      <view class='flex-1'></view>
-      <view class='tabtext {{currenttab==0?"active":""}}'>校园资讯</view>
-      <view class='flex-1'></view>
-    </view>
-    <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="1">
-      <view class='flex-1'></view>
-      <view class='tabtext {{currenttab==1?"active":""}}'>班级通知</view>
-      <view class='flex-1'></view>
-    </view>
-    <view class='flex-1 tab  flex-row ' bindtap='changeTab' id="2">
-      <view class='flex-1'></view>
-      <view class='tabtext {{currenttab==2?"active":""}}'>育儿分享</view>
-      <view class='flex-1'></view>
-    </view>
-</view>
 
 
-
-<swiper indicator-dots="{{false}}" class='bottomtabs ' current='{{currenttab}}' bindchange="changeCurrentTab" class="maintab">
-  <swiper-item  style='height:100%'>
-    <scroll-view scroll-y style='height:100%'>
       
-      <view class="text-center"   wx:if="{{searchresult[0].length==0}}">
+      <view class="text-center"   wx:if="{{searchresult.length==0}}">
         <view>
         <image class='icon-100' mode="widthFix" src='{{uploadpath}}resource/{{res.empty}}' style='margin-top:100rpx;'></image> 
         </view>
@@ -71,7 +50,7 @@
 
 
       <view class='white-block'>
-  <navigator url='/pages/news/news?id={{item.id}}' class='border-top white-block padding-20 flex-row ' wx:for="{{searchresult[0]}}" wx:key="k" wx:for-index='idx'>
+  <navigator url='/pages/{{item.pagename}}/{{item.pagename}}?id={{item.id}}' class='border-top white-block padding-20 flex-row ' wx:for="{{searchresult}}" wx:key="k" wx:for-index='idx'>
     <view>
       <image class='cover box-shadow' src='{{uploadpath}}news/{{item.cover}}' mode="aspectFill"></image>
     </view>
@@ -83,65 +62,6 @@
     </view>
   </navigator>
 </view>
-    </scroll-view>
-
-  </swiper-item>
-  <swiper-item  style='height:100%'>
-    <scroll-view scroll-y style='height:100%'>
-      
-      <view class="text-center"   wx:if="{{searchresult[1].length==0}}">
-        <view>
-        <image class='icon-100' mode="widthFix" src='{{uploadpath}}resource/{{res.empty}}' style='margin-top:100rpx;'></image> 
-        </view>
-        <view class='txt-gray h6 margin-top'>
-          暂无数据
-        </view>
-      </view>
-      <view class='white-block'>
-  <navigator url='/pages/notice/notice?id={{item.id}}' class='border-top white-block padding-20 flex-row ' wx:for="{{searchresult[1]}}" wx:key="k" wx:for-index='idx'>
-    <view>
-      <image class='cover box-shadow' src='{{uploadpath}}news/{{item.cover}}' mode="aspectFill"></image>
-    </view>
-    <view class='flex-1'>
-      <view class='title'>{{item.name}}</view>
-      <view class='margin-top flex-row flex-bottom'>
-        <view class='flex-1 h6 txt-gray'>{{item.published_date}}</view>
-      </view>
-    </view>
-  </navigator>
-</view>
-    </scroll-view>
-
-  </swiper-item>
-  <swiper-item  style='height:100%'>
-    <scroll-view scroll-y style='height:100%'>
-      
-      <view class="text-center"   wx:if="{{searchresult[2].length==0}}">
-        <view>
-        <image class='icon-100' mode="widthFix" src='{{uploadpath}}resource/{{res.empty}}' style='margin-top:100rpx;'></image> 
-        </view>
-        <view class='txt-gray h6 margin-top'>
-          暂无数据
-        </view>
-      </view>
-
-
-      <view class='white-block'>
-  <navigator url='/pages/news/news?id={{item.id}}' class='border-top white-block padding-20 flex-row ' wx:for="{{searchresult[2]}}" wx:key="k" wx:for-index='idx'>
-    <view>
-      <image class='cover box-shadow' src='{{uploadpath}}news/{{item.cover}}' mode="aspectFill"></image>
-    </view>
-    <view class='flex-1'>
-      <view class='title'>{{item.name}}</view>
-      <view class='margin-top flex-row flex-bottom'>
-        <view class='flex-1 h6 txt-gray'>{{item.published_date_formatting}}</view>
-      </view>
-    </view>
-  </navigator>
-</view>
-    </scroll-view>
-
-  </swiper-item>
-</swiper>
+    
 
   </block>
