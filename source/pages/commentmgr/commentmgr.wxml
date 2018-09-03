@@ -1,2 +1,46 @@
-<!--pages/commentmgr/commentmgr.wxml-->
-<text>pages/commentmgr/commentmgr.wxml</text>
+<!--pages/mycomment/mycomment.wxml-->
+<view wx:for="{{comments}}" wx:key="k" class='padding-20 white-block border-bottom'>
+  <view>
+    <navigator  url='/pages/reply/reply?comment_id={{item.id}}' class='flex-row flex-bottom' wx:if="{{item.reply!=''}}">
+      <view class='flex-1 h5'>
+      班主任回复：{{item.reply}}
+      </view>
+      <view class='txt-gray h6 margin-left-10'>
+      {{item.reply_time_formatting}}
+      </view>
+    </navigator>
+    <navigator  url='/pages/reply/reply?comment_id={{item.id}}' class='flex-row margin-top-10' wx:if="{{item.reply==''}}">
+      <view class='flex-1 h5'>
+      暂无回复
+      </view>
+    </navigator>
+    <view class='flex-row flex-bottom margin-top-10'>
+      <view class='flex-1 h5 txt-gray'>
+      {{item.member_name}}留言：{{item.comment}}
+      </view>
+    </view>
+    <view class='triangle_border_up margin-top-10  margin-left-10'>
+    </view>
+    <view class='gray-block padding-20' wx:if="{{item.notice_id!='0'}}">
+      <navigator url='/pages/notice/notice?id={{item.notice_id}}' class='flex-row flex-center'>
+        <view class='line-height-0'>
+          <image class='icon-40' src='{{uploadpath}}news/{{item.notice_cover}}'></image>
+        </view>
+        <view class='flex-1 padding-20 h5 white-block'>
+          {{item.notice_name}}
+        </view>
+      </navigator>
+    </view>
+    <view class='gray-block padding-20' wx:if="{{item.news_id!='0'}}">
+      <navigator url='/pages/news/news?id={{item.news_id}}' class='flex-row flex-center'>
+        <view class='line-height-0'>
+          <image class='icon-40' src='{{uploadpath}}news/{{item.news_cover}}'></image>
+        </view>
+        <view class='flex-1 padding-20 h5 white-block'>
+          {{item.news_name}}
+        </view>
+      </navigator>
+    </view>
+  </view>
+  
+</view>

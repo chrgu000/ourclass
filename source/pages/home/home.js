@@ -19,10 +19,10 @@ class Content extends AppBase {
     var instapi=new InstApi();
     instapi.indexbanner({position:"home"},(indexbanner)=>{
       that.Base.setMyData({ indexbanner: indexbanner});
-    });
+    }, false);
     instapi.info({ }, (info) => {
       that.Base.setMyData(info);
-    });
+    },false);
 
     
 
@@ -31,7 +31,7 @@ class Content extends AppBase {
     // });
     instapi.newslist({ cat_id: "1,2", inhome:"Y" }, (newslist) => {
        that.Base.setMyData({ newslist: newslist });
-    });
+    }, false);
     // instapi.servicelist({ inhome: "Y" }, (servicelist) => {
     //   that.Base.setMyData({ servicelist: servicelist });
     // });

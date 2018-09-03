@@ -1,5 +1,6 @@
 <view class='white-block'>
-  <view  class='border-top white-block padding-20 flex-row ' wx:for="{{newslist}}" wx:key="k"  id="{{item.id}}" wx:for-index='idx'>
+
+  <navigator url='/pages/newscreate/newscreate?id={{item.id}}' class='border-top white-block padding-20 flex-row ' wx:for="{{newslist}}" wx:key="k"  id="{{item.id}}" wx:for-index='idx'>
     <view>
       <image class='cover box-shadow' src='{{uploadpath}}news/{{item.cover}}' mode="aspectFill"></image>
     </view>
@@ -9,16 +10,6 @@
         <view class='flex-1 h6 txt-gray'>{{item.published_date_formatting}}</view>
       </view>
     </view>
-    <view class='margin-left-10 margin-right-10'>
-      <view>
-        <button size='mini' class='h6' bindtap='changestatus' id="{{idx}}_{{item.id}}_A" type="primary" wx:if="{{item.status=='I'}}">启用</button>
-        <button size='mini' bindtap='changestatus' id="{{idx}}_{{item.id}}_I"  class='h6' wx:if="{{item.status=='A'}}">禁用</button>
-      </view>
-      <view class='margin-top-10'>
-        <button size='mini' class='h6'  bindtap='changeontop' id="{{idx}}_{{item.id}}_Y"  wx:if="{{item.ontop_value=='N'}}">置顶</button>
-        <button size='mini' bindtap='changeontop' id="{{idx}}_{{item.id}}_N" class='h6' wx:if="{{item.ontop_value=='Y'}}"  type="primary" >恢复</button>
-      </view>
-    </view>
-  </view>
+  </navigator>
 </view>
 

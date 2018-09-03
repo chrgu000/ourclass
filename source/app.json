@@ -1,7 +1,8 @@
 {
   "pages":[
-    "pages/commentmgr/commentmgr",
     "pages/home/home",
+    "pages/commentmgr/commentmgr",
+    "pages/mycomment/mycomment",
     "pages/search/search",
     "pages/chatroom/chatroom",
     "pages/chatroomonly/chatroomonly",

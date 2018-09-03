@@ -12,7 +12,7 @@ class Content extends AppBase {
    //options.id = 2;
     this.Base.Page = this;
     super.onLoad(options);
-    this.Base.setMyData({ cover: "", video:"",inhome:"Y",ontop:"Y",loaded:false});
+    this.Base.setMyData({ cover: "", video:"",inhome:"N",ontop:"N",loaded:false});
     
 
   }
@@ -43,8 +43,12 @@ class Content extends AppBase {
     }
   }
   setPageTitle() {
+    var title = "创建育儿分享";
+    if(this.Base.options.id!=undefined){
+      title="编辑育儿分享";
+    }
     wx.setNavigationBarTitle({
-      title: "创建文章"
+      title: title
     })
   }
   chooseCover(){

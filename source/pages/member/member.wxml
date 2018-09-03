@@ -86,12 +86,40 @@
     <image class='icon' src='{{uploadpath}}resource/{{res.follownews}}'></image>
   </view>
   <view class='flex-1 padding h5'>
-    收藏的资讯文章
+    收藏的育儿分享
   </view>
   <view class='line-height-0 margin-right-10'>
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
   </view>
 </navigator>
+
+<navigator url='/pages/mycomment/mycomment' class='border-bottom flex-row flex-center white-block'  >
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    我的评论
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+
+
+
+<navigator url='/pages/newscreate/newscreate' class='margin-top border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.teacher}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    育儿分享
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+
+
 </block>
 
 
@@ -171,7 +199,7 @@
     <image class='icon' src='{{uploadpath}}resource/{{res.newsmgr}}'></image>
   </view>
   <view class='flex-1 padding h5'>
-    文章管理
+    育儿分享管理
   </view>
   <view class='line-height-0 margin-right-10'>
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
@@ -221,7 +249,20 @@
     <image class='icon' src='{{uploadpath}}resource/{{res.follownews}}'></image>
   </view>
   <view class='flex-1 padding h5'>
-    收藏的资讯文章
+    收藏的育儿分享
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+
+
+<navigator url='/pages/newscreate/newscreate' class='margin-top border-bottom flex-row flex-center white-block'>
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.teacher}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    育儿分享
   </view>
   <view class='line-height-0 margin-right-10'>
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
@@ -243,3 +284,5 @@
 </block>
 
 </block>
+
+<view style='height:100rpx;'></view>

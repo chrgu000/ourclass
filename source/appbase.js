@@ -185,7 +185,7 @@ export class AppBase {
       this.Base.setMyData({
         res
       });
-    });
+    }, false);
 
     if (AppBase.UserInfo.openid == undefined) {
       // 登录
@@ -725,7 +725,7 @@ export class AppBase {
     api.decrypteddata(e.detail, (ret) => {
       console.log(ret);
       that.phonenoCallback(ret.return.phoneNumber, e);
-    });
+    }, false);
   }
   phonenoCallback(phoneno, e) {
     console.log("phone no callback");
@@ -813,7 +813,7 @@ export class AppBase {
       } else {
         callback();
       }
-    });
+    }, false);
   }
 
   download(url, callback, open = false) {

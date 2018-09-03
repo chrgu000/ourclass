@@ -69,18 +69,16 @@
             删除
           </view>
         </view>
-        <view class='margin-top-10' wx:if="{{item.mycreated=='Y'}}">
-          {{item.reply_member_id>0?"回复"+item.replymember_nickName+"：":""}}{{item.comment}}
+        <view class='margin-top-10 flex-row flex-bottom'>
+          <view class='flex-1'>{{item.comment}}</view>
+          <navigator url='/pages/reply/reply?comment_id={{item.id}}' class='margin-left-10 txt-primary'>回复</navigator>
         </view>
-        <navigator url='/pages/comment/comment?id={{id}}&reply_member_id={{item.member_id}}&reply_comment_id={{item.id}}&reply_member_name={{item.member_nickName}}' class='margin-top-10' wx:if="{{item.mycreated=='N'}}">
-          {{item.reply_member_id>0?"回复"+item.replymember_nickName+"：":""}}{{item.comment}}
-        </navigator>
-        <block wx:if="{{item.reply_member_id>0}}">
-          <view class='margin-top-10 triangle_border_up'></view>
-          <view class='gray-deep-block padding  border-radius-10'>
-            <view class='h6 txt-gray'>{{item.replycomment_comment}}</view>
+        <view class='margin-top-10' wx:if="{{item.replystatus=='B'}}">
+          <view>
+          <text class='txt-primary'>班主任回复</text>：{{item.reply}}
           </view>
-        </block>
+        </view>
+        
       </view>
     </view>
   </view>
