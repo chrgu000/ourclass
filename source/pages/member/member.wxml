@@ -106,6 +106,7 @@
 </navigator>
 
 
+<navigator url='/pages/newslist/newslist' class='margin-top border-bottom flex-row flex-center white-block'>
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.teacher}}'></image>
   </view>
