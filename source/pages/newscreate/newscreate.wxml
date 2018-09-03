@@ -18,7 +18,7 @@
     <view class='margin-top h5 txt-gray'>视频</view>
     <view class='margin-top-10'>
       <image wx:if="{{video==''}}" class='icon-100' src='{{uploadpath}}resource/{{res.addphoto}}' bindtap='chooseVideo'></image>
-      <video class='icon-100' mode='widthFix' src='{{uploadpath}}news/{{video}}' wx:if="{{video!=''}}" bindtap='chooseVideo' id="video" ></video>
+      <video class='icon-100' mode='widthFix' src='{{uploadpath}}news/{{video}}' wx:if="{{video!=''}}" bindtap='chooseVideo' id="video"></video>
       <input name="video" value='{{video}}' class='fullimg' hidden='true'></input>
     </view>
     <view class='margin-top h5 txt-gray'>来源</view>
@@ -45,19 +45,19 @@
       </view>
     </view>
   </view>
-  
-  <block>
-  <view class='flex-row flex-center' wx:if="{{id==undefined}}">
 
-    <view class='flex-1 padding'>
-      <button class='h5' id="A" type='primary' form-type='submit' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">直接发布</button>
-      <button class='h5' id="Z" type='primary' form-type='submit' wx:if="{{(UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y')==false}}">提交班主任审核发布</button>
+  <block  wx:if="{{id==undefined}}">
+    <view class='flex-row flex-center' wx:if="{{id==undefined}}">
+
+      <view class='flex-1 padding'>
+        <button class='h5' id="A" type='primary' form-type='submit' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">直接发布</button>
+        <button class='h5' id="Z" type='primary' form-type='submit' wx:if="{{(UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y')==false}}">提交班主任审核发布</button>
+      </view>
     </view>
-  </view>
   </block>
-  <block>
+  <block  wx:if="{{id!=undefined}}">
 
-  <view class='flex-row flex-center' >
+    <view class='flex-row flex-center'  wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">
       <view class='flex-1 padding'>
         <button class='h5' id="{{status}}" type='primary' form-type='submit'>更新</button>
       </view>
@@ -71,23 +71,7 @@
 
 
   </block>
-  
-  
-  
-  
-  
-  
-  <view class='flex-row flex-center' wx:if="{{id==undefined}}">
 
-    <view class='flex-1 padding'>
-      <button class='h5' id="A" type='primary' form-type='submit'>{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'?'直接发布':"提交班主任审核发布"}}</button>
-    </view>
-  </view>
-  <view class='flex-row flex-center' wx:if="{{status=='Z'}}">
 
-    <view class='flex-1 padding'>
-      <button class='h5' id="A" type='primary' form-type='submit'>直接发布</button>
-    </view>
-  </view>
-  
+
 </form>

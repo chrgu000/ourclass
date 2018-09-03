@@ -30,11 +30,11 @@
   <view class='padding white-block border-top' wx:for="{{comments}}" wx:key="k" wx:for-index="idx">
     <view class='flex-row'>
       <view url='/pages/memberinfo/memberinfo?id=shownext=Y&id={{item.member_id}}' class='line-height-0 margin-right-10'>
-        <image class='icon-40' style='border-radius:50%;' src='{{item.member_avatarUrl}}'></image>
+        <image class='icon-40' style='border-radius:50%;' src='{{uploadpath}}member/{{item.member_photo}}'></image>
       </view>
       <view class='margin-left-10 flex-1'>
         <view class=' flex-row flex-center'>
-          <view url='/pages/memberinfo/memberinfo?id=shownext=Y&id={{item.member_id}}' class='flex-1 h5 txt-primary'>{{item.member_nickName}}</view>
+          <view url='/pages/memberinfo/memberinfo?id=shownext=Y&id={{item.member_id}}' class='flex-1 h5 txt-primary'>{{item.member_name}}</view>
           <view class='line-height-0 margin-right-10' bindtap='likeComment' id="{{idx}}">
             <image class='icon' src='{{uploadpath}}resource/{{res.like}}' wx:if="{{item.iliked=='N'}}"></image>
             <image class='icon' src='{{uploadpath}}resource/{{res.liked}}' wx:if="{{item.iliked=='Y'}}"></image>

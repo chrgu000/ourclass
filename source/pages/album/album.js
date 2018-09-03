@@ -67,6 +67,10 @@ class Content extends AppBase {
 
   }
   videoplay(e){
+    if (ingoto==true){
+      return;
+    }
+    ingoto=true;
     console.log(e.currentTarget.id);
     var id = e.currentTarget.id;
     var videoContext = wx.createVideoContext(id);
@@ -83,7 +87,8 @@ class Content extends AppBase {
 
           wx.navigateTo({
             url: '/pages/videoplay/videoplay?module=photo&file=' + video[i].videos[j].video,
-          })
+          });
+          ingoto=false;
           return;
         }
       }
@@ -92,6 +97,7 @@ class Content extends AppBase {
 
   }
 }
+var ingoto=false;
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad; 

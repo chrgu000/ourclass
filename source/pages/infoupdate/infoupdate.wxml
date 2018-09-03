@@ -18,7 +18,7 @@
 
   <view class='flex-row flex-row'>
     <view class=' padding-20'>
-      姓名
+        我的姓名
     </view>
     <view class='padding-20 text-right line-height-0 flex-1'>
       <input style='width:180rpx;' maxlength='10' placeholder='请输入我的真实姓名' class='h5' name="name"></input>

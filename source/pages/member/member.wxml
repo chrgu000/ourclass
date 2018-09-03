@@ -86,7 +86,7 @@
     <image class='icon' src='{{uploadpath}}resource/{{res.follownews}}'></image>
   </view>
   <view class='flex-1 padding h5'>
-    收藏的育儿分享
+    收藏的文章
   </view>
   <view class='line-height-0 margin-right-10'>
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
@@ -106,8 +106,6 @@
 </navigator>
 
 
-
-<navigator url='/pages/newscreate/newscreate' class='margin-top border-bottom flex-row flex-center white-block'>
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.teacher}}'></image>
   </view>
@@ -249,7 +247,7 @@
     <image class='icon' src='{{uploadpath}}resource/{{res.follownews}}'></image>
   </view>
   <view class='flex-1 padding h5'>
-    收藏的育儿分享
+    收藏的文章
   </view>
   <view class='line-height-0 margin-right-10'>
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
@@ -257,7 +255,7 @@
 </navigator>
 
 
-<navigator url='/pages/newscreate/newscreate' class='margin-top border-bottom flex-row flex-center white-block'>
+<navigator url='/pages/newslist/newslist' class='margin-top border-bottom flex-row flex-center white-block'>
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.teacher}}'></image>
   </view>
@@ -268,6 +266,10 @@
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
   </view>
 </navigator>
+
+
+</block>
+
 
 <block wx:if="{{UserInfo.otherclass.length>0}}">
 <view class='padding-10 h6 txt-gray margin-top-10'>
@@ -281,8 +283,6 @@
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
   </view>
 </navigator>
-</block>
-
 </block>
 
 <view style='height:100rpx;'></view>
