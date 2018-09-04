@@ -2,6 +2,7 @@
 import { AppBase } from "../../appbase";
 import { ApiConfig } from "../../apis/apiconfig";
 import { InstApi } from "../../apis/inst.api.js";
+import { MemberApi } from "../../apis/member.api.js";
 
 class Content extends AppBase {
   constructor() {
@@ -39,7 +40,10 @@ class Content extends AppBase {
     //   that.Base.setMyData({ productlist: productlist });
     // }); 
 
-
+    var memberapi=new MemberApi();
+    memberapi.unread({}, (unread)=>{
+      that.Base.setMyData({ unread: unread });
+    });
 
     
   }

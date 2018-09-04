@@ -11,6 +11,7 @@
 <view class='padding white-block'>
   <view class='flex-row flex-center text-center'>
     <navigator url='/pages/chatroom/chatroom' class='flex-1'>
+    <view class='reddot' wx:if="{{UserInfo.isuser=='N'&&unread.chatunread=='Y'}}" style='margin-left:110rpx;'></view>
       <view class='line-height-0'>
         <image class='icon-30' src='{{uploadpath}}inst/{{instinfo.icon1}}'></image>
       </view>
@@ -35,6 +36,7 @@
       </view>
     </navigator>
     <navigator url='/pages/album/album' class='flex-1'>
+    <view class='reddot' wx:if="{{UserInfo.isuser=='N'&&unread.photounread=='Y'}}" style='margin-left:110rpx;'></view>
       <view class='line-height-0'>
         <image class='icon-30' src='{{uploadpath}}inst/{{instinfo.icon4}}'></image>
       </view>
@@ -60,6 +62,7 @@
   <view class='txt-gray h6 margin-top'>
     暂无数据
   </view>
+  <view style='height:100rpx;'></view>
 </view>
 
   <navigator url='/pages/news/news?id={{item.id}}' class='border-top white-block padding-20 flex-row ' wx:for="{{newslist}}" wx:key="k" wx:for-index='idx'>
