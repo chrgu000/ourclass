@@ -67,10 +67,6 @@ class Content extends AppBase {
 
   }
   videoplay(e){
-    if (ingoto==true){
-      return;
-    }
-    ingoto=true;
     console.log(e.currentTarget.id);
     var id = e.currentTarget.id;
     var videoContext = wx.createVideoContext(id);
@@ -84,11 +80,10 @@ class Content extends AppBase {
       for (var j = 0; j < video[i].videos.length; j++) {
         console.log(video[i].videos[j]);
         if (fv[1] == video[i].videos[j].id){
-
+          console.log(video[i].videos[j].video);
           wx.navigateTo({
             url: '/pages/videoplay/videoplay?module=photo&file=' + video[i].videos[j].video,
           });
-          ingoto=false;
           return;
         }
       }

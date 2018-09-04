@@ -37,7 +37,7 @@
         <view style='width:50rpx;'></view>
         <view class='flex-1'></view>
         <view class='line-height-0 margin-top-10' >
-          <video src='{{uploadpath}}chat/{{item.video}}' data-src='{{item.video}}' id="video_{{item.id}}"  style='width:350rpx;height:196rpx; border-radius:8rpx;' bindtap='playvideo' bindplay='playvideo'  ></video>
+          <image src='{{uploadpath}}resource/{{res.bgplay}}' data-src='{{item.video}}' id="video_{{item.id}}"    style='width:350rpx;' mode='widthFix'  bindtap='playvideo' bindplay='playvideo'  ></image>
         </view>
       </view>
       <view class='flex-row flex-center' wx:if="{{item.type=='N'}}">
@@ -102,7 +102,7 @@
       </view>
       <view class='flex-row flex-center' wx:if="{{item.type=='V'}}">
         <view class='line-height-0 margin-top-10' >
-          <video src='{{uploadpath}}chat/{{item.video}}' data-src='{{item.video}}' id="video_{{item.id}}"  style='width:350rpx;height:196rpx; border-radius:8rpx;' bindtap='playvideo' bindplay='playvideo' ></video>
+          <image src='{{uploadpath}}resource/{{res.bgplay}}' data-src='{{item.video}}' id="video_{{item.id}}"    style='width:350rpx;' mode='widthFix' bindtap='playvideo' bindplay='playvideo' ></image>
         </view>
         <view class='flex-1'></view>
         <view style='width:50rpx;'></view>

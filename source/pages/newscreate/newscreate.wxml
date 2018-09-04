@@ -65,7 +65,8 @@
         <button class='h5' id="A" form-type='submit'>发布</button>
       </view>
       <view class='flex-1 padding'>
-        <button class='h5' id="I" form-type='submit'>禁用</button>
+        <button class='h5' id="I" form-type='submit' wx:if="{{status=='A'}}">禁用</button>
+        <button class='h5' id="A" form-type='submit' wx:if="{{status=='I'}}">启用</button>
       </view>
     </view>
 

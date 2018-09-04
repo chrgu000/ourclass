@@ -51,7 +51,7 @@
     <view class='txt-bold'>{{item.date}}</view>
     <view class='flex-row flex-wrap'>
       <view class='video-item' wx:for="{{item.videos}}" wx:key="k" wx:for-item="subitem">
-        <video mode='aspectFill' controls='{{false}}' src='{{uploadpath}}photo/{{subitem.video}}'  bindtap='videoplay' bindplay='videoplay'  id="v_{{subitem.id}}"  ></video>
+        <image src='{{uploadpath}}resource/{{res.bgplay}}' mode='widthFix' controls='{{false}}'   bindtap='videoplay' bindplay='videoplay'  id="v_{{subitem.id}}"  ></image>
       </view>
     </view>
   </view>

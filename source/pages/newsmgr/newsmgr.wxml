@@ -6,8 +6,9 @@
     </view>
     <view class='flex-1'>
       <view class='title'>{{item.name}}</view>
-      <view class='margin-top flex-row flex-bottom'>
-        <view class='flex-1 h6 txt-gray'>{{item.published_date_formatting}}</view>
+      <view class='flex-row flex-bottom'>
+        <view class='h6'>状态：<text class='txt-primary h6'>{{item.status_name}}</text></view>
+        <view class='flex-1 h6 txt-gray text-right'>{{item.published_date_formatting}}</view>
       </view>
     </view>
   </navigator>

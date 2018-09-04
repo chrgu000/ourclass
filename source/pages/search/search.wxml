@@ -27,7 +27,7 @@
         <view wx:for="{{history}}" wx:key="k" class='keyword' id="{{item.keyword}}" bindtap='searchKeyword'>{{item.keyword}}</view>
       </view>
     </block>
-    <block wx:if="{{hotest.length>0&&false}}">
+    <block wx:if="{{hotest.length>0}}">
       <view class='keywordtitle' style='margin-top:40rpx;'>热门搜索</view>
       <view class='flex-row' style='flex-wrap: wrap;padding-left:30rpx;'>
         <view wx:for="{{hotest}}" wx:key="k" class='keyword' id="{{item.keyword}}" bindtap='searchKeyword'>{{item.keyword}}</view>
