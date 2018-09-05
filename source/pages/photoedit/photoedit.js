@@ -47,7 +47,7 @@ class Content extends AppBase {
     var id = e.currentTarget.id;
     var videoContext = wx.createVideoContext(id);
     console.log("stop");
-    videoContext.pause();
+    videoContext.stop();
     var fv = id.split("_");
 
     var list = this.Base.getMyData().list;

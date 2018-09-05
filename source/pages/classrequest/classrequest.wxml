@@ -5,7 +5,7 @@
     <image src='{{uploadpath}}resource/{{res.classrequesttop}}' class='fullimg' mode='widthFix'></image>
   </view>
   <view class='h4 txt-bold text-center'>
-    欢迎加入{{classinfo.name}}！
+    欢迎加入{{classinfo.school_name}}！
   </view>
 
   <view  style='margin-top:80rpx;' class='text-center'  >

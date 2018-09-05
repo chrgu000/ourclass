@@ -1,6 +1,8 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/album/album",
+    "pages/classassesshistory/classassesshistory",
     "pages/commentmgr/commentmgr",
     "pages/mycomment/mycomment",
     "pages/search/search",
@@ -18,7 +20,6 @@
     "pages/instnewslist/instnewslist",
     "pages/classassess/classassess",
     "pages/member/member",
-    "pages/classassesshistory/classassesshistory",
     "pages/childinfo/childinfo",
     "pages/newsselect/newsselect",
     "pages/noticeselect/noticeselect",
@@ -27,7 +28,6 @@
     "pages/classrequest/classrequest",
     "pages/userbind/userbind",
     "pages/newscreate/newscreate",
-    "pages/album/album",
     "pages/videoplay/videoplay",
     "pages/photoedit/photoedit",
     "pages/noticecreate/noticecreate",

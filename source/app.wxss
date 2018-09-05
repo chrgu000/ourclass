@@ -548,3 +548,21 @@ display:-webkit-box;
   border-radius: 50%;
   background-color: red;
 }
+
+.read{
+  position: absolute;
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  padding: 4rpx 8rpx 4rpx 8rpx;
+  background: rgba(81,171,216,0.5);
+  color:white;
+}
+.unread{
+
+  position: absolute;
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  padding: 4rpx 8rpx 4rpx 8rpx;
+  background: rgba(100,100,100,0.5);
+  color:white;
+}

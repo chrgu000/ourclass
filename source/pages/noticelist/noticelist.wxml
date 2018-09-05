@@ -22,6 +22,8 @@
 <view class='white-block'>
   <navigator url='/pages/notice/notice?id={{item.id}}' class='border-top white-block padding-20 flex-row ' wx:for="{{noticelist}}" wx:key="k" wx:for-index='idx'>
     <view>
+      <view class='unread' wx:if="{{item.isread==0}}">未读</view>
+      <view class='read' wx:if="{{item.isread>0}}">已读</view>
       <image class='cover box-shadow' src='{{uploadpath}}news/{{item.cover}}' mode="aspectFill"></image>
     </view>
     <view class='flex-1'>

@@ -17,6 +17,9 @@ class Content extends AppBase {
     var that = this;
     var api = new ClassApi();
     api.assessrecord({ }, (assessrecord) => {
+      for(var i=0;i<assessrecord.length;i++){
+        assessrecord[i].show=false;
+      }
       this.Base.setMyData({ assessrecord: assessrecord });
     });
   }
@@ -30,13 +33,19 @@ class Content extends AppBase {
       });
     });
   }
-
+  toggle(e){
+    var idx=parseInt(e.currentTarget.id);
+    var assessrecord = this.Base.getMyData().assessrecord;
+    assessrecord[idx].show = !assessrecord[idx].show;
+    this.Base.setMyData({ assessrecord: assessrecord });
+  }
 
 
 }
 var content = new Content();
 var body = content.generateBodyJson();
 body.onLoad = content.onLoad;
-body.onMyShow = content.onMyShow;
+body.onMyShow = content.onMyShow; 
 body.updatephoto = content.updatephoto;
+body.toggle = content.toggle;
 Page(body)

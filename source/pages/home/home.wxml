@@ -20,6 +20,7 @@
       </view>
     </navigator>
     <navigator url='/pages/noticelist/noticelist' class='flex-1'>
+    <view class='reddot' wx:if="{{UserInfo.isuser=='N'&&unread.noticeunread=='Y'}}" style='margin-left:110rpx;'></view>
       <view class='line-height-0'>
         <image class='icon-30' src='{{uploadpath}}inst/{{instinfo.icon2}}'></image>
       </view>
@@ -28,6 +29,7 @@
       </view>
     </navigator>
     <navigator  url='/pages/newslist/newslist'  class='flex-1'>
+    <view class='reddot' wx:if="{{UserInfo.isuser=='N'&&unread.newsunread=='Y'}}" style='margin-left:110rpx;'></view>
       <view class='line-height-0'>
         <image class='icon-30' src='{{uploadpath}}inst/{{instinfo.icon3}}'></image>
       </view>
@@ -52,6 +54,7 @@
     <view class="flex-row flex-bottom">
       <view class='txt-bold flex-1'>热门资讯</view>
       <navigator url='/pages/instnewslist/instnewslist' class=' text-right h6 txt-gray'>更多</navigator>
+    <view class='reddot' wx:if="{{UserInfo.isuser=='N'&&unread.instnewsunread=='Y'}}" style='right:10rpx;'></view>
     </view>
   </view>
 
@@ -67,6 +70,8 @@
 
   <navigator url='/pages/news/news?id={{item.id}}' class='border-top white-block padding-20 flex-row ' wx:for="{{newslist}}" wx:key="k" wx:for-index='idx'>
     <view>
+      <view class='unread' wx:if="{{item.isread==0}}">未读</view>
+      <view class='read' wx:if="{{item.isread>0}}">已读</view>
       <image class='cover box-shadow' src='{{uploadpath}}news/{{item.cover}}' mode="aspectFill"></image>
     </view>
     <view class='flex-1'>

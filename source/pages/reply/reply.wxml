@@ -12,7 +12,7 @@
     </view>
     <view class="flex-row flex-bottom" wx:if="{{commentinfo.classmate.id>0}}" >
       <view class='txt-gray'>评论人：</view>
-      <view >{{commentinfo.classmate.name}}</view>
+      <view >{{commentinfo.member_name}}</view>
       <view class='txt-gray h5 margin-left-10'>({{commentinfo.classmate.childname}}，关系：{{commentinfo.classmate.relationship}})</view>
     </view>
     <view  class="flex-row">
@@ -21,7 +21,7 @@
     </view>
   </view>
   <view class='padding white-block'>
-    <textarea placeholder='回复内容...' name="reply" class='fullimg' maxlength='-1' auto-focus='{{true}}' value='{{reply}}'></textarea>
+    <textarea placeholder='回复内容...' name="reply" class='fullimg' maxlength='-1' auto-focus='{{true}}' value='{{commentinfo.reply}}'></textarea>
   </view>
   <view class='flex-row flex-center'>
     <view class='padding-20 flex-1'>

@@ -20,7 +20,7 @@
         <view class='txt-gray h6 margin-left-10'>{{subitem.relationship}}</view>
         <view class='txt-gray h6 margin-left-10' style='width:100rpx;'>{{subitem.name}}</view>
         <view class=' margin-left-10 flex-1 txt-primary h6' bindtap='phoneCall' id="{{subitem.mobile}}">{{subitem.mobile}}</view>
-        <navigator url='/pages/chatroomonly/chatroomonly?onlymember_id={{subitem.member_id}}' class='txt-primary h6 margin-left-10'>会谈</navigator>
+        <navigator url='/pages/chatroomonly/chatroomonly?onlymember_id={{subitem.member_id}}' class='txt-primary h6 margin-left-10' wx:if="{{UserInfo.isteacher1=='Y'}}">会谈</navigator>
         <view id="{{subitem.id}}_{{ipq}}_{{idx}}_{{subitem.status=='A'?'I':'A'}}" bindtap='updateparentstatus' class="{{subitem.status=='A'?'txt-gray':'txt-primary'}} h6 margin-left-10"  >
           {{subitem.status=='A'?"点击禁用":"点击启用"}}
         </view>

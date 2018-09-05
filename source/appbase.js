@@ -50,7 +50,7 @@ export class AppBase {
     var api=new ClassApi();
     api.info({},(classinfo)=>{
       wx.setNavigationBarTitle({
-        title: classinfo.name
+        title: classinfo.school_name
       })
     },false);
   }
@@ -323,11 +323,14 @@ export class AppBase {
       needshowreddot=true;
     }
     if (userinfo.isteacher1 == "Y") {
-      if (userinfo.noschedule != 'N') {
+      if (userinfo.noschedule != 'N'  ) {
         if (userinfo.classmember.length > userinfo.assesscount) {
 
           needshowreddot = true;
         }
+      }
+      if (userinfo.newswaitapprove != 'N' ) {
+          needshowreddot = true;
       }
     }
     if (needshowreddot==true){

@@ -6,7 +6,7 @@
         <image class='icon-100' src='{{uploadpath}}photo/{{item.photo}}' bindtap='viewPhoto' id="{{uploadpath}}photo/{{item.photo}}"></image>
       </view>
       <view class='padding-20' wx:if="{{item.video!=''}}">
-        <image src='{{uploadpath}}resource/{{res.bgplay}}' mode='widthFix' class='icon-100' controls='{{false}}'  id="v_{{item.id}}" bindtap='videoplay' bindplay='videoplay'></image>
+        <video src='{{uploadpath}}photo/{{item.video}}' mode='widthFix' class='icon-100' controls='{{false}}'  id="v_{{item.id}}" bindtap='videoplay' bindplay='videoplay'></video>
       </view>
       <view class='flex-1'>
         <view wx:if="{{item.photo!=''}}">照片</view>

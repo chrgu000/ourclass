@@ -242,7 +242,7 @@ class Content extends AppBase {
     }
 
     var member_id=e.currentTarget.id;
-    if (AppBase.UserInfo.isuser != 'Y') {
+    if (AppBase.UserInfo.isteacher1 != 'Y') {
       console.log("b");
       return;
     } 
@@ -254,7 +254,7 @@ class Content extends AppBase {
     if (parseInt(this.Base.options.onlymember_id) > 0) {
       return;
     }
-    if (AppBase.UserInfo.isuser == 'Y') {
+    if (AppBase.UserInfo.isteacher1 == 'Y') {
       return;
     }
     wx.navigateTo({

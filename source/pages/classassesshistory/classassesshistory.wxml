@@ -8,52 +8,59 @@
   </view>
 </view>
 
-<view class='padding white-block border-bottom' wx:for="{{assessrecord}}" wx:key="key">
-    
-    <view class='txt-primary h4'>{{item.name}}</view>
-  <view class='flex-row margin-top {{idx<item.childlist.length-1?"border-bottom":""}}'  wx:for="{{item.childlist}}" wx:key='k' wx:for-item='subitem' wx:for-index='idx' style='padding-bottom:20rpx;' >
-    <view class='' style='width:150rpx;'>
-      <view>
-        <image class='icon-40 radius-50' src='{{uploadpath}}class/{{subitem.photo}}'></image>
-      </view>
-      <view class='h6'>
-      {{subitem.childname}}
-      </view>
+<view class='padding white-block border-bottom' wx:for="{{assessrecord}}" wx:key="key" wx:for-index="cids">
+  <view class='flex-row flex-center' bindtap='toggle' id="{{cids}}">
+    <view class='txt-primary flex-1'>{{item.name}}</view>
+    <view class='line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.addfolder}}' hidden="{{(item.show==true)}}"></image>
+      <image class='icon' src='{{uploadpath}}resource/{{res.minusfolder}}' hidden="{{(item.show==false)}}"></image>
     </view>
-    <view class='flex-1'>
-    <view class='flex-row'>
-      <view class='margin-right-10 h5'>评分：</view>
-      <view class='flex-1 margin-left-10 flex-row'>
-        <view class='margin-right-10'>
-          <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<1}}"></image>
-          <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=1}}"></image>
+  </view>
+  <view hidden="{{(item.show==false)}}">
+    <view class='flex-row margin-top {{idx<item.childlist.length-1?"border-bottom":""}}' wx:for="{{item.childlist}}" wx:key='k' wx:for-item='subitem' wx:for-index='idx' style='padding-bottom:20rpx;'>
+      <view class='text-center' style='width:150rpx;'>
+        <view>
+          <image class='icon-40 radius-50' src='{{uploadpath}}class/{{subitem.photo}}'></image>
         </view>
-        <view class='margin-right-10'>
-          <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<2}}"></image>
-          <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=2}}"></image>
-        </view>
-        <view class='margin-right-10'>
-          <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<3}}"></image>
-          <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=3}}"></image>
-        </view>
-        <view class='margin-right-10'>
-          <image class='icon' class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<4}}"></image>
-          <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=4}}"></image>
-        </view>
-        <view class='margin-right-10'>
-          <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<5}}"></image>
-          <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=5}}"></image>
+        <view class='h6'>
+          {{subitem.childname}}
         </view>
       </view>
-    </view>
-    <view class='flex-row margin-top'>
-      <view class='margin-right-10 h5'>评价：</view>
-      <view class='flex-1 margin-left-10 flex-row'>
-        <view class='gray-block padding-10 radius-10 h6 txt-gray'>
-          {{subitem.summary==''?'没有评价哦':subitem.summary}}
+      <view class='flex-1'>
+        <view class='flex-row'>
+          <view class='margin-right-10 h5'>评分：</view>
+          <view class='flex-1 margin-left-10 flex-row'>
+            <view class='margin-right-10'>
+              <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<1}}"></image>
+              <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=1}}"></image>
+            </view>
+            <view class='margin-right-10'>
+              <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<2}}"></image>
+              <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=2}}"></image>
+            </view>
+            <view class='margin-right-10'>
+              <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<3}}"></image>
+              <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=3}}"></image>
+            </view>
+            <view class='margin-right-10'>
+              <image class='icon' class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<4}}"></image>
+              <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=4}}"></image>
+            </view>
+            <view class='margin-right-10'>
+              <image class='icon' src='{{uploadpath}}resource/{{res.scorestar}}' wx:if="{{subitem.score<5}}"></image>
+              <image class='icon' src='{{uploadpath}}resource/{{res.scorestar_a}}' wx:if="{{subitem.score>=5}}"></image>
+            </view>
+          </view>
+        </view>
+        <view class='flex-row margin-top'>
+          <view class='margin-right-10 h5'>评价：</view>
+          <view class='flex-1 margin-left-10 flex-row'>
+            <view class='gray-block padding-10 radius-10 h6 txt-gray'>
+              {{subitem.summary==''?'没有评价哦':subitem.summary}}
+            </view>
+          </view>
         </view>
       </view>
-    </view>
     </view>
   </view>
 </view>
