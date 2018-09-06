@@ -10,7 +10,8 @@ export class ApiUtil {
     s = s.replace(/&gt;/g, ">");
     s = s.replace(/&nbsp;/g, " ");
     s = s.replace(/&#39;/g, "\'");
-    s = s.replace(/&quot;/g, "\"");
+    s = s.replace(/&quot;/g, "\""); 
+    s = s.replace(new RegExp("</p>", "gm"), "</p><br />");
     s = s.replace(new RegExp("\"/alucard263096/ourclass/upload/", "gm"), "\"" + "https://cmsdev.app-link.org/alucard263096/ourclass/upload/");
     console.log(s);
     return s;

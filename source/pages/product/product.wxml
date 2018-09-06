@@ -30,6 +30,6 @@
 </view>
 
 
-<view class='white-block padding-20 ' wx:if="{{content!=''}}" >
+<view class='white-block padding-20 nostyle' wx:if="{{content!=''}}" >
   <template is="wxParse" data="{{wxParseData:content.nodes}}" />
 </view>

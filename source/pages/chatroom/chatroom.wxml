@@ -1,7 +1,7 @@
 <!--pages/chatroom/chatroom.wxml-->
 <scroll-view class="{{showmore==false?'ml':'mlb'}}" scroll-y scroll-into-view='v{{indid}}' >
-
-<view class='margin-top'>
+<view style='height:40rpx;'></view>
+<view >
 <view class='flex-row' wx:for="{{chatlist}}" wx:key="k">
   <block wx:if="{{item.user_id==0}}">
     <view class='padding-20' style='padding-right:0rpx;'>
@@ -80,12 +80,12 @@
         {{item.user_user_name}} {{item.send_time}}
       </view>
       <view class='flex-row' wx:if="{{item.type=='T'}}">
-        <view hover-class="msgboxhover" hover-stay-time="50" class='msgbox white-block'><text class='wordbreak h5'>{{item.comment}}</text></view>
+        <view hover-class="msgboxhover" hover-stay-time="50" class='msgbox bg-primary'><text class='wordbreak h5'>{{item.comment}}</text></view>
         <view class='flex-1'></view>
         <view style='width:50rpx;'></view>
       </view>
       <view class='flex-row flex-center' wx:if="{{item.type=='A'}}">
-        <view hover-class="msgboxhover"  class='msgbox white-block line-height-0' bindtap='playaudio'  id="{{item.id}}">
+        <view hover-class="msgboxhover"  class='msgbox bg-primary line-height-0' bindtap='playaudio'  id="{{item.id}}">
           <image src='{{uploadpath}}resource/{{res.play}}' class='icon' style='margin-right:30rpx'></image>
           <audio id="a_{{item.id}}" src='{{uploadpath}}chat/{{item.audio}}'></audio>
         </view>
@@ -109,7 +109,7 @@
       </view>
 
       <view class='flex-row flex-center' wx:if="{{item.type=='N'}}">
-        <navigator  url='/pages/notice/notice?id={{item.notice_id}}'  hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row' >
+        <navigator  url='/pages/notice/notice?id={{item.notice_id}}'  hover-class="msgboxhover"  class='msgbox bg-primary padding-20 flex-row' >
           <view class=' line-height-0 margin-right-10'>
           <image src='{{uploadpath}}news/{{item.notice_cover}}' class='icon-50' ></image>
           </view>
@@ -121,7 +121,7 @@
         <view class='flex-1'></view>
       </view>
       <view class='flex-row flex-center' wx:if="{{item.type=='W'}}">
-        <navigator url='/pages/news/news?id={{item.news_id}}' hover-class="msgboxhover"  class='msgbox white-block padding-20 flex-row' >
+        <navigator url='/pages/news/news?id={{item.news_id}}' hover-class="msgboxhover"  class='msgbox bg-primary padding-20 flex-row' >
           <view class=' line-height-0  margin-right-10'>
           <image src='{{uploadpath}}news/{{item.news_cover}}' class='icon-50' ></image>
           </view>

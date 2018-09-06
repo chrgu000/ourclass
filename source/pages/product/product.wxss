@@ -22,3 +22,10 @@ video{
   width: 100rpx;
   height: 100rpx;
 }
+
+
+.nostyle view,navigator,input,text,textarea{
+  color:inherit;
+  font-size:inherit;
+  font-weight:inherit;
+}

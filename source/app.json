@@ -1,6 +1,8 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/chatlist/chatlist",
+    "pages/member/member",
     "pages/album/album",
     "pages/classassesshistory/classassesshistory",
     "pages/commentmgr/commentmgr",
@@ -19,7 +21,6 @@
     "pages/news/news",
     "pages/instnewslist/instnewslist",
     "pages/classassess/classassess",
-    "pages/member/member",
     "pages/childinfo/childinfo",
     "pages/newsselect/newsselect",
     "pages/noticeselect/noticeselect",

@@ -50,7 +50,7 @@ export class AppBase {
     var api=new ClassApi();
     api.info({},(classinfo)=>{
       wx.setNavigationBarTitle({
-        title: classinfo.school_name
+        title: classinfo.school_name+classinfo.name
       })
     },false);
   }
@@ -328,6 +328,9 @@ export class AppBase {
 
           needshowreddot = true;
         }
+      } 
+      if (userinfo.onlychatunread != 'N') {
+        needshowreddot = true;
       }
       if (userinfo.newswaitapprove != 'N' ) {
           needshowreddot = true;

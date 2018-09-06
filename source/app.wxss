@@ -1,4 +1,6 @@
 /**app.wxss**/
+@import "wxParse/wxParse.wxss";
+
 page{
   background: #f2f2f2;
 }
@@ -73,6 +75,13 @@ view,navigator,input,text,textarea{
 }
 .bg-primary{
   background: #51ABD8;
+  color:white !important;
+}
+.bg-primary text{
+  color:white !important;
+}
+.bg-primary view{
+  color:white !important;
 }
 .width-200{
   width: 200rpx;
@@ -225,6 +234,9 @@ button[disabled][type=primary] {
 }
 .line-height-0{
   line-height: 0rpx;
+}
+.margin-right{
+  margin-right: 20rpx;
 }
 .margin-right-10{
   margin-right: 10rpx;

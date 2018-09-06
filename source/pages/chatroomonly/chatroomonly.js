@@ -25,15 +25,7 @@ class Content extends AppBase {
     }
     super.onLoad(options);
     var comment = "";
-    var a = wx.getStorageSync("roomcomment");
-    if (a != undefined) {
-      comment = a;
-    }
     var sendtype = "K";
-    var b = wx.getStorageSync("roomsendtype");
-    if (b != "") {
-      sendtype = b;
-    }
     this.Base.log("roomsendtype", sendtype);
     this.Base.setMyData({
       chatlist: [],
@@ -56,10 +48,6 @@ class Content extends AppBase {
   }
   commentChange(e) {
     var comment = e.detail.value;
-    wx.setStorage({
-      key: "roomcomment",
-      data: comment,
-    })
     this.Base.setMyData({
       comment: comment
     });
@@ -75,10 +63,6 @@ class Content extends AppBase {
       "type": "T", comment: comment
       , user_id: AppBase.UserInfo.isuser == "Y" ? AppBase.UserInfo.user.id : 0
     }, () => {
-      wx.setStorage({
-        key: "roomcomment",
-        data: ""
-      })
       this.Base.setMyData({
         comment: ""
       });
@@ -140,7 +124,7 @@ class Content extends AppBase {
   loadchatlist() {
     var api = new ClassApi();
     api.chatlist({
-      onlymember_id: this.Base.options.onlymember_id, orderby: "send_time"
+      onlymember_id: this.Base.options.onlymember_id, orderby: "send_time",isteacher:AppBase.UserInfo.isteacher1
     }, (chatlist) => {
       var chatlistcount = this.Base.getMyData().chatlist.length;
       if (chatlist.length == 0) {
@@ -202,10 +186,6 @@ class Content extends AppBase {
   }
   changeSendtype(e) {
     var id = e.currentTarget.id;
-    wx.setStorage({
-      key: "roomsendtype",
-      data: id,
-    })
     this.Base.setMyData({ sendtype: id });
   }
   showmore() {

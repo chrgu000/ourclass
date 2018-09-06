@@ -65,6 +65,7 @@
   <view class='flex-1 padding h5'>
     老师沟通
   </view>
+  <view style='color:red;' class='margin-right-10 h6' wx:if="{{UserInfo.onlychatunread=='Y'}}">新消息</view>
   <view class='line-height-0 margin-right-10'>
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
   </view>
@@ -192,15 +193,27 @@
   </view>
 </navigator>
 
+<navigator url='/pages/chatlist/chatlist' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'}}">
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.msg}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    消息管理
+  </view>
+  <view style='color:red;' class='margin-right-10 h6' wx:if="{{UserInfo.onlychatunread=='Y'}}">新消息</view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
 
 <navigator url='/pages/newsmgr/newsmgr' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.newsmgr}}'></image>
   </view>
-  <view class='reddot' style='margin-left:300rpx;' wx:if="{{UserInfo.newswaitapprove=='Y'}}"></view>
   <view class='flex-1 padding h5'>
     育儿分享管理
   </view>
+  <view style='color:red;' class='margin-right-10 h6' wx:if="{{UserInfo.newswaitapprove=='Y'}}">新的发布</view>
   <view class='line-height-0 margin-right-10'>
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
   </view>
