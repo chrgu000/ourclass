@@ -50,7 +50,7 @@ export class AppBase {
     var api=new ClassApi();
     api.info({},(classinfo)=>{
       wx.setNavigationBarTitle({
-        title: classinfo.school_name+classinfo.name
+        title: classinfo.name
       })
     },false);
   }
@@ -319,6 +319,12 @@ export class AppBase {
         }
     }
     var needshowreddot=false;
+    if(userinfo.isuser=="N"){
+
+      if (userinfo.newswaitapprove != 'N') {
+        needshowreddot = true;
+      }
+    }
     if (userinfo.tipsmemberinfo == "Y") {
       needshowreddot=true;
     }
@@ -336,6 +342,7 @@ export class AppBase {
           needshowreddot = true;
       }
     }
+
     if (needshowreddot==true){
       wx.showTabBarRedDot({
         index: 2,
