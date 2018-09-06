@@ -1,0 +1,39 @@
+
+<view class="text-center"   wx:if="{{list.length==0}}">
+  <view>
+  <image class='icon-100' mode="widthFix" src='{{uploadpath}}resource/{{res.empty}}' style='margin-top:100rpx;'></image> 
+  </view>
+  <view class='txt-gray h6 margin-top'>
+    暂无数据
+  </view>
+</view>
+<navigator  url='/pages/chatroomonly/chatroomonly?onlymember_id={{item.id}}' wx:for="{{list}}" wx:key="k" class="border-bottom padding white-block">
+  <view class='flex-row'>
+    <view class='margin-right'>
+      <image class='icon-40 radius-50' src='{{uploadpath}}member/{{item.photo}}'></image>
+    </view>
+    <view class='flex-1'>
+      <view class='flex-row'>
+        <view class='flex-1 h5'>
+          {{item.name}}
+        </view>
+        <view class='h6 txt-gray'>
+          {{item.chat.sent_time_formatting}}
+        </view>
+      </view>
+      <view class='flex-row  margin-top-10'>
+      <view class='h6 txt-gray flex-1 margin-right'>
+        {{item.chat.type=='T'?item.chat.comment:""}}
+        {{item.chat.type=='A'?"发来一段语音":""}}
+        {{item.chat.type=='P'?"发送一张图片":""}}
+        {{item.chat.type=='V'?"发送一条视频":""}}
+        {{item.chat.type=='N'?"发送一条通知":""}}
+        {{item.chat.type=='W'?"发送一篇文章":""}}
+      </view>
+        <view class='h6 txt-gray'>
+          
+        </view>
+      </view>
+    </view>
+  </view>
+</navigator>
