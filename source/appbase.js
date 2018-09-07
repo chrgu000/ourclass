@@ -321,7 +321,7 @@ export class AppBase {
     var needshowreddot=false;
     if(userinfo.isuser=="N"){
 
-      if (userinfo.newswaitapprove != 'N') {
+      if (userinfo.onlychatunread != 'N') {
         needshowreddot = true;
       }
     }

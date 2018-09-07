@@ -61,9 +61,11 @@
       <view class='flex-1 padding'>
         <button class='h5' id="{{status}}" type='primary' form-type='submit'>更新</button>
       </view>
-      <view class='flex-1 padding'>
-        <button class='h5' id="I" form-type='submit' wx:if="{{status=='Z'||status=='A'}}">禁用</button>
-        <button class='h5' id="A" form-type='submit' wx:if="{{status=='Z'||status=='I'}}">启用</button>
+      <view class='flex-1 padding'  wx:if="{{status=='Z'||status=='A'}}">
+        <button class='h5' id="I" form-type='submit'>禁用</button>
+      </view>
+      <view class='flex-1 padding'  wx:if="{{status=='Z'||status=='I'}}">
+        <button class='h5' id="A" form-type='submit'>启用</button>
       </view>
     </view>
 
