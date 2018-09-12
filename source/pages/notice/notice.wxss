@@ -1,1 +1,8 @@
 /* pages/notice/notice.wxss */
+
+.nostyle view,navigator,input,text,textarea{
+  color:inherit;
+  font-size:inherit;
+  font-weight:inherit;
+  word-break: normal;
+}

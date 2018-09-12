@@ -47,12 +47,12 @@ export class AppBase {
     //ApiConfig.SetToken("10e991a4ca7a93c60794628c11edaea3");
   }
   setPageTitle() {
-    var api=new ClassApi();
-    api.info({},(classinfo)=>{
+    var api = new ClassApi();
+    api.info({}, (classinfo) => {
       wx.setNavigationBarTitle({
         title: classinfo.name
       })
-    },false);
+    }, false);
   }
   generateBodyJson() {
     var base = this;
@@ -303,51 +303,51 @@ export class AppBase {
         })
       }
     }
-    if(userinfo.isuser=="Y"){
-      if(userinfo.isteacher1=='Y'
-        || userinfo.isteacher2 == 'Y'
-        || userinfo.isteacher3 == 'Y'
-        || userinfo.positionname == '园长'
-        || userinfo.positionname == '家委会主席'
-        || userinfo.positionname == '管理员'){
+    if (userinfo.isuser == "Y") {
+      if (userinfo.isteacher1 == 'Y' ||
+        userinfo.isteacher2 == 'Y' ||
+        userinfo.isteacher3 == 'Y' ||
+        userinfo.positionname == '园长' ||
+        userinfo.positionname == '家委会主席' ||
+        userinfo.positionname == '管理员') {
 
-        }else{
-          wx.reLaunch({
-            url: '/pages/classrequest/classrequest',
-          })
-          return;
-        }
+      } else {
+        wx.reLaunch({
+          url: '/pages/classrequest/classrequest',
+        })
+        return;
+      }
     }
-    var needshowreddot=false;
-    if(userinfo.isuser=="N"){
+    var needshowreddot = false;
+    if (userinfo.isuser == "N") {
 
       if (userinfo.onlychatunread != 'N') {
         needshowreddot = true;
       }
     }
     if (userinfo.tipsmemberinfo == "Y") {
-      needshowreddot=true;
+      needshowreddot = true;
     }
     if (userinfo.isteacher1 == "Y") {
-      if (userinfo.noschedule != 'N'  ) {
+      if (userinfo.noschedule != 'N') {
         if (userinfo.classmember.length > userinfo.assesscount) {
 
           needshowreddot = true;
         }
-      } 
+      }
       if (userinfo.onlychatunread != 'N') {
         needshowreddot = true;
       }
-      if (userinfo.newswaitapprove != 'N' ) {
-          needshowreddot = true;
+      if (userinfo.newswaitapprove != 'N') {
+        needshowreddot = true;
       }
     }
 
-    if (needshowreddot==true){
+    if (needshowreddot == true) {
       wx.showTabBarRedDot({
         index: 2,
       })
-    }else{
+    } else {
       wx.hideTabBarRedDot({
         index: 2,
       })
