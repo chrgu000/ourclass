@@ -132,7 +132,7 @@
     </view>
     <navigator  class='flex-1 padding-20' >
       <view>
-        你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"代班老师":""}}，{{UserInfo.user.user_name}}！
+        你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"代班老师":""}}，{{UserInfo.isteacher1!='Y'&&UserInfo.isteacher2!='Y'&&UserInfo.isteacher3!='Y'?UserInfo.user.positionname:""}}{{UserInfo.user.user_name}}！
       </view>
       <view class='txt-gray h6'>
         {{UserInfo.mobile}}
@@ -141,8 +141,19 @@
   </view>
 </view>
 
+<navigator url='/pages/teacherlist/teacherlist' class='margin-top border-bottom flex-row flex-center white-block'   wx:if="{{UserInfo.user.positionname=='园长'}}">
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.member}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    园区老师
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
 
-<navigator url='/pages/classmatelist/classmatelist' class='margin-top border-bottom flex-row flex-center white-block'>
+<navigator url='/pages/classmatelist/classmatelist' class='margin-top border-bottom flex-row flex-center white-block'   wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.member}}'></image>
   </view>
@@ -153,7 +164,7 @@
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
   </view>
 </navigator>
-<navigator url='/pages/classassesshistory/classassesshistory' class='border-bottom flex-row flex-center white-block'>
+<navigator url='/pages/classassesshistory/classassesshistory' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.isteacher1=='Y'}}" >
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.assessrecord}}'></image>
   </view>
@@ -206,7 +217,7 @@
   </view>
 </navigator>
 
-<navigator url='/pages/newsmgr/newsmgr' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">
+<navigator url='/pages/newsmgr/newsmgr' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='园长'}}">
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.newsmgr}}'></image>
   </view>
@@ -220,13 +231,14 @@
 </navigator>
 
 
-<navigator url='/pages/photoedit/photoedit' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">
+<navigator url='/pages/photoedit/photoedit' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='园长'}}">
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
   </view>
   <view class='flex-1 padding h5'>
     图片视频管理
   </view>
+  <view style='color:red;' class='margin-right-10 h6' wx:if="{{UserInfo.photowaitapprove=='Y'}}">新的发布</view>
   <view class='line-height-0 margin-right-10'>
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
   </view>
@@ -292,7 +304,7 @@
 </view>
 <navigator url='/pages/home/home?class_id={{item.id}}' open-type='reLaunch' class='border-bottom flex-row flex-center white-block' wx:for="{{UserInfo.otherclass}}" wx:key="k">
   <view class='flex-1 padding h5'>
-    {{item.name}}
+    {{item.school_name}}{{item.name}}
   </view>
   <view class='line-height-0 margin-right-10'>
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>

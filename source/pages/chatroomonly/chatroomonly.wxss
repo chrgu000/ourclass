@@ -16,6 +16,10 @@ page{
 .msgboxhover{
   background: #f2f2f2;
 }
+.msgblboxhover{
+  background: #50A0D0;
+  color:white !important;
+}
 
 .ml{
   height: calc( 100vh - 85rpx )

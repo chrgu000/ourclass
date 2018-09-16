@@ -35,7 +35,7 @@
   </view>
 </view>
 <view class='margin-top-5 white-block padding' wx:if="{{teacher3_id!=''}}"  bindtap='phoneCall' id="{{user3_mobile}}">
-  <view class='h4 txt-bold '>带班老师</view>
+  <view class='h4 txt-bold '>配班老师</view>
   <view class='flex-row flex-center margin-top-10'>
     <view class=' line-height-0 padding-20'>
       <image class='icon-50 radius-50'  src='{{uploadpath}}user/{{user3_photo}}'></image>

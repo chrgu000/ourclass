@@ -61,7 +61,7 @@ class Content extends AppBase {
       this.Base.info("请输入孩子的姓名");
       return;
     }
-    if (data.idno == "" || data.idno.length != 18) {
+    if (data.idno == "" ) {
       this.Base.info("请正确输入孩子的身份证号");
       return;
     }

@@ -1,4 +1,12 @@
 <!--pages/mycomment/mycomment.wxml-->
+<view class="text-center"   wx:if="{{comments.length==0}}">
+        <view>
+        <image class='icon-100' mode="widthFix" src='{{uploadpath}}resource/{{res.empty}}' style='margin-top:100rpx;'></image> 
+        </view>
+        <view class='txt-gray h6 margin-top'>
+          暂无评论
+        </view>
+      </view>
 <view wx:for="{{comments}}" wx:key="k" class='padding-20 white-block border-bottom'>
   <view>
     <view class='flex-row flex-bottom'>

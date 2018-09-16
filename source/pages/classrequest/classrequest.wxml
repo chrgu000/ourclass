@@ -37,10 +37,10 @@
     <view class='flex-row flex-center margin-top-10'>
       <view class='flex-1'></view>
       <view class='line-height-0'>
-        <image class='icon' src='{{uploadpath}}resource/{{res.classrequestguanxi}}'></image>
+        <image class='icon' src='{{uploadpath}}resource/{{res.classrequestguanxi}}'></image> 
       </view>
       <view class='padding-10 border-bottom flex-row flex-center' style='width:400rpx;margin-left:20rpx;'>
-          <input  maxlength='10' class='h5 fullimg ' placeholder='您是孩子的？父亲或母亲'  name="relationship"></input>
+          <input  maxlength='10' class='h5 fullimg ' placeholder='你的真实姓名'  name="relationship"></input>
       </view>
       <view class='flex-1'></view>
     </view>

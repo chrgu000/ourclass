@@ -140,13 +140,15 @@ class Content extends AppBase {
       onlymember_id: this.Base.options.onlymember_id, orderby: "send_time"
     }, (chatlist) => {
       var chatlistcount = this.Base.getMyData().chatlist.length;
+
+      var indid = this.Base.getMyData().indid;
       if (chatlist.length == 0) {
         return;
       }
       if (chatlistcount == chatlist.length) {
         return;
       }
-      if (firstloaded == false) {
+      if (firstloaded == false || indid != chatlist[chatlist.length - 1].id) {
         firstloaded = true;
         this.Base.setMyData({ chatlist, indid: chatlist[chatlist.length - 1].id });
       } else {
@@ -251,15 +253,46 @@ class Content extends AppBase {
     })
   }
   talktoTeacher() {
+    return;
     if (parseInt(this.Base.options.onlymember_id) > 0) {
-      return;
-    }
-    if (AppBase.UserInfo.isteacher1 == 'Y') {
       return;
     }
     wx.navigateTo({
       url: '/pages/chatroomonly/chatroomonly?onlymember_id=' + AppBase.UserInfo.id,
     })
+  }
+  boxrequire(e){
+    var that=this;
+    console.log(e);
+    var chatlist=this.Base.getMyData().chatlist;
+    var item=null;
+    for (var i = chatlist.length-1;i>=0;i--){
+      if(chatlist[i].id==e.currentTarget.id){
+        item=chatlist[i];
+        break;
+      }
+    }
+    if (item == null){
+      return;
+    }
+    console.log(parseInt(item.send_time_timespan * 1000 ) + 1000*120);
+    console.log((new Date().getTime()));
+    if ((parseInt(item.send_time_timespan * 1000 ) + 120000)>(new Date().getTime())){
+      wx.showActionSheet({
+        itemList: ["撤回","取消"],
+        success(e){
+          var api=new ClassApi();
+          api.cutchat({id:item.id},(ret)=>{
+            that.loadchatlist();
+          });
+        }
+      })
+    }else{
+      wx.showToast({
+        title: '只允许撤销2分钟内的信息',
+        icon:"none"
+      })
+    }
   }
 } 
 var firstloaded=false;
@@ -285,6 +318,7 @@ body.sendVideo = content.sendVideo;
 body.playvideo = content.playvideo; 
 body.sendNotice = content.sendNotice; 
 body.sendNews = content.sendNews;
-body.talktoStudent = content.talktoStudent;
+body.talktoStudent = content.talktoStudent; 
 body.talktoTeacher = content.talktoTeacher;
+body.boxrequire = content.boxrequire;
 Page(body)

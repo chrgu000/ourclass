@@ -1,0 +1,31 @@
+<!--pages/loginfail/loginfail.wxml-->
+<view style='margin-top:100rpx;' class='text-center'>
+  <image class='icon-100' src='{{uploadpath}}resource/{{res.loginfail}}'></image>
+</view>
+<view class='text-center h5 margin-top' >
+  登录失败
+</view>
+<view class='flex-row' style='margin-top:70rpx;'>
+  <view style='width:15vw;'></view>
+  <view class='flex-1'>
+    <view class='h6 txt-gray'>温馨提示</view>
+    <view class='h6 txt-gray margin-top-10' wx:if="{{UserInfo.user.school_id!=classinfo.school_id}}">您不是本幼儿园的成员，请联系管理员后重新登录。</view>
+    <view class='h6 txt-gray margin-top-10' wx:if="{{UserInfo.user.school_id==classinfo.school_id&&(UserInfo.isteacher1=='N'&&UserInfo.isteacher2=='N'&&UserInfo.isteacher3=='N')}}">您不是{{classinfo.school_name}}{{classinfo.name}}的老师，请联系管理员后重新登录。</view>
+  </view>
+  <view style='width:15vw;'></view>
+</view>
+
+
+<block wx:if="{{UserInfo.otherclass.length>0}}">
+<view class='padding-10 h6 txt-gray margin-top-10'>
+  请尝试登录其它班级
+</view>
+<navigator url='/pages/home/home?class_id={{item.id}}' open-type='reLaunch' class='border-bottom flex-row flex-center white-block' wx:for="{{UserInfo.otherclass}}" wx:key="k">
+  <view class='flex-1 padding h5'>
+    {{item.school_name}}{{item.name}}
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+</block>

@@ -1,0 +1,16 @@
+<!--pages/classmatelist/classmatelist.wxml-->
+<view class='white-block padding border-bottom' wx:for="{{teacherlist}}" wx:key="k" wx:for-index="ipq">
+  <view class='flex-row'>
+    <navigator class='margin-right-10'>
+      <image class='icon-40 radius-50' src='{{uploadpath}}user/{{item.photo}}'></image>
+    </navigator>
+    <view class='flex-1 margin-left-10'>
+      <navigator class=' flex-row '>
+        <view class=''>{{item.user_name}}{{item.role_id_name}}</view>
+      </navigator>
+      <view class='margin-top-10' style='' wx:for="{{item.classposition}}" wx:for-index='idx' wx:for-item="subitem" wx:key="k2">
+        <view class='txt-gray h6 margin-left-10'>{{subitem}}</view>
+      </view>
+    </view>
+  </view>
+</view>

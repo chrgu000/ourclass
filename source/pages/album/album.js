@@ -24,22 +24,29 @@ class Content extends AppBase {
   changeTab(e){
     this.Base.setMyData({ currenttab: e.currentTarget.id });
   }
-  uploadpic(){
+  uploadpic(e) {
+    var status = e.currentTarget.id;
     var that=this;
     this.Base.uploadImage("photo", (ret)=>{
       var classapi = new ClassApi();
       classapi.photoupload({
         photo:ret,
         video:"",
+        status: status,
         duration:0
       },(ret)=>{
         console.log(ret);
       });
-    },  9, ()=>{
-      that.onMyShow();
+    }, 9, () => {
+      if (status == "Z") {
+        that.Base.info("上传成功，等待班主任审核");
+      } else {
+        that.onMyShow();
+      }
     });
   }
   uploadvid(e){
+    var status=e.currentTarget.id;
     var that = this;
     this.Base.uploadVideo("photo",(ret,duration)=>{
       console.log(ret);
@@ -47,10 +54,16 @@ class Content extends AppBase {
       classapi.photoupload({
         photo: "",
         video: ret,
+        status: status,
         duration: duration
       }, (ret) => {
         console.log(ret);
-        that.onMyShow();
+        if(status=="Z"){
+          that.Base.info("上传成功，等待班主任审核");
+        }else{
+
+          that.onMyShow();
+        }
       });
     });
   }

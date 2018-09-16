@@ -34,6 +34,7 @@ class Content extends AppBase {
       status:status
     },()=>{
       list[idx].status = status == 'A' ? "A" : "I";
+      list[idx].status_name = status == 'A' ? "启用" : "禁用";
       this.Base.setMyData({ list });
     },false);
 

@@ -313,7 +313,7 @@ export class AppBase {
 
       } else {
         wx.reLaunch({
-          url: '/pages/classrequest/classrequest',
+          url: '/pages/loginfail/loginfail',
         })
         return;
       }
@@ -339,6 +339,9 @@ export class AppBase {
         needshowreddot = true;
       }
       if (userinfo.newswaitapprove != 'N') {
+        needshowreddot = true;
+      }
+      if (userinfo.photowaitapprove != 'N') {
         needshowreddot = true;
       }
     }

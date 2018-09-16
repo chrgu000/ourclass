@@ -1,6 +1,8 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/loginfail/loginfail",
+    "pages/teacherlist/teacherlist",
     "pages/chatlist/chatlist",
     "pages/member/member",
     "pages/album/album",
