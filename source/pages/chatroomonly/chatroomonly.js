@@ -272,7 +272,7 @@ class Content extends AppBase {
     var chatlist = this.Base.getMyData().chatlist;
     var item = null;
     for (var i = chatlist.length - 1; i >= 0; i--) {
-      if (chatlist[i].id == e.currentTarget.id) {
+      if (chatlist[i].id == e.currentTarget.id && chatlist[i].member_id == AppBase.UserInfo.id) {
         item = chatlist[i];
         break;
       }
