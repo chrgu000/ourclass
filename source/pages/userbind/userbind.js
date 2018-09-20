@@ -50,7 +50,7 @@ class Content extends AppBase {
     userapi.bind(data,(ret)=>{
       if(ret.code==0){
         wx.reLaunch({
-          url: '/pages/home/home?class_id='+ret.return,
+          url: '/pages/classlist/classlist',
         })
       }else{
         this.Base.info(ret.return);

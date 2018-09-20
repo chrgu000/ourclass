@@ -1,0 +1,23 @@
+<!--pages/classlist/classlist.wxml-->
+
+<block wx:if="{{allclass.length>0}}">
+<view class='padding-10 h6 txt-gray margin-top-10'>
+  班级列表
+</view>
+<navigator url='/pages/home/home?class_id={{item.id}}' open-type='reLaunch' class='border-bottom flex-row flex-center white-block' wx:for="{{allclass}}" wx:key="k">
+  <view class='flex-1 padding h5'>
+    {{item.school_name}}{{item.name}}
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+</block>
+<view class="text-center"   wx:if="{{allclass.length==0}}">
+  <view>
+  <image class='icon-100' mode="widthFix" src='{{uploadpath}}resource/{{res.empty}}' style='margin-top:100rpx;'></image> 
+  </view>
+  <view class='txt-gray h6 margin-top'>
+    没有班级记录
+  </view>
+</view>

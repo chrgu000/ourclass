@@ -127,16 +127,18 @@ class Content extends AppBase {
   loadchatlist() {
     var api = new ClassApi();
     api.chatlist({
-      onlymember_id: this.Base.options.onlymember_id, orderby: "send_time",isteacher:AppBase.UserInfo.isteacher1
+      onlymember_id: this.Base.options.onlymember_id, orderby: "send_time"
     }, (chatlist) => {
       var chatlistcount = this.Base.getMyData().chatlist.length;
+
+      var indid = this.Base.getMyData().indid;
       if (chatlist.length == 0) {
         return;
       }
       if (chatlistcount == chatlist.length) {
         return;
       }
-      if (firstloaded == false ) {
+      if (firstloaded == false || indid != chatlist[chatlist.length - 1].id) {
         firstloaded = true;
         this.Base.setMyData({ chatlist, indid: chatlist[chatlist.length - 1].id });
       } else {
@@ -252,7 +254,7 @@ class Content extends AppBase {
     if(AppBase.UserInfo.isuser=='Y'){
 
       var api = new MemberApi();
-      api.info({ member_id: this.Base.options.onlymember_id },(p)=>{
+      api.info({ member_id: this.options.onlymember_id },(p)=>{
         wx.setNavigationBarTitle({
           title: p.name
         })

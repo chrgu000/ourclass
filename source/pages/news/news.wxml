@@ -71,7 +71,7 @@
         </view>
         <view class='margin-top-10 flex-row flex-bottom'>
           <view class='flex-1'>{{item.comment}}</view>
-          <navigator url='/pages/reply/reply?comment_id={{item.id}}' class='margin-left-10 txt-primary'>回复</navigator>
+          <navigator url='/pages/reply/reply?comment_id={{item.id}}' class='margin-left-10 txt-primary' wx:if="{{UserInfo.isteacher1=='Y'}}">回复</navigator>
         </view>
         <view class='margin-top-10' wx:if="{{item.replystatus=='B'}}">
           <view>

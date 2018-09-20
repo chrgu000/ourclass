@@ -10,11 +10,6 @@
   font-style: italic;
 }
 
-view,text{
-  color:unset;
-  font-size: unset;
-  font-weight: unset;
-}
 
 .wxParse-p{
   margin-bottom: 16rpx;

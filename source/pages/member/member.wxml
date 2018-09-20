@@ -132,7 +132,7 @@
     </view>
     <navigator  class='flex-1 padding-20' >
       <view>
-        你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"代班老师":""}}，{{UserInfo.isteacher1!='Y'&&UserInfo.isteacher2!='Y'&&UserInfo.isteacher3!='Y'?UserInfo.user.positionname:""}}{{UserInfo.user.user_name}}！
+        你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"配班老师":""}}，{{UserInfo.isteacher1!='Y'&&UserInfo.isteacher2!='Y'&&UserInfo.isteacher3!='Y'?UserInfo.user.positionname:""}}{{UserInfo.user.user_name}}！
       </view>
       <view class='txt-gray h6'>
         {{UserInfo.mobile}}
@@ -244,7 +244,7 @@
   </view>
 </navigator>
 
-<navigator url='/pages/commentmgr/commentmgr' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">
+<navigator url='/pages/commentmgr/commentmgr' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.isteacher1=='Y'}}">
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
   </view>

@@ -30,8 +30,11 @@
         {{item.chat.type=='N'?"发送一条通知":""}}
         {{item.chat.type=='W'?"发送一篇文章":""}}
       </view>
-        <view class='h6 txt-gray'>
-          
+        <view class='h6 txt-red' wx:if="{{item.chat.tread=='N'}}">
+          未读
+        </view>
+        <view class='h6 txt-gray' wx:if="{{item.chat.tread=='Y'}}">
+          已读
         </view>
       </view>
     </view>
