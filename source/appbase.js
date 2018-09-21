@@ -186,7 +186,8 @@ export class AppBase {
         res
       });
     }, false);
-
+    //AppBase.UserInfo.openid="abc";
+    //ApiConfig.SetToken("abc");
     if (AppBase.UserInfo.openid == undefined) {
       // 登录
       console.log("onShow");
@@ -294,6 +295,9 @@ export class AppBase {
   }
   checkPermission() {
     var userinfo = AppBase.UserInfo;
+    if (userinfo.classinfo.isforsubmit=="Y"){
+      return;
+    }
     this.Base.log("check permission", userinfo);
     if (userinfo.isuser == "N") {
       this.Base.log("check permission", userinfo);
