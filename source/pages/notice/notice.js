@@ -239,7 +239,7 @@ class Content extends AppBase {
         if (res.confirm) {
 
           var api = new PostApi();
-          api.deletepost({
+          api.deletecomment({
             idlist: comment.id
           }, (ret) => {
             comments.splice(seq, 1);

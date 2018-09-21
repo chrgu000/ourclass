@@ -200,6 +200,7 @@ class Content extends AppBase {
   }
   playvideo(e) {
     console.log(e.currentTarget.id);
+    if (touchEndTime - touchStartTime < 350) {
     var url = e.currentTarget.dataset.src;
     var id = e.currentTarget.id;
     var videoContext = wx.createVideoContext(id);
@@ -208,6 +209,7 @@ class Content extends AppBase {
       url: '/pages/videoplay/videoplay?module=chat&file=' + url,
     })
     return;
+    }
   }
   onUnload() {
     clearInterval(this.Base.worker);
@@ -301,6 +303,32 @@ class Content extends AppBase {
       })
     }
   }
+
+
+  viewPhoto2(e) {
+    console.log(e);
+    var that = this
+    console.log(touchEndTime - touchStartTime);
+    if (touchEndTime - touchStartTime < 350) {
+      var currentTime = e.timeStamp
+      var lastTapTime = that.lastTapTime
+      // 更新最后一次点击时间
+      that.lastTapTime = currentTime
+
+      var img = e.currentTarget.id;
+      console.log(img);
+      wx.previewImage({
+        urls: [img],
+      })
+    }
+  }
+  touchStart(e) {
+    touchStartTime = e.timeStamp
+  }
+
+  touchEnd(e) {
+    touchEndTime = e.timeStamp
+  }
 }
 var firstloaded = false;
 var touchy = 0;
@@ -328,4 +356,7 @@ body.sendNews = content.sendNews;
 body.talktoStudent = content.talktoStudent;
 body.talktoTeacher = content.talktoTeacher;
 body.boxrequire = content.boxrequire;
+body.viewPhoto2 = content.viewPhoto2;
+body.touchStart = content.touchStart;
+body.touchEnd = content.touchEnd;
 Page(body)

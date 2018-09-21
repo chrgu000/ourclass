@@ -16,12 +16,12 @@ class Content extends AppBase {
   constructor() {
     super();
   }
-  worker=null;
+  worker = null;
   onLoad(options) {
     this.Base.Page = this;
     //options.id=5;
-    if(options.onlymember_id==undefined){
-      options.onlymember_id=0;
+    if (options.onlymember_id == undefined) {
+      options.onlymember_id = 0;
     }
     super.onLoad(options);
     var comment = "";
@@ -34,24 +34,28 @@ class Content extends AppBase {
     if (b != "") {
       sendtype = b;
     }
-    this.Base.log("roomsendtype",sendtype);
-    this.Base.setMyData({chatlist:[],
-      comment: comment, sendtype: sendtype, invoice: "A", showmore:false
+    this.Base.log("roomsendtype", sendtype);
+    this.Base.setMyData({
+      chatlist: [],
+      comment: comment,
+      sendtype: sendtype,
+      invoice: "A",
+      showmore: false
     });
-    
+
     recordmgr = wx.getRecorderManager();
     recordmgr.onStop(this.sendAudio);
 
 
     var that = this;
     clearInterval(this.Base.worker);
-    this.Base.worker=setInterval(()=>{
+    this.Base.worker = setInterval(() => {
       that.loadchatlist();
-    },1000);
+    }, 1000);
   }
   onMyShow() {
     var that = this;
-    
+
   }
   commentChange(e) {
     var comment = e.detail.value;
@@ -70,17 +74,19 @@ class Content extends AppBase {
 
     var api = new ClassApi();
     api.sendmsg({
-      onlymember_id:that.Base.options.onlymember_id,
-      "type": "T", comment: comment
-      ,user_id: AppBase.UserInfo.isuser == "Y" ? AppBase.UserInfo.user.id : 0}, () => {
+      onlymember_id: that.Base.options.onlymember_id,
+      "type": "T",
+      comment: comment,
+      user_id: AppBase.UserInfo.isuser == "Y" ? AppBase.UserInfo.user.id : 0
+    }, () => {
       wx.setStorage({
         key: "roomcomment",
         data: ""
       })
       this.Base.setMyData({
         comment: ""
-        });
-        that.loadchatlist();
+      });
+      that.loadchatlist();
     });
   }
   sendAudio(res) {
@@ -90,31 +96,34 @@ class Content extends AppBase {
     //return;
     var that = this;
     var duration = parseInt(this.Base.getMyData().voiceduration);
-    if (res.duration < 1000 || voicecancel==true){
+    if (res.duration < 1000 || voicecancel == true) {
       return;
     }
 
-    
-    this.Base.uploadFile("chat",file,(audiofile)=>{
+
+    this.Base.uploadFile("chat", file, (audiofile) => {
       var api = new ClassApi();
       api.sendmsg({
         onlymember_id: that.Base.options.onlymember_id,
-        "type": "A", audio: audiofile, audioduration: duration
-        , user_id: AppBase.UserInfo.isuser == "Y" ? AppBase.UserInfo.user.id : 0
+        "type": "A",
+        audio: audiofile,
+        audioduration: duration,
+        user_id: AppBase.UserInfo.isuser == "Y" ? AppBase.UserInfo.user.id : 0
       }, () => {
         that.loadchatlist();
       });
     });
-    
+
   }
   sendPic() {
     var that = this;
-    this.Base.uploadImage("chat",(ret)=>{
+    this.Base.uploadImage("chat", (ret) => {
       var api = new ClassApi();
       api.sendmsg({
         onlymember_id: that.Base.options.onlymember_id,
-        "type": "P", pic: ret
-        , user_id: AppBase.UserInfo.isuser == "Y" ? AppBase.UserInfo.user.id : 0
+        "type": "P",
+        pic: ret,
+        user_id: AppBase.UserInfo.isuser == "Y" ? AppBase.UserInfo.user.id : 0
       }, () => {
         that.loadchatlist();
       });
@@ -127,8 +136,9 @@ class Content extends AppBase {
       var api = new ClassApi();
       api.sendmsg({
         onlymember_id: that.Base.options.onlymember_id,
-        "type": "V", video: ret
-        , user_id: AppBase.UserInfo.isuser == "Y" ? AppBase.UserInfo.user.id : 0
+        "type": "V",
+        video: ret,
+        user_id: AppBase.UserInfo.isuser == "Y" ? AppBase.UserInfo.user.id : 0
       }, () => {
         that.loadchatlist();
       });
@@ -137,7 +147,8 @@ class Content extends AppBase {
   loadchatlist() {
     var api = new ClassApi();
     api.chatlist({
-      onlymember_id: this.Base.options.onlymember_id, orderby: "send_time"
+      onlymember_id: this.Base.options.onlymember_id,
+      orderby: "send_time"
     }, (chatlist) => {
       var chatlistcount = this.Base.getMyData().chatlist.length;
 
@@ -150,24 +161,35 @@ class Content extends AppBase {
       }
       if (firstloaded == false || indid != chatlist[chatlist.length - 1].id) {
         firstloaded = true;
-        this.Base.setMyData({ chatlist, indid: chatlist[chatlist.length - 1].id });
+        this.Base.setMyData({
+          chatlist,
+          indid: chatlist[chatlist.length - 1].id
+        });
       } else {
-        this.Base.setMyData({ chatlist });
+        this.Base.setMyData({
+          chatlist
+        });
       }
 
     }, false);
   }
-  startvoice(e){
-    var that=this;
+  startvoice(e) {
+    var that = this;
     clearInterval(voiceinterval);
     console.log("start voice");
-    var start=0;
-    this.Base.setMyData({ invoice: "B" });
-    voiceinterval=setInterval(()=>{
-      this.Base.setMyData({ voiceduration: ++start, });
-    },1000);
-    touchy= e.touches[0].pageY;
-    recordmgr.start({ sampleRate: 8000});
+    var start = 0;
+    this.Base.setMyData({
+      invoice: "B"
+    });
+    voiceinterval = setInterval(() => {
+      this.Base.setMyData({
+        voiceduration: ++start,
+      });
+    }, 1000);
+    touchy = e.touches[0].pageY;
+    recordmgr.start({
+      sampleRate: 8000
+    });
   }
   endvoice() {
     clearInterval(voiceinterval);
@@ -177,15 +199,21 @@ class Content extends AppBase {
     if (invoice == "B") {
       recordmgr.stop();
     }
-    this.Base.setMyData({ invoice: "A" });
+    this.Base.setMyData({
+      invoice: "A"
+    });
   }
-  cancelvoice(e){
+  cancelvoice(e) {
     console.log(e);
     console.log(Math.abs(touchy - e.touches[0].pageY));
-    if (Math.abs( touchy - e.touches[0].pageY)>15){
-      this.Base.setMyData({ invoice: "C" });
-    }else{
-      this.Base.setMyData({ invoice: "B" });
+    if (Math.abs(touchy - e.touches[0].pageY) > 15) {
+      this.Base.setMyData({
+        invoice: "C"
+      });
+    } else {
+      this.Base.setMyData({
+        invoice: "B"
+      });
     }
   }
   playaudio(e) {
@@ -193,42 +221,48 @@ class Content extends AppBase {
     console.log(e);
 
     var id = e.currentTarget.id;
-    var audioCtx = wx.createAudioContext('a_'+id);
+    var audioCtx = wx.createAudioContext('a_' + id);
     audioCtx.play();
 
 
 
   }
-  changeSendtype(e){
-    var id=e.currentTarget.id;
+  changeSendtype(e) {
+    var id = e.currentTarget.id;
     wx.setStorage({
       key: "roomsendtype",
       data: id,
     })
-    this.Base.setMyData({ sendtype: id });
+    this.Base.setMyData({
+      sendtype: id
+    });
   }
-  showmore(){
+  showmore() {
     var showmore = this.Base.getMyData().showmore;
 
-    this.Base.setMyData({ showmore: !showmore });
+    this.Base.setMyData({
+      showmore: !showmore
+    });
   }
-  playvideo(e){
+  playvideo(e) {
     console.log(e.currentTarget.id);
-    var url = e.currentTarget.dataset.src;
-    var id = e.currentTarget.id;
-    var videoContext=wx.createVideoContext(id);
-    videoContext.pause();
-    wx.navigateTo({
-      url: '/pages/videoplay/videoplay?module=chat&file=' + url,
-    })
-    return;
+    if (touchEndTime - touchStartTime < 350) {
+      var url = e.currentTarget.dataset.src;
+      var id = e.currentTarget.id;
+      var videoContext = wx.createVideoContext(id);
+      videoContext.pause();
+      wx.navigateTo({
+        url: '/pages/videoplay/videoplay?module=chat&file=' + url,
+      })
+      return;
+    }
   }
   onUnload() {
     clearInterval(this.Base.worker);
   }
-  sendNotice(){
+  sendNotice() {
     wx.navigateTo({
-      url: '/pages/noticeselect/noticeselect?onlymember_id='+this.Base.options.onlymember_id,
+      url: '/pages/noticeselect/noticeselect?onlymember_id=' + this.Base.options.onlymember_id,
     })
   }
   sendNews() {
@@ -238,16 +272,16 @@ class Content extends AppBase {
   }
   talktoStudent(e) {
     console.log(this.Base.options.onlymember_id);
-    if(parseInt(this.Base.options.onlymember_id)>0){
+    if (parseInt(this.Base.options.onlymember_id) > 0) {
       console.log("a");
       return;
     }
 
-    var member_id=e.currentTarget.id;
+    var member_id = e.currentTarget.id;
     if (AppBase.UserInfo.isteacher1 != 'Y') {
       console.log("b");
       return;
-    } 
+    }
     wx.navigateTo({
       url: '/pages/chatroomonly/chatroomonly?onlymember_id=' + member_id,
     })
@@ -261,43 +295,73 @@ class Content extends AppBase {
       url: '/pages/chatroomonly/chatroomonly?onlymember_id=' + AppBase.UserInfo.id,
     })
   }
-  boxrequire(e){
-    var that=this;
+  boxrequire(e) {
+    var that = this;
     console.log(e);
-    var chatlist=this.Base.getMyData().chatlist;
-    var item=null;
-    for (var i = chatlist.length-1;i>=0;i--){
-      if(chatlist[i].id==e.currentTarget.id&&chatlist[i].member_id==AppBase.UserInfo.id){
-        item=chatlist[i];
+    var chatlist = this.Base.getMyData().chatlist;
+    var item = null;
+    for (var i = chatlist.length - 1; i >= 0; i--) {
+      if (chatlist[i].id == e.currentTarget.id && chatlist[i].member_id == AppBase.UserInfo.id) {
+        item = chatlist[i];
         break;
       }
     }
-    if (item == null){
+    if (item == null) {
       return;
     }
-    console.log(parseInt(item.send_time_timespan * 1000 ) + 1000*120);
+    console.log(parseInt(item.send_time_timespan * 1000) + 1000 * 120);
     console.log((new Date().getTime()));
-    if ((parseInt(item.send_time_timespan * 1000 ) + 120000)>(new Date().getTime())){
+    if ((parseInt(item.send_time_timespan * 1000) + 120000) > (new Date().getTime())) {
       wx.showActionSheet({
-        itemList: ["撤回","取消"],
-        success(e){
-          var api=new ClassApi();
-          api.cutchat({id:item.id},(ret)=>{
+        itemList: ["撤回", "取消"],
+        success(e) {
+          var api = new ClassApi();
+          api.cutchat({
+            id: item.id
+          }, (ret) => {
             that.loadchatlist();
           });
         }
       })
-    }else{
+    } else {
       wx.showToast({
         title: '只允许撤销2分钟内的信息',
-        icon:"none"
+        icon: "none"
       })
     }
   }
-} 
-var firstloaded=false;
-var touchy=0;
-var voiceinterval=null;
+  viewPhoto2(e) {
+    console.log(e);
+    var that = this
+    console.log(touchEndTime - touchStartTime);
+    if (touchEndTime - touchStartTime < 350) {
+      var currentTime = e.timeStamp
+      var lastTapTime = that.lastTapTime
+      // 更新最后一次点击时间
+      that.lastTapTime = currentTime
+
+      var img = e.currentTarget.id;
+      console.log(img);
+      wx.previewImage({
+        urls: [img],
+      })
+    }
+  }
+  touchStart(e) {
+    touchStartTime = e.timeStamp
+  }
+
+  touchEnd(e) {
+    touchEndTime = e.timeStamp
+  }
+
+}
+
+var touchStartTime = 0;
+var touchEndTime = 0;
+var firstloaded = false;
+var touchy = 0;
+var voiceinterval = null;
 var recordmgr = null;
 var content = new Content();
 var body = content.generateBodyJson();
@@ -307,18 +371,21 @@ body.commentChange = content.commentChange;
 body.sendComment = content.sendComment;
 body.loadchatlist = content.loadchatlist;
 body.startvoice = content.startvoice;
-body.endvoice = content.endvoice; 
-body.sendAudio = content.sendAudio; 
+body.endvoice = content.endvoice;
+body.sendAudio = content.sendAudio;
 body.playaudio = content.playaudio;
-body.changeSendtype = content.changeSendtype; 
-body.cancelvoice = content.cancelvoice; 
+body.changeSendtype = content.changeSendtype;
+body.cancelvoice = content.cancelvoice;
 body.showmore = content.showmore;
-body.sendPic = content.sendPic; 
-body.sendVideo = content.sendVideo; 
-body.playvideo = content.playvideo; 
-body.sendNotice = content.sendNotice; 
+body.sendPic = content.sendPic;
+body.sendVideo = content.sendVideo;
+body.playvideo = content.playvideo;
+body.sendNotice = content.sendNotice;
 body.sendNews = content.sendNews;
-body.talktoStudent = content.talktoStudent; 
+body.talktoStudent = content.talktoStudent;
 body.talktoTeacher = content.talktoTeacher;
 body.boxrequire = content.boxrequire;
+body.viewPhoto2 = content.viewPhoto2;
+body.touchStart = content.touchStart;
+body.touchEnd = content.touchEnd;
 Page(body)
