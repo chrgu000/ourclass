@@ -8,7 +8,7 @@
     </swiper-item>
   </swiper>
 </view>
-<view class='padding white-block'>
+<view class='padding white-block' wx:if="{{UserInfo}}" hidden='{{UserInfo.classinfo.isforsubmit=="Y"}}'>
   <view class='flex-row flex-center text-center'>
     <navigator url='/pages/chatroom/chatroom' class='flex-1'>
     <view class='reddot' wx:if="{{UserInfo.isuser=='N'&&unread.chatunread=='Y'}}" style='margin-left:110rpx;'></view>
