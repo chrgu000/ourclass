@@ -132,7 +132,7 @@
     </view>
     <navigator  class='flex-1 padding-20' >
       <view>
-        你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"配班老师":""}}，{{UserInfo.isteacher1!='Y'&&UserInfo.isteacher2!='Y'&&UserInfo.isteacher3!='Y'?UserInfo.user.positionname:""}}{{UserInfo.user.user_name}}！
+        你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"配班老师":""}}，{{UserInfo.isteacher1!='Y'&&UserInfo.isteacher2!='Y'&&UserInfo.isteacher3!='Y'?UserInfo.school_name+UserInfo.user.positionname:""}}{{UserInfo.user.user_name}}！
       </view>
       <view class='txt-gray h6'>
         {{UserInfo.mobile}}
@@ -275,6 +275,17 @@
   </view>
   <view class='flex-1 padding h5'>
     收藏的文章
+  </view>
+  <view class='line-height-0 margin-right-10'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+  </view>
+</navigator>
+<navigator url='/pages/mycomment/mycomment' class='border-bottom flex-row flex-center white-block'  >
+  <view class='padding line-height-0'>
+    <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
+  </view>
+  <view class='flex-1 padding h5'>
+    我的评论
   </view>
   <view class='line-height-0 margin-right-10'>
     <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>

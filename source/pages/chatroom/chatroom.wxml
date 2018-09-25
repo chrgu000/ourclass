@@ -43,26 +43,26 @@
       <view class='flex-row flex-center' wx:if="{{item.type=='N'}}">
         <view style='width:50rpx;'></view>
         <view class='flex-1'></view>
-        <navigator  url='/pages/notice/notice?id={{item.notice_id}}'  hover-class="msgboxhover" bindlongtap='boxrequire' id="{{item.id}}"  class='msgbox white-block padding-20 flex-row'  >
+        <view  url='/pages/notice/notice?id={{item.notice_id}}'  hover-class="msgboxhover" bindlongtap='boxrequire' id="{{item.id}}"  class='msgbox white-block padding-20 flex-row'  bindtap='opennotice' data-noticeid="{{item.notice_id}}"  bindtouchstart="touchStart" bindtouchend="touchEnd" >
           <view class=' line-height-0  margin-right-10'>
           <image src='{{uploadpath}}news/{{item.notice_cover}}' class='icon-50' ></image>
           </view>
-          <view style='width:100rpx;'>
+          <view style='width:300rpx;'>
             {{item.notice_name}}
           </view>
-        </navigator>
+        </view>
       </view>
       <view class='flex-row flex-center' wx:if="{{item.type=='W'}}">
         <view style='width:50rpx;'></view>
         <view class='flex-1'></view>
-        <navigator url='/pages/news/news?id={{item.news_id}}' hover-class="msgboxhover" bindlongtap='boxrequire' id="{{item.id}}"  class='msgbox white-block padding-20 flex-row'>
+        <view url='/pages/news/news?id={{item.news_id}}' hover-class="msgboxhover" bindlongtap='boxrequire' id="{{item.id}}"  class='msgbox white-block padding-20 flex-row'   bindtap='opennews'  data-newsid="{{item.news_id}}" bindtouchstart="touchStart" bindtouchend="touchEnd" >
           <view class=' line-height-0  margin-right-10'>
           <image src='{{uploadpath}}news/{{item.news_cover}}' class='icon-50' ></image>
           </view>
-          <view style='width:100rpx;'>
+          <view style='width:300rpx;'>
             {{item.news_name}}
           </view>
-        </navigator>
+        </view>
       </view>
     </view>
     <view class='padding-20' style='padding-left:0rpx;'>
@@ -109,26 +109,26 @@
       </view>
 
       <view class='flex-row flex-center' wx:if="{{item.type=='N'}}">
-        <navigator  url='/pages/notice/notice?id={{item.notice_id}}'  hover-class="msgblboxhover" bindlongtap='boxrequire' id="{{item.id}}"  class='msgbox bg-primary padding-20 flex-row' >
+        <view  url='/pages/notice/notice?id={{item.notice_id}}'  hover-class="msgblboxhover" bindlongtap='boxrequire' id="{{item.id}}"  class='msgbox bg-primary padding-20 flex-row'   bindtap='opennotice'  data-noticeid="{{item.notice_id}}" bindtouchstart="touchStart" bindtouchend="touchEnd">
           <view class=' line-height-0 margin-right-10'>
           <image src='{{uploadpath}}news/{{item.notice_cover}}' class='icon-50' ></image>
           </view>
           <view style='width:300rpx;'>
             {{item.notice_name}}
           </view>
-        </navigator>
+        </view>
         <view style='width:50rpx;'></view>
         <view class='flex-1'></view>
       </view>
       <view class='flex-row flex-center' wx:if="{{item.type=='W'}}">
-        <navigator url='/pages/news/news?id={{item.news_id}}' hover-class="msgblboxhover" bindlongtap='boxrequire' id="{{item.id}}"  class='msgbox bg-primary padding-20 flex-row' >
+        <view url='/pages/news/news?id={{item.news_id}}' hover-class="msgblboxhover" bindlongtap='boxrequire' id="{{item.id}}"  class='msgbox bg-primary padding-20 flex-row'   bindtap='opennews'  data-newsid="{{item.news_id}}" bindtouchstart="touchStart" bindtouchend="touchEnd" >
           <view class=' line-height-0  margin-right-10'>
           <image src='{{uploadpath}}news/{{item.news_cover}}' class='icon-50' ></image>
           </view>
           <view style='width:300rpx;'>
             {{item.news_name}}
           </view>
-        </navigator>
+        </view>
         <view style='width:50rpx;'></view>
         <view class='flex-1'></view>
       </view>

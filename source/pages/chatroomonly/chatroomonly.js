@@ -329,6 +329,42 @@ class Content extends AppBase {
   touchEnd(e) {
     touchEndTime = e.timeStamp
   }
+  opennotice(e) {
+
+    var that = this
+    console.log(touchEndTime - touchStartTime);
+    if (touchEndTime - touchStartTime < 350) {
+      var currentTime = e.timeStamp
+      var lastTapTime = that.lastTapTime
+      // 更新最后一次点击时间
+      that.lastTapTime = currentTime
+
+
+      console.log(e);
+      var id = e.currentTarget.dataset.noticeid;
+      wx.navigateTo({
+        url: '/pages/notice/notice?id=' + id
+      })
+    }
+  }
+  opennews(e) {
+
+    var that = this
+    console.log(touchEndTime - touchStartTime);
+    if (touchEndTime - touchStartTime < 350) {
+      var currentTime = e.timeStamp
+      var lastTapTime = that.lastTapTime
+      // 更新最后一次点击时间
+      that.lastTapTime = currentTime
+
+
+      console.log(e);
+      var id = e.currentTarget.dataset.newsid;
+      wx.navigateTo({
+        url: '/pages/news/news?id=' + id
+      })
+    }
+  }
 }
 var firstloaded = false;
 var touchy = 0;
@@ -359,4 +395,6 @@ body.boxrequire = content.boxrequire;
 body.viewPhoto2 = content.viewPhoto2;
 body.touchStart = content.touchStart;
 body.touchEnd = content.touchEnd;
+body.opennotice = content.opennotice;
+body.opennews = content.opennews;
 Page(body)

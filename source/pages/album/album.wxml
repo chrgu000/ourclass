@@ -33,7 +33,7 @@
   <view class='fixedbottom flex-row' >
     <view class='flex-1 padding '>
       <button type='primary' bindtap='uploadpic' id="Z"  class='round-button' wx:if="{{UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">上传照片给班主任审核</button>
-      <button type='primary' bindtap='uploadpic' id="A"  class='round-button' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='园长'}}">发布照片</button>
+      <button type='primary' bindtap='uploadpic' id="A"  class='round-button' wx:if="{{UserInfo.isteacher1=='Y'}}">发布照片</button>
     </view>
   </view>
 </view>
@@ -62,7 +62,7 @@
   <view class='fixedbottom flex-row' >
     <view class='flex-1 padding '>
       <button type='primary' bindtap='uploadvid' id="Z" class='round-button' wx:if="{{UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}" >上传视频给班主任发布</button>
-      <button type='primary' bindtap='uploadvid' id="A" class='round-button' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='园长'}}">发布视频</button>
+      <button type='primary' bindtap='uploadvid' id="A" class='round-button' wx:if="{{UserInfo.isteacher1=='Y'}}">发布视频</button>
     </view>
   </view>
 </view>
