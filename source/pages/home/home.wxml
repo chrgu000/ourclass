@@ -11,7 +11,7 @@
 <view class='padding white-block' wx:if="{{UserInfo}}" hidden='{{UserInfo.classinfo.isforsubmit=="Y"}}'>
   <view class='flex-row flex-center text-center'>
     <navigator url='/pages/chatroom/chatroom' class='flex-1'>
-    <view class='reddot' wx:if="{{UserInfo.isuser=='N'&&unread.chatunread=='Y'}}" style='margin-left:110rpx;'></view>
+    <view class='reddot' wx:if="{{unread.chatunread=='Y'}}" style='margin-left:110rpx;'></view>
       <view class='line-height-0'>
         <image class='icon-30' src='{{uploadpath}}inst/{{instinfo.icon1}}'></image>
       </view>
@@ -20,7 +20,7 @@
       </view>
     </navigator>
     <navigator url='/pages/noticelist/noticelist' class='flex-1'>
-    <view class='reddot' wx:if="{{UserInfo.isuser=='N'&&unread.noticeunread=='Y'}}" style='margin-left:110rpx;'></view>
+    <view class='reddot' wx:if="{{unread.noticeunread=='Y'}}" style='margin-left:110rpx;'></view>
       <view class='line-height-0'>
         <image class='icon-30' src='{{uploadpath}}inst/{{instinfo.icon2}}'></image>
       </view>
@@ -29,7 +29,7 @@
       </view>
     </navigator>
     <navigator  url='/pages/newslist/newslist'  class='flex-1'>
-    <view class='reddot' wx:if="{{UserInfo.isuser=='N'&&unread.newsunread=='Y'}}" style='margin-left:110rpx;'></view>
+    <view class='reddot' wx:if="{{unread.newsunread=='Y'}}" style='margin-left:110rpx;'></view>
       <view class='line-height-0'>
         <image class='icon-30' src='{{uploadpath}}inst/{{instinfo.icon3}}'></image>
       </view>
@@ -38,7 +38,7 @@
       </view>
     </navigator>
     <navigator url='/pages/album/album' class='flex-1'>
-    <view class='reddot' wx:if="{{UserInfo.isuser=='N'&&unread.photounread=='Y'}}" style='margin-left:110rpx;'></view>
+    <view class='reddot' wx:if="{{unread.photounread=='Y'}}" style='margin-left:110rpx;'></view>
       <view class='line-height-0'>
         <image class='icon-30' src='{{uploadpath}}inst/{{instinfo.icon4}}'></image>
       </view>

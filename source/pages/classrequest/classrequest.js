@@ -62,7 +62,7 @@ class Content extends AppBase {
       return;
     }
     if (data.idno == "" ) {
-      this.Base.info("请正确输入孩子的身份证号");
+      this.Base.info("请正确输入孩子名字拼音首字母加出生年月日");
       return;
     }
     if (data.relationship == "") {

@@ -136,6 +136,7 @@ export class AppBase {
     } else {
       wx.setStorageSync("class_id", options.class_id);
     }
+    //options.class_id=25;
     ApiConfig.SetClassId(options.class_id);
 
     ApiConfig.SetUnicode(this.Base.unicode);
@@ -730,6 +731,7 @@ export class AppBase {
   toast(msg) {
     wx.showToast({
       title: msg,
+      icon:"none",
       duration: msg.length / 3 * 1000
     })
   }
@@ -845,7 +847,7 @@ export class AppBase {
         if (res.statusCode === 200) {
           var tempFilePath = res.tempFilePath;
           console.log(tempFilePath);
-          wx.saveImageToPhotosAlbum({
+          wx.saveVideoToPhotosAlbum({
             filePath: tempFilePath,
             success: function(res) {
               var savedFilePath = res.savedFilePath;
@@ -858,6 +860,10 @@ export class AppBase {
               if (callback != null) {
                 callback(savedFilePath);
               }
+            },
+            fail:function(e){
+              console.log("download but saved fail");
+              console.log(e);
             }
           })
         }

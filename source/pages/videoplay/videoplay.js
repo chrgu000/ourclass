@@ -20,9 +20,13 @@ class Content extends AppBase {
     var that = this;
   }
   yundownload(){
+    this.Base.toast("开始下载");
     var data=this.Base.getMyData();
     var url=data.uploadpath+data.module+"/"+data.file;
-    this.Base.download(url);
+    console.log(url);
+    this.Base.download(url,()=>{
+      this.Base.toast("下载成功，请打开文件夹");
+    });
   }
 }
 var content = new Content();

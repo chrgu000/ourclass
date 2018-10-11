@@ -132,7 +132,7 @@
     </view>
     <navigator  class='flex-1 padding-20' >
       <view>
-        你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"配班老师":""}}，{{UserInfo.isteacher1!='Y'&&UserInfo.isteacher2!='Y'&&UserInfo.isteacher3!='Y'?UserInfo.school_name+UserInfo.user.positionname:""}}{{UserInfo.user.user_name}}！
+        你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"配班老师":""}}，{{UserInfo.isteacher1!='Y'&&UserInfo.isteacher2!='Y'&&UserInfo.isteacher3!='Y'?UserInfo.school_name+UserInfo.user.positiontitle:""}}{{UserInfo.user.user_name}}！
       </view>
       <view class='txt-gray h6'>
         {{UserInfo.mobile}}
