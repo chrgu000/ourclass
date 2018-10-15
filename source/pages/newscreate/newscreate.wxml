@@ -51,7 +51,7 @@
 
       <view class='flex-1 padding'>
         <button class='h5' id="A" type='primary' form-type='submit' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='园长'}}">直接发布</button>
-        <button class='h5' id="Z" type='primary' form-type='submit' wx:if="{{(UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='园长')==false}}">提交班主任审核发布</button>
+        <button class='h5' id="Z" type='primary' form-type='submit' wx:if="{{(UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='园长')==false}}">提交审核</button>
       </view>
     </view>
   </block>
