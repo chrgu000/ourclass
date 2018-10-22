@@ -72,6 +72,10 @@ class Content extends AppBase {
     var that = this;
     var comment = this.Base.getMyData().comment;
 
+    if(comment.trim()==""){
+      return;
+    }
+
     var api = new ClassApi();
     api.sendmsg({
       onlymember_id: that.Base.options.onlymember_id,

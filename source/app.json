@@ -1,6 +1,8 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/userbind/userbind",
+    "pages/classrequest/classrequest",
     "pages/classlist/classlist",
     "pages/loginfail/loginfail",
     "pages/teacherlist/teacherlist",
@@ -29,8 +31,6 @@
     "pages/noticeselect/noticeselect",
     "pages/teacherinfo/teacherinfo",
     "pages/infoupdate/infoupdate",
-    "pages/classrequest/classrequest",
-    "pages/userbind/userbind",
     "pages/newscreate/newscreate",
     "pages/videoplay/videoplay",
     "pages/photoedit/photoedit",

@@ -32,7 +32,7 @@
       手机号码
     </view>
     <view class='padding-20 line-height-0'>
-      <input style='width:180rpx;' disabled='true' hidden='{{mobile==""}}' maxlength='11'  class='h5' name="mobile" value='{{mobile}}'></input>
+      <input style='width:220rpx;text-align:right;' disabled='true' hidden='{{mobile==""}}' maxlength='11'  class='h5' name="mobile" value='{{mobile}}'></input>
       <button size='mini' bindgetphonenumber='getPhoneNo' open-type='getPhoneNumber'  hidden='{{mobile!=""}}'>获取</button>
     </view>
   </view>
