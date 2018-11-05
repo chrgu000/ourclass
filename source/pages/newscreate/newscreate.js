@@ -88,6 +88,9 @@ class Content extends AppBase {
     var api = new ClassApi();
     api.newscreate(json,(ret)=>{
       if(ret.code==0){
+        if (json.status=="A"){
+          that.Base.info("上传成功，等待审核");
+        }
         wx.navigateBack({
           
         })

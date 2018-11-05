@@ -5,10 +5,13 @@
 </view>
 <view class='flex-row flex-center'>
   <view class='padding-20 flex-1'>
-    <button bindtap='backPage'>取消</button>
+    <button bindtap='backPage'>取消{{UserInfo.user.positiontitle}}</button>
   </view>
   <view  class='padding-20 flex-1'>
-    <button type='primary' form-type='submit'>发送</button>
+    <button type='primary' form-type='submit' id="Z"  wx:if="{{UserInfo.user.positiontitle!='园长'}}">提交审核</button>
+  </view>
+  <view  class='padding-20 flex-1'>
+    <button type='primary' form-type='submit' id="A"  wx:if="{{UserInfo.user.positiontitle=='园长'}}">发布</button>
   </view>
 </view>
 </form>

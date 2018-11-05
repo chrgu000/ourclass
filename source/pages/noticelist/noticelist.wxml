@@ -43,7 +43,7 @@
 
 <view style='height:150rpx;'></view>
 <view class='fixedbottom'>
-<navigator url='/pages/noticecreate/noticecreate' class='padding' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='家委会主席'}}">
+<navigator url='/pages/noticecreate/noticecreate' class='padding' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.user.positiontitle=='家委会主席'}}">
   <button type='primary' class='round-button' >创建通知</button>
 </navigator>
 </view>

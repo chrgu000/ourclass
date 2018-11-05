@@ -50,14 +50,14 @@
     <view class='flex-row flex-center' wx:if="{{id==undefined}}">
 
       <view class='flex-1 padding'>
-        <button class='h5' id="A" type='primary' form-type='submit' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='园长'}}">直接发布</button>
-        <button class='h5' id="Z" type='primary' form-type='submit' wx:if="{{(UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='园长')==false}}">提交审核</button>
+        <button class='h5' id="A" type='primary' form-type='submit' wx:if="{{UserInfo.user.positiontitle=='园长'}}">直接发布</button>
+        <button class='h5' id="Z" type='primary' form-type='submit' wx:if="{{(UserInfo.user.positiontitle=='园长')==false}}">提交审核</button>
       </view>
     </view>
   </block>
   <block  wx:if="{{id!=undefined}}">
 
-    <view class='flex-row flex-center'  wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='园长'}}">
+    <view class='flex-row flex-center'  wx:if="{{UserInfo.user.positiontitle=='园长'}}">
       <view class='flex-1 padding'>
         <button class='h5' id="{{status}}" type='primary' form-type='submit'>更新</button>
       </view>

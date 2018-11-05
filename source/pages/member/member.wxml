@@ -141,7 +141,7 @@
   </view>
 </view>
 
-<navigator url='/pages/teacherlist/teacherlist' class='margin-top border-bottom flex-row flex-center white-block'   wx:if="{{UserInfo.user.positionname=='园长'}}">
+<navigator url='/pages/teacherlist/teacherlist' class='margin-top border-bottom flex-row flex-center white-block'   wx:if="{{UserInfo.user.positiontitle=='园长'}}">
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.member}}'></image>
   </view>
@@ -217,7 +217,7 @@
   </view>
 </navigator>
 
-<navigator url='/pages/newsmgr/newsmgr' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='园长'}}">
+<navigator url='/pages/newsmgr/newsmgr' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.user.positiontitle=='园长'}}">
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.newsmgr}}'></image>
   </view>
@@ -231,7 +231,7 @@
 </navigator>
 
 
-<navigator url='/pages/photoedit/photoedit' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.user.positionname=='园长'}}">
+<navigator url='/pages/photoedit/photoedit' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.user.positiontitle=='园长'}}">
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
   </view>
@@ -244,7 +244,7 @@
   </view>
 </navigator>
 
-<navigator url='/pages/commentmgr/commentmgr' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.isteacher1=='Y'}}">
+<navigator url='/pages/commentmgr/commentmgr' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.user.positiontitle=='园长'}}">
   <view class='padding line-height-0'>
     <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
   </view>

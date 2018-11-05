@@ -39,7 +39,7 @@ class Content extends AppBase {
       });
     }, 9, () => {
       if (status == "Z") {
-        that.Base.info("上传成功，等待班主任审核");
+        that.Base.info("上传成功，等待审核");
       } else {
         that.onMyShow();
       }
@@ -59,7 +59,7 @@ class Content extends AppBase {
       }, (ret) => {
         console.log(ret);
         if(status=="Z"){
-          that.Base.info("上传成功，等待班主任审核");
+          that.Base.info("上传成功，等待审核");
         }else{
 
           that.onMyShow();

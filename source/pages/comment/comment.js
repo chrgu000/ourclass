@@ -27,17 +27,25 @@ class Content extends AppBase {
     console.log(comment);
     var that=this;
     var api = new PostApi();
-    api.comment({ news_id: this.Base.options.news_id, notice_id: this.Base.options.notice_id,  comment: comment, formid: e.detail.formId, reply_member_id: this.Base.options.reply_member_id, reply_comment_id: this.Base.options.reply_comment_id }, (ret) => {
-    wx.showModal({
-      title: '提示',
-      showCancel:false,
-      content: '评论提交成功，正在等待管理员审核。',
-      success:function(e){
-        if(e.confirm){
-          that.backPage();
-        }
+    var status=e.detail.target.id;
+    console.log(e);
+    api.comment({ news_id: this.Base.options.news_id, notice_id: this.Base.options.notice_id, comment: comment, formid: e.detail.formId, reply_member_id: this.Base.options.reply_member_id, reply_comment_id: this.Base.options.reply_comment_id, status }, (ret) => {
+      if(status=="Z"){
+
+        wx.showModal({
+          title: '提示',
+          showCancel: false,
+          content: '评论提交成功，正在等待管理员审核。',
+          success: function (e) {
+            if (e.confirm) {
+              that.backPage();
+            }
+          }
+        })
+      }else{
+
+        that.backPage();
       }
-    })
     });
   }
 }

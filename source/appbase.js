@@ -312,9 +312,9 @@ export class AppBase {
       if (userinfo.isteacher1 == 'Y' ||
         userinfo.isteacher2 == 'Y' ||
         userinfo.isteacher3 == 'Y' ||
-        userinfo.positionname == '园长' ||
-        userinfo.positionname == '家委会主席' ||
-        userinfo.positionname == '管理员') {
+        userinfo.positiontitle == '园长' ||
+        userinfo.positiontitle == '家委会主席' ||
+        userinfo.positiontitle == '管理员') {
 
       } else {
         wx.reLaunch({
@@ -333,7 +333,7 @@ export class AppBase {
     if (userinfo.tipsmemberinfo == "Y") {
       needshowreddot = true;
     }
-    if (userinfo.isteacher1 == "Y") {
+    if (userinfo.isteacher1 == "Y"||true) {
       if (userinfo.noschedule != 'N') {
         if (userinfo.classmember.length > userinfo.assesscount) {
 
