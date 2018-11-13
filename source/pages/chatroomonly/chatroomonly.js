@@ -130,7 +130,7 @@ class Content extends AppBase {
   loadchatlist() {
     var api = new ClassApi();
     api.chatlist({
-      onlymember_id: this.Base.options.onlymember_id, orderby: "send_time"
+      onlymember_id: this.Base.options.onlymember_id, orderby: "send_time", isteacher: this.Base.getMyData().UserInfo.isuser
     }, (chatlist) => {
       var chatlistcount = this.Base.getMyData().chatlist.length;
 

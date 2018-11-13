@@ -312,6 +312,7 @@ export class AppBase {
       if (userinfo.isteacher1 == 'Y' ||
         userinfo.isteacher2 == 'Y' ||
         userinfo.isteacher3 == 'Y' ||
+        userinfo.teacherlead == 'Y' ||
         userinfo.positiontitle == '园长' ||
         userinfo.positiontitle == '家委会主席' ||
         userinfo.positiontitle == '管理员') {
@@ -333,20 +334,20 @@ export class AppBase {
     if (userinfo.tipsmemberinfo == "Y") {
       needshowreddot = true;
     }
-    if (userinfo.isteacher1 == "Y"||true) {
+    if (userinfo.isteacher1 == "Y") {
       if (userinfo.noschedule != 'N') {
         if (userinfo.classmember.length > userinfo.assesscount) {
 
           needshowreddot = true;
         }
       }
-      if (userinfo.onlychatunread != 'N') {
+      if (userinfo.onlychatunread!=undefined&& userinfo.onlychatunread != 'N') {
         needshowreddot = true;
       }
-      if (userinfo.newswaitapprove != 'N') {
+      if (userinfo.newswaitapprove != undefined && userinfo.newswaitapprove != 'N') {
         needshowreddot = true;
       }
-      if (userinfo.photowaitapprove != 'N') {
+      if (userinfo.photowaitapprove != undefined && userinfo.photowaitapprove != 'N') {
         needshowreddot = true;
       }
     }
@@ -707,11 +708,18 @@ export class AppBase {
     };
     console.log(data);
   }
-  info(message) {
+  info(message,callback) {
     wx.showModal({
       title: '提示',
       content: message,
-      showCancel: false
+      showCancel: false,
+      success:function(e){
+        if(e.confirm){
+          if(callback!=undefined){
+            callback();
+          }
+        }
+      }
     })
   }
   warning(message) {

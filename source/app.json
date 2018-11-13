@@ -1,9 +1,9 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/classlist/classlist",
     "pages/userbind/userbind",
     "pages/classrequest/classrequest",
-    "pages/classlist/classlist",
     "pages/loginfail/loginfail",
     "pages/teacherlist/teacherlist",
     "pages/chatlist/chatlist",
