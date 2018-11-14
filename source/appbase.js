@@ -313,9 +313,9 @@ export class AppBase {
         userinfo.isteacher2 == 'Y' ||
         userinfo.isteacher3 == 'Y' ||
         userinfo.teacherlead == 'Y' ||
-        userinfo.positiontitle == '园长' ||
-        userinfo.positiontitle == '家委会主席' ||
-        userinfo.positiontitle == '管理员') {
+        userinfo.positionname == '园长' ||
+        userinfo.positionname == '行政人员' ||
+        userinfo.positionname == '管理员') {
 
       } else {
         wx.reLaunch({

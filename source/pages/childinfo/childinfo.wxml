@@ -3,7 +3,7 @@
 
   <view class='flex-row flex-row'>
     <view class='line-height-0'>
-      <image class='icon-50 radius-50' src='{{uploadpath}}class/{{childinfo.photo}}' ></image>
+      <image class='icon-50 radius-50' src='{{uploadpath}}class/{{childinfo.photo}}' bindtap='updatephoto' ></image>
     </view>
     <navigator url='/pages/infoupdate/infoupdate' class='flex-1 padding-20' wx:if="{{UserInfo.name!=''}}">
       <view>

@@ -35,16 +35,16 @@ class Content extends AppBase {
     var data=e.detail.value;
     console.log(data);
     if(data.photo==""){
-      this.Base.info("请选择头像");
-      return;
+      //this.Base.info("请选择头像");
+      //return;
     }
     if (data.name == "") {
-      this.Base.info("请输入姓名");
-      return;
+      //this.Base.info("请输入姓名");
+      //return;
     }
     if (data.mobile == "") {
-      this.Base.info("请获取手机号码");
-      return;
+      //this.Base.info("请获取手机号码");
+      //return;
     }
     var api = new MemberApi();
     api.updateinfo(data, (ret) => {
