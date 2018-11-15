@@ -143,7 +143,7 @@
 
 </scroll-view>
 
-<view class='white-block' style='margin-bottom:4rpx' hidden='{{(UserInfo.positiontitle=="园长"||UserInfo.positiontitle=="行政人员")&&UserInfo.isteacher1!="Y"}}'>
+<view class='white-block' style='margin-bottom:4rpx' hidden='{{(UserInfo.positionname=="园长"||UserInfo.positionname=="行政人员")&&UserInfo.isteacher1!="Y"}}'>
   <view class='flex-row '>
     <view class='line-height-0 padding-10'>
       <image class='icon-30' src='{{uploadpath}}resource/{{res.voice}}' wx:if="{{sendtype=='K'}}" bindtap='changeSendtype' id="V"></image>
