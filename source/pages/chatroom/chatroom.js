@@ -40,7 +40,10 @@ class Content extends AppBase {
       comment: comment,
       sendtype: sendtype,
       invoice: "A",
-      showmore: false
+      showmore: false,
+      inputShowed: false,
+      inputVal: "",
+      searchresult: []
     });
 
     recordmgr = wx.getRecorderManager();
@@ -72,7 +75,7 @@ class Content extends AppBase {
     var that = this;
     var comment = this.Base.getMyData().comment;
 
-    if(comment.trim()==""){
+    if (comment.trim() == "") {
       return;
     }
 
@@ -358,7 +361,7 @@ class Content extends AppBase {
   touchEnd(e) {
     touchEndTime = e.timeStamp
   }
-  opennotice(e){
+  opennotice(e) {
 
     var that = this
     console.log(touchEndTime - touchStartTime);
@@ -394,6 +397,88 @@ class Content extends AppBase {
       })
     }
   }
+
+
+
+  showInput() {
+    this.Base.setMyData({
+      inputShowed: true
+    });
+  }
+  hideInput() {
+    this.Base.setMyData({
+      inputVal: "",
+      inputShowed: false,
+      searchresult: []
+    });
+  }
+  clearInput() {
+    this.Base.setMyData({
+      inputVal: "",
+      searchresult: []
+    });
+
+  }
+  inputTyping(e) {
+    var keyword = e.detail.value.trim();
+    var chatlist = this.Base.getMyData().chatlist;
+    var searchresult = [];
+    var keywordlist = keyword.split(" ");
+    if (keyword != "") {
+
+      for (var i = chatlist.length - 1; i >= 0; i--) {
+        var item = chatlist[i];
+        var havekeyword = false;
+        if (item.type == 'T') {
+          for (let key of keywordlist) {
+            //console.log(item.comment);
+            //console.log(key);
+            if (item.comment.indexOf(key) >= 0) {
+              havekeyword = true;
+              item.searchmsg = item.comment;
+              break;
+            }
+          }
+        }
+        if (item.type == 'W') {
+          for (let key of keywordlist) {
+            //console.log(item.comment);
+            //console.log(key);
+            if (item.news_name.indexOf(key) >= 0) {
+              havekeyword = true;
+              item.searchmsg = item.news_name;
+              break;
+            }
+          }
+        }
+        if (item.type == 'N') {
+          for (let key of keywordlist) {
+            //console.log(item.comment);
+            //console.log(key);
+            if (item.notice_name.indexOf(key) >= 0) {
+              havekeyword = true;
+              item.searchmsg = item.notice_name;
+              break;
+            }
+          }
+        }
+        if (havekeyword) {
+          searchresult.push(item);
+        }
+      }
+    }
+
+    this.Base.setMyData({
+      inputVal: keyword,
+      searchresult
+    });
+
+  
+  }
+  gotoCommit(e){
+    var id=e.currentTarget.id;
+    this.Base.setMyData({ indid: id, searchresult: [], inputVal: "", inputShowed: false});
+  }
 }
 
 var touchStartTime = 0;
@@ -425,8 +510,15 @@ body.talktoStudent = content.talktoStudent;
 body.talktoTeacher = content.talktoTeacher;
 body.boxrequire = content.boxrequire;
 body.viewPhoto2 = content.viewPhoto2;
-body.touchStart = content.touchStart; 
-body.touchEnd = content.touchEnd; 
+body.touchStart = content.touchStart;
+body.touchEnd = content.touchEnd;
 body.opennotice = content.opennotice;
 body.opennews = content.opennews;
+
+
+body.showInput = content.showInput;
+body.hideInput = content.hideInput;
+body.clearInput = content.clearInput;
+body.inputTyping = content.inputTyping;
+body.gotoCommit = content.gotoCommit;
 Page(body)

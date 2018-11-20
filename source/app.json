@@ -1,6 +1,7 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/chatroom/chatroom",
     "pages/classlist/classlist",
     "pages/userbind/userbind",
     "pages/classrequest/classrequest",
@@ -13,7 +14,6 @@
     "pages/commentmgr/commentmgr",
     "pages/mycomment/mycomment",
     "pages/search/search",
-    "pages/chatroom/chatroom",
     "pages/chatroomonly/chatroomonly",
     "pages/classmatelist/classmatelist",
     "pages/memberfollownews/memberfollownews",

@@ -1,12 +1,58 @@
 <!--pages/chatroom/chatroom.wxml-->
+
+<view class="weui-search-bar">
+  <view class="weui-search-bar__form">
+    <view class="weui-search-bar__box">
+      <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+      <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" auto-focus='{{onfocus}}' bindinput="inputTyping" confirm-type='search' bindconfirm='search' />
+      <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+        <icon type="clear" size="14"></icon>
+      </view>
+    </view>
+    <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+      <icon class="weui-icon-search" type="search" size="14"></icon>
+      <view class="weui-search-bar__text">搜索</view>
+    </label>
+  </view>
+  <view class="weui-search-bar__cancel-btn txt-primary" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+</view>
+<scroll-view class="mlc" scroll-y   wx:if="{{searchresult.length>0}}">
+  <view wx:for="{{searchresult}}" wx:key="k" class='padding-20 border-bottom' bindtap='gotoCommit' id="{{item.id}}" >
+    <view class='flex-row' >
+      <view class='line-height-0'>
+      <image class='icon-50 ' wx:if="{{item.user_id==0}}" src='{{uploadpath}}member/{{item.member_photo}}' ></image>
+      <image class='icon-50 ' wx:if="{{item.user_id>0}}" src='{{uploadpath}}user/{{item.user_photo}}' ></image>
+      </view>
+      <view class='flex-1' style='margin-left:20rpx;'>
+        <view class='flex-row'>
+          <view class='flex-1 h6 txt-gray'>
+            {{item.user_id==0?item.member_name:item.user_user_name}}
+          </view>
+          <view class='h6 txt-gray'>
+          {{item.send_time}}
+          </view>
+        </view>
+        <view class='h5'>
+          {{item.searchmsg}}
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+
+<block wx:if="{{inputVal==''||searchresult.length==0}}">
+
+
+
+
 <scroll-view class="{{showmore==false?'ml':'mlb'}}" scroll-y scroll-into-view='v{{indid}}' >
 <view style='height:40rpx;'></view>
 <view >
 <view class='flex-row' wx:for="{{chatlist}}" wx:key="k" wx:for-index="idx">
   <block wx:if="{{item.user_id==0}}">
     <view class='padding-20' style='padding-right:0rpx;'>
-      <image class='icon-50'></image>
       <view  id="v{{item.id}}"></view>
+      <image class='icon-50'></image>
     </view>
     <view class='padding flex-1' style='padding-top:0rpx;'>
       <view class='h6 txt-gray text-right'>
@@ -134,8 +180,8 @@
       </view>
     </view>
     <view class='padding-20' style='padding-left:0rpx;'>
-      <image class='icon-50 radius-50'></image>
         <view id="v{{item.id}}"></view>
+      <image class='icon-50 radius-50'></image>
     </view>
   </block>
 </view>
@@ -185,3 +231,5 @@
     </view>
   </view>
 </view>
+
+</block>
