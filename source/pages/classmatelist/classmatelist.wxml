@@ -17,6 +17,7 @@
         没有联系人
       </view>
       <view class='flex-row margin-top-10' style='margin-left:30rpx;' wx:for="{{item.parents}}" wx:for-index='idx' wx:for-item="subitem" wx:key="k2">
+        <view class='txt-gray h6 margin-left-10'>{{subitem.jiazhangguanxi}}</view>
         <view class='txt-gray h6 margin-left-10'>{{subitem.relationship}}</view>
         <view class='txt-gray h6 margin-left-10' style='width:100rpx;'>{{subitem.name}}</view>
         <view class=' margin-left-10 flex-1 txt-primary h6' bindtap='phoneCall' id="{{subitem.mobile}}">{{subitem.mobile}}</view>
