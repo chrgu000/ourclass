@@ -42,7 +42,9 @@ class Content extends AppBase {
   }
   copy(e){
     var reply=e.target.dataset.txt;
-    this.Base.setMyData({reply:reply});
+    var commentinfo=this.Base.getMyData().commentinfo;
+    commentinfo.reply=reply;
+    this.Base.setMyData({ commentinfo: commentinfo});
   }
 }
 var content = new Content();

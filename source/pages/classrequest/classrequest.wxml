@@ -20,7 +20,7 @@
         <image class='icon' src='{{uploadpath}}resource/{{res.classrequestname}}'></image>
       </view>
       <view class='padding-10 border-bottom' style='width:400rpx;margin-left:20rpx;'>
-        <input  class='h5 fullimg' maxlength='10' placeholder='请输入孩子的姓名' name="name"></input>
+        <input  class='h5 fullimg' maxlength='10' placeholder='请输入学生真实姓名' name="name"></input>
       </view>
       <view class='flex-1'></view>
     </view>
@@ -30,7 +30,7 @@
         <image class='icon' src='{{uploadpath}}resource/{{res.classrequestidno}}'></image>
       </view>
       <view class='padding-10 border-bottom flex-row flex-center' style='width:400rpx;margin-left:20rpx;'>
-          <input  maxlength='18' class='h5 fullimg ' placeholder='请输入孩子名字拼音首字母加出生年月日，如lss141225'  name="idno" type='text'></input>
+          <input  maxlength='18' class='h5 fullimg ' placeholder='请输入登录密码'  name="idno" type='text'></input>
       </view>
       <view class='flex-1'></view>
     </view>
