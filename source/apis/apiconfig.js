@@ -1,13 +1,13 @@
 export class ApiConfig {
 
   static GetApiUrl() {
-    return "https://cmsdev.app-link.org/alucard263096/ourclass/api/";
+    return "https://zaban.tsinray.com/api/";
   }
   static GetUploadPath() {
-    return "https://alioss.app-link.org/alucard263096/ourclass/";
+    return "https://zaban.oss-cn-shenzhen.aliyuncs.com/";
   }
   static GetFileUploadAPI() {
-    return "https://cmsdev.app-link.org/alucard263096/ourclass/fileupload";
+    return "https://zaban.tsinray.com/fileupload";
   }
 
   static GetHeader() {

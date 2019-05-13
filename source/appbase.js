@@ -189,6 +189,7 @@ export class AppBase {
     }, false);
     //AppBase.UserInfo.openid="abc";
     //ApiConfig.SetToken("abc");
+    
     if (AppBase.UserInfo.openid == undefined) {
       // 登录
       console.log("onShow");
@@ -211,6 +212,7 @@ export class AppBase {
                 console.log(AppBase.UserInfo);
                 ApiConfig.SetToken(data.openid);
                 AppBase.UserInfo.openid = data.openid;
+                console.log("session+" + data.session_key);
                 AppBase.UserInfo.session_key = data.session_key;
                 that.Base.log("goto update info", data);
                 memberapi.update(AppBase.UserInfo, (ret) => {
@@ -235,17 +237,34 @@ export class AppBase {
                 //that.Base.getAddress();
               }, false);
             },
-            fail: res => {
+            fail: userloginres => {
+
+              console.log("auth fail");
+              console.log(userloginres);
               console.log(res);
-              //that.Base.gotoOpenUserInfoSetting();
-              if (this.Base.needauth == true) {
-                wx.redirectTo({
-                  url: '/pages/auth/auth',
+              var memberapi = new MemberApi();
+              memberapi.getuserinfo({ code: res.code, grant_type: "authorization_code" }, data => {
+                console.log("here");
+                console.log(data);
+                AppBase.UserInfo.openid = data.openid;
+                AppBase.UserInfo.session_key = data.session_key;
+                console.log(AppBase.UserInfo);
+                ApiConfig.SetToken(data.openid);
+                console.log("goto update info");
+                memberapi.update(AppBase.UserInfo, (ret) => {
+                  console.log("session" + JSON.stringify(ret));
+                  if (this.Base.needauth == true) {
+                    wx.redirectTo({
+                      url: '/pages/auth/auth',
+                    })
+                  } else {
+                    that.onMyShow();
+                  }
                 });
-              } else {
-                that.onMyShow();
-              }
-              //that.Base.getAddress();
+
+                //that.Base.gotoOpenUserInfoSetting();
+                
+              });
             }
           });
 
@@ -748,10 +767,11 @@ export class AppBase {
     console.log(e);
     var api = new WechatApi();
     var data = this.Base.getMyData();
-    console.log(data);
 
-    e.detail.session_key = AppBase.session_key;
-    e.detail.openid = AppBase.openid;
+    e.detail.session_key = AppBase.UserInfo.session_key;
+    e.detail.openid = AppBase.UserInfo.openid;
+    console.log("getPhoneNo");
+    console.log(data);
     console.log(e.detail);
     api.decrypteddata(e.detail, (ret) => {
       console.log(ret);

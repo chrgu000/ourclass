@@ -1,9 +1,9 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/userbind/userbind",
     "pages/chatroom/chatroom",
     "pages/classlist/classlist",
-    "pages/userbind/userbind",
     "pages/classrequest/classrequest",
     "pages/loginfail/loginfail",
     "pages/teacherlist/teacherlist",
@@ -14,6 +14,7 @@
     "pages/classassesshistory/classassesshistory",
     "pages/commentmgr/commentmgr",
     "pages/mycomment/mycomment",
+    "pages/signup/signup",
     "pages/search/search",
     "pages/chatroomonly/chatroomonly",
     "pages/classmatelist/classmatelist",
@@ -40,7 +41,6 @@
     "pages/product/product",
     "pages/auth/auth",
     "pages/success/success",
-    "pages/signup/signup",
     "pages/productlist/productlist",
     "pages/service/service",
     "pages/aboutuslist/aboutuslist",

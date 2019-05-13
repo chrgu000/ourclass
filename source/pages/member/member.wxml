@@ -1,326 +1,328 @@
 <!--pages/member/member.wxml-->
 <block wx:if="{{UserInfo&&UserInfo.isuser!='Y'}}">
-<view class='padding-20 white-block'>
+  <view class='padding-20 white-block'>
 
-  <view class='flex-row flex-row'>
-    <view class='line-height-0'>
-      <image class='icon-50 radius-50' wx:if="{{UserInfo.photo!=''}}" src='{{uploadpath}}member/{{UserInfo.photo}}'></image>
-      <image class='icon-50 radius-50' wx:if="{{UserInfo.photo==''}}" src='{{uploadpath}}resource/{{res.defaultmember}}'></image>
-    </view>
-    <navigator url='/pages/infoupdate/infoupdate' class='flex-1 padding-20' wx:if="{{UserInfo.name!=''}}">
-      <view>
-        你好，{{UserInfo.name}}！
+    <view class='flex-row flex-row'>
+      <view class='line-height-0'>
+        <image class='icon-50 radius-50' wx:if="{{UserInfo.photo!=''}}" src='{{uploadpath}}member/{{UserInfo.photo}}'></image>
+        <image class='icon-50 radius-50' wx:if="{{UserInfo.photo==''}}" src='{{uploadpath}}resource/{{res.defaultmember}}'></image>
       </view>
-      <view class='txt-gray h6'>
-        {{UserInfo.mobile}}
+      <navigator url='/pages/infoupdate/infoupdate' class='flex-1 padding-20' wx:if="{{UserInfo.name!=''}}">
+        <view>
+          你好，{{UserInfo.name}}！
+        </view>
+        <view class='txt-gray h6'>
+          {{UserInfo.mobile}}
+        </view>
+      </navigator>
+      <navigator url='/pages/infoupdate/infoupdate' class='flex-1 txt-bold padding-20' wx:if="{{UserInfo.name==''}}">
+        点击补充个人信息
+      </navigator>
+    </view>
+  </view>
+
+  <view hidden='{{UserInfo.classinfo.isforsubmit=="Y"}}'>
+    <view class='margin-top'>
+      <view class='h5 txt-gray padding-10'>
+        我的孩子
+      </view>
+      <navigator url='/pages/childinfo/childinfo?id={{item.id}}' class='border-bottom flex-row flex-center white-block ' wx:for="{{UserInfo.classmates}}" wx:key="k">
+        <view class='padding-20 line-height-0'>
+          <image class='icon-40  radius-50' src='{{uploadpath}}class/{{item.photo}}'></image>
+        </view>
+        <view class='flex-1 padding-20 h5'>
+          {{item.childname}}
+        </view>
+        <view class='line-height-0 margin-right-10'>
+          <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+        </view>
+      </navigator>
+
+      <navigator url='/pages/classrequest/classrequest' class='border-bottom flex-row flex-center white-block '>
+        <view class='padding-20 line-height-0' style='margin-left:35vw;'>
+          <image class='icon' src='{{uploadpath}}resource/{{res.add}}'></image>
+        </view>
+        <view class='flex-1 padding-20 h5 txt-gray'>
+          继续添加
+        </view>
+      </navigator>
+    </view>
+
+    <navigator url='/pages/teacherinfo/teacherinfo' class='margin-top border-bottom flex-row flex-center white-block'>
+      <view class='padding line-height-0'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.teacher}}'></image>
+      </view>
+      <view class='flex-1 padding h5'>
+        老师信息
+      </view>
+      <view class='line-height-0 margin-right-10'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
       </view>
     </navigator>
-    <navigator url='/pages/infoupdate/infoupdate' class='flex-1 txt-bold padding-20' wx:if="{{UserInfo.name==''}}">
-      点击补充个人信息
+    <navigator url='/pages/chatroomonly/chatroomonly?onlymember_id={{UserInfo.id}}' class='border-bottom flex-row flex-center white-block'>
+      <view class='padding line-height-0'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.teacherchat}}'></image>
+      </view>
+      <view class='flex-1 padding h5'>
+        老师沟通
+      </view>
+      <view style='color:red;' class='margin-right-10 h6' wx:if="{{UserInfo.onlychatunread=='Y'}}">新消息</view>
+      <view class='line-height-0 margin-right-10'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+      </view>
     </navigator>
   </view>
-</view>
-
-<view class='margin-top'>
-  <view class='h5 txt-gray padding-10'>
-    我的孩子
-  </view>
-  <navigator url='/pages/childinfo/childinfo?id={{item.id}}' class='border-bottom flex-row flex-center white-block ' wx:for="{{UserInfo.classmates}}" wx:key="k">
-    <view class='padding-20 line-height-0'>
-      <image class='icon-40  radius-50' src='{{uploadpath}}class/{{item.photo}}'></image>
+  <navigator url='/pages/memberfollownotice/memberfollownotice' class='margin-top border-bottom flex-row flex-center white-block'>
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.follownotice}}'></image>
     </view>
-    <view class='flex-1 padding-20 h5'>
-      {{item.childname}}
+    <view class='flex-1 padding h5'>
+      收藏的通知
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
+  <navigator url='/pages/memberfollownews/memberfollownews' class='border-bottom flex-row flex-center white-block'>
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.follownews}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      收藏的文章
     </view>
     <view class='line-height-0 margin-right-10'>
       <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
     </view>
   </navigator>
 
-  <navigator url='/pages/classrequest/classrequest' class='border-bottom flex-row flex-center white-block '>
-    <view class='padding-20 line-height-0' style='margin-left:35vw;'>
-      <image class='icon' src='{{uploadpath}}resource/{{res.add}}'></image>
+  <navigator url='/pages/mycomment/mycomment' class='border-bottom flex-row flex-center white-block'>
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
     </view>
-    <view class='flex-1 padding-20 h5 txt-gray'>
-      继续添加
+    <view class='flex-1 padding h5'>
+      我的评论
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
     </view>
   </navigator>
-</view>
 
-<navigator url='/pages/teacherinfo/teacherinfo' class='margin-top border-bottom flex-row flex-center white-block'>
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.teacher}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    老师信息
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
-<navigator url='/pages/chatroomonly/chatroomonly?onlymember_id={{UserInfo.id}}' class='border-bottom flex-row flex-center white-block'>
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.teacherchat}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    老师沟通
-  </view>
-  <view style='color:red;' class='margin-right-10 h6' wx:if="{{UserInfo.onlychatunread=='Y'}}">新消息</view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
-
-<navigator url='/pages/memberfollownotice/memberfollownotice' class='margin-top border-bottom flex-row flex-center white-block'>
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.follownotice}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    收藏的通知
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
-<navigator url='/pages/memberfollownews/memberfollownews'  class='border-bottom flex-row flex-center white-block'>
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.follownews}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    收藏的文章
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
-
-<navigator url='/pages/mycomment/mycomment' class='border-bottom flex-row flex-center white-block'  >
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    我的评论
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
+  <view hidden='{{UserInfo.classinfo.isforsubmit=="Y"}}'>
+    <navigator url='/pages/newslist/newslist' class='margin-top border-bottom flex-row flex-center white-block'>
+      <view class='padding line-height-0'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.teacher}}'></image>
+      </view>
+      <view class='flex-1 padding h5'>
+        育儿分享
+      </view>
+      <view class='line-height-0 margin-right-10'>
+        <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+      </view>
+    </navigator>
 
 
-<navigator url='/pages/newslist/newslist' class='margin-top border-bottom flex-row flex-center white-block'>
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.teacher}}'></image>
   </view>
-  <view class='flex-1 padding h5'>
-    育儿分享
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
-
-
 </block>
 
 
 <block wx:if="{{UserInfo&&UserInfo.isuser=='Y'}}">
-<view class='padding-20 white-block'>
+  <view class='padding-20 white-block'>
 
-  <view class='flex-row flex-row'>
-    <view class='line-height-0'>
-      <image class='icon-50 radius-50'  src='{{uploadpath}}user/{{UserInfo.user.photo}}' bindtap='updateuserphoto'></image>
+    <view class='flex-row flex-row'>
+      <view class='line-height-0'>
+        <image class='icon-50 radius-50' src='{{uploadpath}}user/{{UserInfo.user.photo}}' bindtap='updateuserphoto'></image>
+      </view>
+      <navigator class='flex-1 padding-20'>
+        <view>
+          你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"配班老师":""}}，{{UserInfo.isteacher1!='Y'&&UserInfo.isteacher2!='Y'&&UserInfo.isteacher3!='Y'?UserInfo.school_name+UserInfo.user.positiontitle:""}}{{UserInfo.user.user_name}}！
+        </view>
+        <view class='txt-gray h6'>
+          {{UserInfo.mobile}}
+        </view>
+      </navigator>
     </view>
-    <navigator  class='flex-1 padding-20' >
-      <view>
-        你好{{UserInfo.isteacher1=='Y'?"班主任":""}}{{UserInfo.isteacher2=='Y'?"保育员":""}}{{UserInfo.isteacher3=='Y'?"配班老师":""}}，{{UserInfo.isteacher1!='Y'&&UserInfo.isteacher2!='Y'&&UserInfo.isteacher3!='Y'?UserInfo.school_name+UserInfo.user.positiontitle:""}}{{UserInfo.user.user_name}}！
-      </view>
-      <view class='txt-gray h6'>
-        {{UserInfo.mobile}}
-      </view>
-    </navigator>
   </view>
-</view>
+  <navigator url='/pages/teacherlist/teacherlist' class='margin-top border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.user.positionname=='园长'}}">
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.member}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      园区老师
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
 
-<navigator url='/pages/teacherlist/teacherlist' class='margin-top border-bottom flex-row flex-center white-block'   wx:if="{{UserInfo.user.positionname=='园长'}}">
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.member}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    园区老师
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
-
-<navigator url='/pages/classmatelist/classmatelist' class='margin-top border-bottom flex-row flex-center white-block'   wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.member}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    本班成员 <text class='txt-primary h5'>{{UserInfo.classmember.length}}</text>人
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
-<navigator url='/pages/classassesshistory/classassesshistory' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.isteacher1=='Y'}}" >
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.assessrecord}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    历史评分
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
-<navigator wx:if="{{UserInfo.isteacher1=='Y'}}" url='/pages/classassess/classassess' class='border-bottom flex-row flex-center white-block'>
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.teacherchat}}'></image>
-  </view>
-  <view class='flex-1 padding h5' wx:if="{{UserInfo.noschedule!='Y'}}">
-    {{UserInfo.schedule.name}} <text class='txt-primary h5' wx:if="{{UserInfo.classmember.length<=UserInfo.assesscount}}">已完成</text>
-    <text class='txt-red h5' wx:if="{{UserInfo.classmember.length>UserInfo.assesscount}}">已完成{{UserInfo.assesscount}}/{{UserInfo.classmember.length}}</text>
-  </view>
-  <view class='flex-1 padding h5 txt-gray' wx:if="{{UserInfo.noschedule=='Y'}}">
-    本周无安排
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
+  <navigator url='/pages/classmatelist/classmatelist' class='margin-top border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'||UserInfo.isteacher2=='Y'||UserInfo.isteacher3=='Y'}}">
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.member}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      本班成员
+      <text class='txt-primary h5'>{{UserInfo.classmember.length}}</text>人
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
+  <navigator url='/pages/classassesshistory/classassesshistory' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'}}">
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.assessrecord}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      历史评分
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
+  <navigator wx:if="{{UserInfo.isteacher1=='Y'}}" url='/pages/classassess/classassess' class='border-bottom flex-row flex-center white-block'>
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.teacherchat}}'></image>
+    </view>
+    <view class='flex-1 padding h5' wx:if="{{UserInfo.noschedule!='Y'}}">
+      {{UserInfo.schedule.name}}
+      <text class='txt-primary h5' wx:if="{{UserInfo.classmember.length<=UserInfo.assesscount}}">已完成</text>
+      <text class='txt-red h5' wx:if="{{UserInfo.classmember.length>UserInfo.assesscount}}">已完成{{UserInfo.assesscount}}/{{UserInfo.classmember.length}}</text>
+    </view>
+    <view class='flex-1 padding h5 txt-gray' wx:if="{{UserInfo.noschedule=='Y'}}">
+      本周无安排
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
 
 
-<navigator url='/pages/noticemgr/noticemgr' class='margin-top border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'}}">
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.noticemgr}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    通知管理
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
+  <navigator url='/pages/noticemgr/noticemgr' class='margin-top border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'}}">
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.noticemgr}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      通知管理
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
 
-<navigator url='/pages/chatlist/chatlist' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'}}">
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.msg}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    消息管理
-  </view>
-  <view style='color:red;' class='margin-right-10 h6' wx:if="{{UserInfo.onlychatunread=='Y'}}">新消息</view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
+  <navigator url='/pages/chatlist/chatlist' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.isteacher1=='Y'}}">
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.msg}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      消息管理
+    </view>
+    <view style='color:red;' class='margin-right-10 h6' wx:if="{{UserInfo.onlychatunread=='Y'}}">新消息</view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
 
-<navigator url='/pages/newsmgr/newsmgr' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.user.positionname=='园长'}}">
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.newsmgr}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    育儿分享管理
-  </view>
-  <view style='color:red;' class='margin-right-10 h6' wx:if="{{UserInfo.newswaitapprove=='Y'}}">新的发布</view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
+  <navigator url='/pages/newsmgr/newsmgr' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.user.positionname=='园长'}}">
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.newsmgr}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      育儿分享管理
+    </view>
+    <view style='color:red;' class='margin-right-10 h6' wx:if="{{UserInfo.newswaitapprove=='Y'}}">新的发布</view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
 
+  <navigator url='/pages/photoedit/photoedit' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.user.positionname=='园长'}}">
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      图片视频管理
+    </view>
+    <view style='color:red;' class='margin-right-10 h6' wx:if="{{UserInfo.photowaitapprove=='Y'}}">新的发布</view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
 
-<navigator url='/pages/photoedit/photoedit' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.user.positionname=='园长'}}">
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    图片视频管理
-  </view>
-  <view style='color:red;' class='margin-right-10 h6' wx:if="{{UserInfo.photowaitapprove=='Y'}}">新的发布</view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
-
-<navigator url='/pages/commentmgr/commentmgr' class='border-bottom flex-row flex-center white-block'  wx:if="{{UserInfo.user.positionname=='园长'}}">
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    评论管理
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
+  <navigator url='/pages/commentmgr/commentmgr' class='border-bottom flex-row flex-center white-block' wx:if="{{UserInfo.user.positionname=='园长'}}">
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      评论管理
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
 
 
 
-<navigator url='/pages/memberfollownotice/memberfollownotice' class='margin-top border-bottom flex-row flex-center white-block'>
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.follownotice}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    收藏的通知
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
-<navigator url='/pages/memberfollownews/memberfollownews'  class='border-bottom flex-row flex-center white-block'>
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.follownews}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    收藏的文章
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
-<navigator url='/pages/mycomment/mycomment' class='border-bottom flex-row flex-center white-block'  >
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    我的评论
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
+  <navigator url='/pages/memberfollownotice/memberfollownotice' class='margin-top border-bottom flex-row flex-center white-block'>
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.follownotice}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      收藏的通知
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
+  <navigator url='/pages/memberfollownews/memberfollownews' class='border-bottom flex-row flex-center white-block'>
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.follownews}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      收藏的文章
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
+  <navigator url='/pages/mycomment/mycomment' class='border-bottom flex-row flex-center white-block'>
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.albummgr}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      我的评论
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
 
 
-<navigator url='/pages/newslist/newslist' class='margin-top border-bottom flex-row flex-center white-block'>
-  <view class='padding line-height-0'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.teacher}}'></image>
-  </view>
-  <view class='flex-1 padding h5'>
-    育儿分享
-  </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
+  <navigator url='/pages/newslist/newslist' class='margin-top border-bottom flex-row flex-center white-block'>
+    <view class='padding line-height-0'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.teacher}}'></image>
+    </view>
+    <view class='flex-1 padding h5'>
+      育儿分享
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
 
 
 </block>
 
 
 <block wx:if="{{UserInfo.otherclass.length>0}}">
-<view class='padding-10 h6 txt-gray margin-top-10'>
-  其它班
-</view>
-<navigator url='/pages/home/home?class_id={{item.id}}' open-type='reLaunch' class='border-bottom flex-row flex-center white-block' wx:for="{{UserInfo.otherclass}}" wx:key="k">
-  <view class='flex-1 padding h5'>
-    {{item.school_name}}{{item.name}}
+  <view class='padding-10 h6 txt-gray margin-top-10'>
+    其它班
   </view>
-  <view class='line-height-0 margin-right-10'>
-    <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
-  </view>
-</navigator>
+  <navigator url='/pages/home/home?class_id={{item.id}}' open-type='reLaunch' class='border-bottom flex-row flex-center white-block' wx:for="{{UserInfo.otherclass}}" wx:key="k">
+    <view class='flex-1 padding h5'>
+      {{item.school_name}}{{item.name}}
+    </view>
+    <view class='line-height-0 margin-right-10'>
+      <image class='icon' src='{{uploadpath}}resource/{{res.right}}'></image>
+    </view>
+  </navigator>
 </block>
 
 <view style='height:100rpx;'></view>

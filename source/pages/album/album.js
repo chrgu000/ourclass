@@ -18,9 +18,87 @@ class Content extends AppBase {
     var that = this;
     var classapi = new ClassApi();
     classapi.photolist({},(ret)=>{
-      this.Base.setMyData(ret);
+      var cphoto = ret.photo;
+      var cvideo = ret.video;
+      this.Base.setMyData({ cphoto,cvideo});
+      this.loadmore(0);
+      this.loadmore(1);
     });
   }
+  onReachBottom(){
+    var currenttab = this.Base.getMyData().currenttab;
+    this.loadmore(currenttab);
+  }
+
+  loadmore(currenttab){
+    
+    var cs=0;
+    if(currenttab=="0"){
+      var photo = this.Base.getMyData().photo;
+      var cphoto = this.Base.getMyData().cphoto;
+      
+      
+      for (var j = photo.length; j < cphoto.length; j++) {
+        photo.push(cphoto[j]);
+        cs++;
+        if (cs >= 7) {
+          break;
+        }
+      }
+      if (cs == 0) {
+        wx.showToast({
+          title: '已经没有了',
+          icon: 'none'
+        })
+        this.Base.setMyData({
+          jgnomore: 1,
+        });
+      }
+      else {
+        setTimeout(() => {
+          console.log("llll");
+          this.Base.setMyData({
+            photo
+          });
+          wx.hideLoading()
+        }, 500);
+      }
+
+
+    }else{
+
+      var video = this.Base.getMyData().video;
+      var cvideo = this.Base.getMyData().cvideo;
+
+
+      for (var j = video.length; j < cvideo.length; j++) {
+        video.push(cvideo[j]);
+        cs++;
+        if (cs >= 7) {
+          break;
+        }
+      }
+      if (cs == 0) {
+        wx.showToast({
+          title: '已经没有了',
+          icon: 'none'
+        })
+        this.Base.setMyData({
+          jgnomore: 1,
+        });
+      }
+      else {
+        setTimeout(() => {
+          console.log("llll");
+          this.Base.setMyData({
+            video
+          });
+          wx.hideLoading()
+        }, 500);
+      }
+    }
+  }
+
   changeTab(e){
     this.Base.setMyData({ currenttab: e.currentTarget.id });
   }
@@ -116,4 +194,5 @@ body.uploadpic = content.uploadpic;
 body.viewphotos = content.viewphotos; 
 body.uploadvid = content.uploadvid; 
 body.videoplay = content.videoplay;
+body.loadmore = content.loadmore;
 Page(body)
