@@ -17,9 +17,25 @@ class Content extends AppBase {
   onMyShow() {
     var that = this;
     var classapi = new ClassApi();
-    classapi.photoeditlist({},(list)=>{
-      this.Base.setMyData({list});
+    classapi.photoeditlist({},(rlist)=>{
+      var list=[];
+      for (var i = 0; i < rlist.length&&i<10;i++){
+        list.push(rlist[i]);
+      }
+      this.Base.setMyData({ list, rlist});
     });
+  }
+  onReachBottom() {
+    var cs=0;
+    var list = this.Base.getMyData().list;
+    var rlist = this.Base.getMyData().rlist;
+    for (var i = list.length; i < rlist.length ; i++) {
+      cs++;
+      if(cs<10){
+        list.push(rlist[i]);
+      }
+    }
+    this.Base.setMyData({ list});
   }
   updatestatus(e){
     var id=e.currentTarget.id.split("_");
@@ -37,9 +53,6 @@ class Content extends AppBase {
       list[idx].status_name = status == 'A' ? "启用" : "禁用";
       this.Base.setMyData({ list });
     },false);
-
-
-
 
 
   }
